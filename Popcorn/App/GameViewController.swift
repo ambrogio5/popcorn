@@ -30,8 +30,7 @@ final class GameViewController: UIViewController {
     /// Regular iPhones (and a closed Duo) play portrait only; a wide screen (open Duo, iPad) may rotate freely.
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         let bounds = view.window?.screen.bounds ?? view.bounds
-        let aspect = min(bounds.width, bounds.height) / max(bounds.width, bounds.height, 1)
-        return aspect > CGFloat(LayoutMode.wideThreshold) ? .all : .portrait
+        return LayoutMode.allowsRotation(screenWidth: Double(bounds.width), screenHeight: Double(bounds.height)) ? .all : .portrait
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

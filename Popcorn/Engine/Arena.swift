@@ -7,13 +7,26 @@ enum LayoutMode: String, Codable {
     case tall
     case wide
 
-    /// Aspect ratios (width / height) above this are treated as wide. A closed Duo or a regular
-    /// iPhone in portrait sits near 0.46; an open Duo is about 0.75 or 1.33 depending on how it is held.
-    static let wideThreshold = 0.7
+    /// Anything this squat (width / height) is landscape and therefore wide.
+    static let landscapeAspect = 0.95
+    /// Portrait screens squarer than this *and* at least `wideMinimumPoints` across are wide: an
+    /// open Duo or an iPad. The Duo's cover screen is rumoured to be almost as square (~0.68) but
+    /// much smaller, which is why size is part of the test. A regular iPhone sits near 0.46.
+    static let portraitWideAspect = 0.6
+    static let wideMinimumPoints = 600.0
 
     static func forSize(width: Double, height: Double) -> LayoutMode {
-        guard height > 0 else { return .tall }
-        return width / height > wideThreshold ? .wide : .tall
+        guard width > 0, height > 0 else { return .tall }
+        let aspect = width / height
+        if aspect > landscapeAspect { return .wide }
+        if aspect > portraitWideAspect && min(width, height) >= wideMinimumPoints { return .wide }
+        return .tall
+    }
+
+    /// Whether a screen of this size should be allowed to rotate. Portrait-only screens keep the
+    /// tall arena; anything that is wide in portrait is wide in every orientation.
+    static func allowsRotation(screenWidth: Double, screenHeight: Double) -> Bool {
+        forSize(width: min(screenWidth, screenHeight), height: max(screenWidth, screenHeight)) == .wide
     }
 }
 

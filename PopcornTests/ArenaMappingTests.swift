@@ -5,10 +5,14 @@ final class ArenaMappingTests: XCTestCase {
     func testPhonesAreTallAndOpenFoldablesAreWide() {
         XCTAssertEqual(LayoutMode.forSize(width: 393, height: 852), .tall)   // iPhone 17
         XCTAssertEqual(LayoutMode.forSize(width: 430, height: 932), .tall)   // iPhone Pro Max
-        XCTAssertEqual(LayoutMode.forSize(width: 360, height: 800), .tall)   // Duo closed (approx.)
-        XCTAssertEqual(LayoutMode.forSize(width: 1024, height: 768), .wide)  // Duo open, landscape (approx.)
-        XCTAssertEqual(LayoutMode.forSize(width: 768, height: 1024), .wide)  // Duo open, portrait (approx.)
+        XCTAssertEqual(LayoutMode.forSize(width: 474, height: 696), .tall)   // Duo closed (rumoured 1422×2088 @3x)
+        XCTAssertEqual(LayoutMode.forSize(width: 640, height: 904), .wide)   // Duo open, portrait (rumoured 1920×2713 @3x)
+        XCTAssertEqual(LayoutMode.forSize(width: 904, height: 640), .wide)   // Duo open, landscape
         XCTAssertEqual(LayoutMode.forSize(width: 820, height: 1180), .wide)  // iPad
+        XCTAssertEqual(LayoutMode.forSize(width: 852, height: 393), .wide)   // any landscape screen
+        XCTAssertTrue(LayoutMode.allowsRotation(screenWidth: 640, screenHeight: 904))
+        XCTAssertFalse(LayoutMode.allowsRotation(screenWidth: 474, screenHeight: 696))
+        XCTAssertFalse(LayoutMode.allowsRotation(screenWidth: 393, screenHeight: 852))
     }
 
     func testArenaDimensions() {

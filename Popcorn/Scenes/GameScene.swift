@@ -46,7 +46,7 @@ final class GameScene: BaseScene {
             cityIndex = Int.random(in: 0..<max(content.cities.count, 1))
         }
         city = content.cities[cityIndex]
-        model = GameModel(mode: mode, layout: LayoutMode.forSize(width: size.width, height: size.height), playerCount: playerCount)
+        model = GameModel(mode: mode, layout: LayoutMode.forSize(width: Double(size.width), height: Double(size.height)), playerCount: playerCount)
         super.init(size: size)
         scaleMode = .resizeFill
     }
@@ -104,7 +104,7 @@ final class GameScene: BaseScene {
     }
 
     override func layoutDidChange() {
-        let newMode = LayoutMode.forSize(width: size.width, height: size.height)
+        let newMode = LayoutMode.forSize(width: Double(size.width), height: Double(size.height))
         if newMode != model.spec.mode {
             model.relayout(to: newMode)
             showToast(newMode == .wide ? "Unfolded — wide arena" : "Folded — tall arena")

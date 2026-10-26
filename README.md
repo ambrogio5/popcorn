@@ -35,12 +35,18 @@ no file list to maintain.
 ## How the fold is handled
 
 The game never asks the device whether it is folded. It reads the view's size and derives a
-`LayoutMode` from the aspect ratio (`Popcorn/Engine/Arena.swift`):
+`LayoutMode` from the aspect ratio and the size in points (`Popcorn/Engine/Arena.swift`):
 
-| Screen                                   | Aspect  | Mode   | Arena        |
-|------------------------------------------|---------|--------|--------------|
-| Regular iPhone, Duo closed (portrait)    | ≈ 0.46  | `tall` | 9 × 16 units |
-| Duo open (either way up), iPad           | ≈ 0.75–1.33 | `wide` | 16 × 12 units |
+| Screen                                  | Aspect (w/h) | Points across | Mode   | Arena         |
+|-----------------------------------------|--------------|---------------|--------|---------------|
+| Regular iPhone (portrait)               | ≈ 0.46       | ~390–430      | `tall` | 9 × 16 units  |
+| Duo closed, cover screen (rumoured)     | ≈ 0.68       | ~470          | `tall` | 9 × 16 units  |
+| Duo open, portrait (rumoured)           | ≈ 0.71       | ~640          | `wide` | 16 × 12 units |
+| Duo open, landscape; iPad; any landscape| > 0.95 or iPad| ≥ 600        | `wide` | 16 × 12 units |
+
+The cover screen and the open screen are rumoured to have almost the same aspect ratio, so the
+rule is "squarer than 0.6 *and* at least 600 points across" rather than aspect alone. If the real
+numbers differ, the two constants at the top of `LayoutMode` are the only thing to tune.
 
 Levels are authored in normalised 0…1 coordinates and mapped into whichever arena is active, so
 every level works in both shapes. When the size changes mid-game (`GameScene.layoutDidChange`),
@@ -56,8 +62,8 @@ needs to know.
 - **Tall mode:** any iPhone simulator.
 - **Wide mode:** an iPad simulator approximates the open Duo's 4:3 screen. Rotate it to see the
   wide arena in both orientations.
-- **Live fold:** run on an iPad simulator and use Split View / Stage Manager to resize the window,
-  or rotate an iPhone simulator with `LayoutMode.wideThreshold` temporarily lowered. You should
+- **Live fold:** run on an iPad simulator and use Split View / Stage Manager to resize the window
+  (a half-width iPad window is tall, full width is wide). You should
   see the "Unfolded — wide arena" toast, bubbles keep their relative positions, and the second
   player's controls appear or disappear.
 - **Keyboard in the simulator:** arrows + space for player 1, WASD + F for player 2 (⌘K shows the

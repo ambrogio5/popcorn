@@ -29,7 +29,7 @@ final class MenuScene: BaseScene {
         let centerX = size.width / 2
         let usableTop = size.height - insets.top
         let usableBottom = insets.bottom
-        let wide = LayoutMode.forSize(width: size.width, height: size.height) == .wide
+        let wide = LayoutMode.forSize(width: Double(size.width), height: Double(size.height)) == .wide
 
         // Floating bubbles behind the title
         for (i, bubbleSize) in [BubbleSize.large, .medium, .small, .tiny, .medium, .small].enumerated() {

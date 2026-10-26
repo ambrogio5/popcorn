@@ -36,7 +36,7 @@ final class LevelSelectScene: BaseScene {
         let insets = safeInsets
         let centerX = size.width / 2
         let top = size.height - insets.top
-        let wide = LayoutMode.forSize(width: size.width, height: size.height) == .wide
+        let wide = LayoutMode.forSize(width: Double(size.width), height: Double(size.height)) == .wide
 
         let back = makeButton("‹ Menu", name: "btn.back", width: 110, height: 40, primary: false, fontSize: 16)
         back.position = CGPoint(x: insets.left + 16 + 55, y: top - 40)

@@ -96,11 +96,12 @@ final class BubbleSplitTests: XCTestCase {
             if model.drainEvents().contains(where: { if case .bubbleBounced = $0 { return true } else { return false } }) {
                 sawFloorBounce = true
             }
-            if sawFloorBounce { maxY = max(maxY, model.bubbles[0].pos.y + model.bubbles[0].radius) }
+            if sawFloorBounce { maxY = max(maxY, model.bubbles[0].pos.y) }
         }
         XCTAssertTrue(sawFloorBounce)
+        // The bubble's centre climbs to its apex fraction of the arena height.
         let expectedApex = BubbleSize.large.apexFraction * model.spec.height
-        XCTAssertEqual(maxY, expectedApex, accuracy: 0.6)
+        XCTAssertEqual(maxY, expectedApex, accuracy: 0.3)
     }
 
     func testPlayerHitFreezesInsteadOfResetting() {
