@@ -92,6 +92,32 @@ needs to know.
 - [ ] Resize mid-game and watch the arena reshape.
 - [ ] Confirm there is no purchase, ad, timer or energy anywhere. (There isn't.)
 
+## Game Center (optional)
+
+`Popcorn/App/GameCenter.swift` submits the Storm score and the total star count to two
+leaderboards and reports a few achievements. It is entirely optional: when the player is not
+signed in to Game Center, has declined the sign-in, or the capability is missing, every call is a
+no-op and the game behaves exactly as before. The menu's *Leaderboards* button only appears once
+the player is signed in.
+
+To switch it on for your own build:
+
+1. In Xcode, select the Popcorn target → *Signing & Capabilities* → **+ Capability** → *Game
+   Center*. (This adds the entitlement; it is deliberately not checked in.)
+2. In App Store Connect, under the app's *Game Center* section, create these IDs exactly:
+
+   | Kind        | ID                        | Meaning                                       |
+   |-------------|---------------------------|-----------------------------------------------|
+   | Leaderboard | `storm.best`              | Best Storm score                              |
+   | Leaderboard | `levels.totalstars`       | Total stars across all 64 levels (max 192)    |
+   | Achievement | `city.<index>.threestars` | All 8 levels of city `<index>` (0…7) at 3 stars |
+   | Achievement | `storm.1000`              | Storm score of 1,000 (reported as progress)   |
+   | Achievement | `storm.10000`             | Storm score of 10,000 (reported as progress)  |
+
+The IDs live in `GameCenter.Leaderboard` and `GameCenter.Achievement`; change them there if you
+prefer other names in App Store Connect. Test with a sandbox Game Center account on a device or
+simulator (*Settings → Game Center*).
+
 ## Project layout
 
 ```

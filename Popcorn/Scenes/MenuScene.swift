@@ -12,6 +12,7 @@ final class MenuScene: BaseScene {
         addChild(background)
         content.zPosition = 5
         addChild(content)
+        GameCenter.shared.onAuthenticationChange = { [weak self] in if self?.view != nil { self?.rebuildContent() } }
     }
 
     override func layoutDidChange() {
@@ -59,10 +60,12 @@ final class MenuScene: BaseScene {
         let buttonWidth: CGFloat = min(300, size.width - 60)
         var y = title.position.y - (wide ? 160 : 150)
         let spacing: CGFloat = 62
-        for (text, name, primary) in [("Play", "btn.play", true),
-                                      ("Storm mode", "btn.storm", false),
-                                      ("Players: \(players)", "btn.players", false),
-                                      ("Settings", "btn.settings", false)] {
+        var buttons = [("Play", "btn.play", true),
+                       ("Storm mode", "btn.storm", false),
+                       ("Players: \(players)", "btn.players", false),
+                       ("Settings", "btn.settings", false)]
+        if GameCenter.shared.isAuthenticated { buttons.insert(("Leaderboards", "btn.leaderboards", false), at: 3) }
+        for (text, name, primary) in buttons {
             let button = makeButton(text, name: name, width: buttonWidth, height: 52, primary: primary)
             button.position = CGPoint(x: centerX, y: y)
             content.addChild(button)
@@ -118,6 +121,8 @@ final class MenuScene: BaseScene {
             rebuildContent()
         case "btn.settings":
             showSettings()
+        case "btn.leaderboards":
+            GameCenter.shared.showLeaderboards(from: view?.window?.rootViewController)
         case "btn.sound":
             Progress.shared.soundEnabled.toggle()
             showSettings()

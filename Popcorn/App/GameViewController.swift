@@ -19,6 +19,7 @@ final class GameViewController: UIViewController {
         skView.showsNodeCount = false
         #endif
         Haptics.prepare()
+        GameCenter.shared.authenticate(presentingFrom: self)
         let menu = MenuScene(size: view.bounds.size)
         menu.scaleMode = .resizeFill
         skView.presentScene(menu)
