@@ -50,11 +50,43 @@ jobs:
       - name: Test
         run: |
           set -o pipefail
+          rm -rf TestResults.xcresult
           xcodebuild -project Popcorn.xcodeproj -scheme Popcorn \
             -destination "id=${{ steps.sim.outputs.udid }}" \
             -derivedDataPath build CODE_SIGNING_ALLOWED=NO \
+            -resultBundlePath TestResults.xcresult \
             test 2>&1 | tee test.log | grep -E "error:|Test Case|Executed|TEST|\*\*" || true
           grep -q "TEST SUCCEEDED" test.log
+
+      - name: Export screenshots
+        if: always()
+        run: |
+          # ScreenshotTests attaches a rendered frame of every scene in every screen shape.
+          mkdir -p screenshots
+          xcrun xcresulttool export attachments --path TestResults.xcresult --output-path screenshots || true
+          # xcresulttool names files by UUID and writes a manifest; rename them to the attachment names.
+          python3 - <<'EOF'
+          import json, os, shutil
+          d = "screenshots"
+          m = os.path.join(d, "manifest.json")
+          if not os.path.exists(m):
+              print("no manifest"); raise SystemExit
+          for test in json.load(open(m)):
+              for a in test.get("attachments", []):
+                  src = os.path.join(d, a["exportedFileName"])
+                  name = a.get("suggestedHumanReadableName") or a["exportedFileName"]
+                  if not name.endswith(".png"): name += ".png"
+                  if os.path.exists(src): shutil.move(src, os.path.join(d, name))
+          print(sorted(os.listdir(d)))
+          EOF
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: screenshots
+          if-no-files-found: ignore
 
       - name: Upload logs
         if: always()
