@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: Build and test (iOS Simulator)
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: |
+          ls /Applications | grep -i xcode || true
+          sudo xcode-select -s "$(ls -d /Applications/Xcode*.app | sort -V | tail -1)"
+          xcodebuild -version
+
+      - name: Pick a simulator
+        id: sim
+        run: |
+          xcrun simctl list devices available | sed -n '1,80p'
+          UDID=$(xcrun simctl list devices available -j | python3 -c '
+          import json,sys
+          d=json.load(sys.stdin)["devices"]
+          cands=[]
+          for rt,devs in d.items():
+              if "iOS" not in rt: continue
+              for dev in devs:
+                  if dev.get("isAvailable") and dev["name"].startswith("iPhone"):
+                      cands.append((rt, dev["name"], dev["udid"]))
+          cands.sort()
+          print(cands[-1][2] if cands else "")')
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          echo "Using simulator $UDID"
+
+      - name: Build
+        run: |
+          set -o pipefail
+          xcodebuild -project Popcorn.xcodeproj -scheme Popcorn \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO \
+            build 2>&1 | tee build.log | grep -E "error:|warning: unre|BUILD|Compiling|\*\*" || true
+          grep -q "BUILD SUCCEEDED" build.log
+
+      - name: Test
+        run: |
+          set -o pipefail
+          xcodebuild -project Popcorn.xcodeproj -scheme Popcorn \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO \
+            test 2>&1 | tee test.log | grep -E "error:|Test Case|Executed|TEST|\*\*" || true
+          grep -q "TEST SUCCEEDED" test.log
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcodebuild-logs
+          path: |
+            build.log
+            test.log
+          if-no-files-found: ignore
