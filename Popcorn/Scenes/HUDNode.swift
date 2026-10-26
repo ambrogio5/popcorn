@@ -83,7 +83,9 @@ final class HUDNode: SKNode {
         }
     }
 
-    func update(score: Int, combo: Int, time: Double, hearts heartCount: Int?, weapon: Weapon, weaponTime: Double, shield: Bool, frozen: Double) {
+    /// `frozen` is the remaining freeze power-up time; `knockedDown` is true while the player is
+    /// getting back up after a hit (that pause has its own wording so it does not read as a pickup).
+    func update(score: Int, combo: Int, time: Double, hearts heartCount: Int?, weapon: Weapon, weaponTime: Double, shield: Bool, frozen: Double, knockedDown: Bool) {
         scoreLabel.text = HUDNode.formatter.string(from: NSNumber(value: score)) ?? "\(score)"
         comboLabel.text = combo > 1 ? String(localized: "combo ×\(combo)") : ""
         if let heartCount = heartCount {
@@ -105,6 +107,7 @@ final class HUDNode: SKNode {
         case .rapid: status.append(String(localized: "Rapid \(weaponSeconds)s"))
         }
         if shield { status.append(String(localized: "Shield")) }
+        if knockedDown { status.append(String(localized: "Knocked down")) }
         if frozen > 0 {
             let frozenSeconds = Int(ceil(frozen))
             status.append(String(localized: "Frozen \(frozenSeconds)s"))

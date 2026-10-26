@@ -48,5 +48,7 @@ Wrong or questionable:
    each outer lane of the arena.
 5. **Level select on the upright shape floats low** (`levels-duo-open-upright.png`): a 4 × 2 grid
    centred in the space under the title leaves a big empty band above it.
-6. **"Frozen Ns" is shown both for the freeze power-up and for the knock-down pause**
-   (`level45-1p-iphone.png`), so a knocked-down player reads as having picked something up.
+6. **"Frozen Ns" was shown both for the freeze power-up and for the knock-down pause**
+   (`level45-1p-iphone.png`), so a knocked-down player read as having picked something up. Fixed
+   in this branch: the HUD says "Knocked down" while the player is getting back up, and "Frozen"
+   only for the power-up.

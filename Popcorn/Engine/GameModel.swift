@@ -45,6 +45,9 @@ final class GameModel {
     private(set) var deaths = 0
     private(set) var hearts = 3
     private(set) var freezeTimer = 0.0
+    /// Whether the current freeze came from the freeze power-up rather than a knock-down, so the
+    /// HUD can tell the two apart.
+    private(set) var freezeIsFromPickup = false
     /// Short pause after a fold/unfold so nobody dies while the arena reshapes.
     private(set) var transitionPause = 0.0
     private(set) var timeScale = 1.0
@@ -540,6 +543,7 @@ final class GameModel {
             players[i].shield = true
         case .freeze:
             freezeTimer = GameModel.freezeDuration
+            freezeIsFromPickup = true
             events.append(.freezeStarted)
         }
     }
@@ -583,15 +587,22 @@ final class GameModel {
         switch mode {
         case .level:
             // The room holds its breath while you get back up: no reset, no lost progress.
-            freezeTimer = max(freezeTimer, GameModel.deathFreeze)
+            holdBreath()
         case .storm:
             hearts -= 1
             if hearts <= 0 {
                 isOver = true
                 events.append(.gameOver(score: score))
             } else {
-                freezeTimer = max(freezeTimer, GameModel.deathFreeze)
+                holdBreath()
             }
+        }
+    }
+
+    private func holdBreath() {
+        if GameModel.deathFreeze > freezeTimer {
+            freezeTimer = GameModel.deathFreeze
+            freezeIsFromPickup = false
         }
     }
 
