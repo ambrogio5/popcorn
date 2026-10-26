@@ -22,7 +22,7 @@ struct GameLayout {
 
     static func controlsHeight(mode: LayoutMode, playerCount: Int) -> CGFloat {
         switch mode {
-        case .tall: return 150
+        case .tall, .upright: return 150
         case .wide: return playerCount > 1 ? 130 : 120
         }
     }
