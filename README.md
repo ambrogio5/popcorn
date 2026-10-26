@@ -118,6 +118,24 @@ The IDs live in `GameCenter.Leaderboard` and `GameCenter.Achievement`; change th
 prefer other names in App Store Connect. Test with a sandbox Game Center account on a device or
 simulator (*Settings → Game Center*).
 
+## Localization
+
+English is the development language; Italian, German and French ship alongside it. Every
+user-facing string goes through `String(localized: "…")` with the English text as the key, and
+the translations live in one String Catalog, `Popcorn/Localizable.xcstrings`. Level and city
+names in `Content/*.json` are proper nouns and stay as they are, as does the title "POPCORN".
+
+To add a language:
+
+1. Open `Popcorn/Localizable.xcstrings` in Xcode.
+2. Press **+** at the bottom of the editor and pick the language.
+3. Fill in the new column. Keys with `%lld` (a number) or `%@` (already formatted text) must keep
+   those placeholders in the same order.
+
+To add a string: write `String(localized: "New text")` in Swift and build once; Xcode adds the
+key to the catalog (`SWIFT_EMIT_LOC_STRINGS` is on) and marks it as needing translation. Test a
+language from the scheme's *Options → App Language*, or by changing the simulator's language.
+
 ## Project layout
 
 ```
