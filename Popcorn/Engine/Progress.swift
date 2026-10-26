@@ -67,6 +67,12 @@ final class Progress {
         set { defaults.set(newValue, forKey: "settings.players") }
     }
 
+    /// Set once the first level has been started, so the controls hint shows only once.
+    var hasSeenControlsHint: Bool {
+        get { defaults.bool(forKey: "ui.seenControlsHint") }
+        set { defaults.set(newValue, forKey: "ui.seenControlsHint") }
+    }
+
     var lastCity: Int {
         get { defaults.integer(forKey: "ui.lastCity") }
         set { defaults.set(newValue, forKey: "ui.lastCity") }
