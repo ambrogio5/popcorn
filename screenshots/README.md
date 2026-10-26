@@ -43,8 +43,9 @@ Wrong or questionable:
 3. **Menu bubbles drawn over button text** (`menu-duo-closed.png`, the small bubble on
    "Players: 1"). The decorative bubbles shared a zPosition with the buttons and the view ignores
    sibling order, so the draw order was arbitrary. Fixed in this branch.
-4. **Storm can start with its two bubbles overlapping** (`storm-iphone.png`); both spawn at a
-   random x near the ceiling with nothing keeping them apart.
+4. **Storm could start with its two bubbles overlapping** (`storm-iphone.png`); both spawned at a
+   random x near the ceiling with nothing keeping them apart. Fixed in this branch: one starter in
+   each outer lane of the arena.
 5. **Level select on the upright shape floats low** (`levels-duo-open-upright.png`): a 4 × 2 grid
    centred in the space under the title leaves a big empty band above it.
 6. **"Frozen Ns" is shown both for the freeze power-up and for the knock-down pause**

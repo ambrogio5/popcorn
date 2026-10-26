@@ -79,8 +79,9 @@ final class GameModel {
                         vx: Double(b.dir) * b.size.horizontalSpeed, vy: 0, grace: 1.0)
         }
         if case .storm = mode {
-            spawnStormBubble(size: .large, kind: .plain)
-            spawnStormBubble(size: .large, kind: .plain)
+            // One starter in each outer lane, so they never open the game stacked on each other.
+            spawnStormBubble(size: .large, kind: .plain, lane: 0.0...0.2)
+            spawnStormBubble(size: .large, kind: .plain, lane: 0.8...1.0)
         }
     }
 
@@ -627,10 +628,13 @@ final class GameModel {
         events.append(.stormSpawn(id: id))
     }
 
+    /// `lane` picks where along the usable width (0 = left, 1 = right) the bubble may appear. The
+    /// outer fifths are far enough apart that two large bubbles cannot touch, even in the tall arena.
     @discardableResult
-    private func spawnStormBubble(size: BubbleSize, kind: BubbleKind) -> Int {
+    private func spawnStormBubble(size: BubbleSize, kind: BubbleKind, lane: ClosedRange<Double> = 0.0...1.0) -> Int {
         let r = size.radius
-        let x = r + 0.5 + randomUnit() * (spec.width - 2 * r - 1.0)
+        let span = spec.width - 2 * r - 1.0
+        let x = r + 0.5 + (lane.lowerBound + randomUnit() * (lane.upperBound - lane.lowerBound)) * span
         let y = kind == .flipped ? spec.height * 0.55 : spec.height - r - 0.1
         let dir: Double = randomUnit() < 0.5 ? -1 : 1
         return spawnBubble(at: Vec2(x: x, y: y), size: size, kind: kind, vx: dir * size.horizontalSpeed, vy: 0, grace: 1.0)
