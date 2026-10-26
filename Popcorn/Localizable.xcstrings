@@ -89,6 +89,28 @@
         }
       }
     },
+    "Drag the left stick to run, up or down for ladders": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zieh den linken Stick zum Laufen, hoch oder runter für Leitern"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glisse le stick gauche pour courir, haut ou bas pour les échelles"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trascina lo stick a sinistra per correre, su o giù per le scale"
+          }
+        }
+      }
+    },
     "FIRE": {
       "localizations": {
         "de": {
@@ -727,6 +749,28 @@
         }
       }
     },
+    "Split the bubbles until they pop. Don't get touched.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teile die Blasen, bis sie platzen. Lass dich nicht berühren."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Divise les bulles jusqu'à ce qu'elles éclatent. Ne te fais pas toucher."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dividi le bolle finché non scoppiano. Non farti toccare."
+          }
+        }
+      }
+    },
     "Sticky %llds": {
       "localizations": {
         "de": {
@@ -855,6 +899,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Durata %@"
+          }
+        }
+      }
+    },
+    "Tap FIRE (or anywhere on the arena) to shoot": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tippe FEUER (oder irgendwo auf die Arena) zum Schießen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Touche FEU (ou n'importe où sur l'arène) pour tirer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tocca FUOCO (o un punto qualsiasi dell'arena) per sparare"
           }
         }
       }

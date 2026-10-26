@@ -443,9 +443,9 @@ final class GameScene: BaseScene {
 
     /// A one-time explanation of the controls, shown over the arena on the very first game.
     private func showControlsHint() {
-        let lines = ["Drag the left stick to run, up or down for ladders",
-                     "Tap FIRE (or anywhere on the arena) to shoot",
-                     "Split the bubbles until they pop. Don't get touched."]
+        let lines = [String(localized: "Drag the left stick to run, up or down for ladders"),
+                     String(localized: "Tap FIRE (or anywhere on the arena) to shoot"),
+                     String(localized: "Split the bubbles until they pop. Don't get touched.")]
         let panel = SKShapeNode(rectOf: CGSize(width: min(340, size.width - 40), height: 112), cornerRadius: 18)
         panel.fillColor = Palette.panel
         panel.strokeColor = UIColor(white: 1, alpha: 0.18)
