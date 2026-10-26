@@ -476,6 +476,7 @@ final class GameScene: BaseScene {
         guard case .level(let level) = gameMode, !finished else { return }
         finished = true
         Progress.shared.record(result, for: level.id)
+        GameCenter.shared.levelFinished(in: cityIndex)
         SoundBank.shared.play("clear", on: self)
         Haptics.success()
         controls.reset()
@@ -500,6 +501,7 @@ final class GameScene: BaseScene {
         guard !finished else { return }
         finished = true
         let record = Progress.shared.recordStorm(score: score)
+        GameCenter.shared.stormFinished(score: score)
         SoundBank.shared.play("over", on: self)
         Haptics.failure()
         controls.reset()
