@@ -23,6 +23,7 @@ final class GameScene: BaseScene {
     private let controllerInput = ControllerInput()
     private var overlay: SKNode?
     private var toast: SKNode?
+    private var controlsHint: SKNode?
 
     private var bubbleNodes: [Int: SKSpriteNode] = [:]
     private var playerNodes: [SKSpriteNode] = []
@@ -84,6 +85,10 @@ final class GameScene: BaseScene {
         case .storm: hud.configure(title: "Storm")
         }
         addChild(hud)
+        if !Progress.shared.hasSeenControlsHint {
+            Progress.shared.hasSeenControlsHint = true
+            showControlsHint()
+        }
         controls.node.zPosition = 10
         addChild(controls.node)
 
@@ -143,6 +148,7 @@ final class GameScene: BaseScene {
         controls.reset()
         overlay?.position = CGPoint(x: size.width / 2, y: size.height / 2)
         toast?.position = CGPoint(x: size.width / 2, y: layout.hudRect.minY - 24)
+        controlsHint?.position = CGPoint(x: size.width / 2, y: size.height * 0.55)
         sync()
     }
 
@@ -435,6 +441,35 @@ final class GameScene: BaseScene {
         node.run(.sequence([.fadeOut(withDuration: 0.3), .removeFromParent()]))
     }
 
+    /// A one-time explanation of the controls, shown over the arena on the very first game.
+    private func showControlsHint() {
+        let lines = ["Drag the left stick to run, up or down for ladders",
+                     "Tap FIRE (or anywhere on the arena) to shoot",
+                     "Split the bubbles until they pop. Don't get touched."]
+        let panel = SKShapeNode(rectOf: CGSize(width: min(340, size.width - 40), height: 112), cornerRadius: 18)
+        panel.fillColor = Palette.panel
+        panel.strokeColor = UIColor(white: 1, alpha: 0.18)
+        panel.zPosition = 30
+        panel.name = "btn.hint"
+        for (i, line) in lines.enumerated() {
+            let label = makeLabel(line, size: 13, color: i == 2 ? Palette.text : Palette.dimText)
+            label.position = CGPoint(x: 0, y: 32 - CGFloat(i) * 28)
+            label.name = "btn.hint"
+            panel.addChild(label)
+        }
+        panel.position = CGPoint(x: size.width / 2, y: size.height * 0.55)
+        panel.alpha = 0
+        addChild(panel)
+        panel.run(.sequence([.fadeIn(withDuration: 0.3), .wait(forDuration: 6), .fadeOut(withDuration: 0.4), .removeFromParent()]), withKey: "hint")
+        controlsHint = panel
+    }
+
+    private func dismissControlsHint() {
+        controlsHint?.removeAllActions()
+        controlsHint?.run(.sequence([.fadeOut(withDuration: 0.2), .removeFromParent()]))
+        controlsHint = nil
+    }
+
     private func showToast(_ text: String) {
         toast?.removeFromParent()
         let label = makeLabel(text, size: 15, font: Fonts.bold)
@@ -525,6 +560,8 @@ final class GameScene: BaseScene {
         Haptics.tap()
         SoundBank.shared.play("click", on: self)
         switch name {
+        case "btn.hint":
+            dismissControlsHint()
         case "btn.pause":
             if overlay == nil { showPause() }
         case "btn.resume":

@@ -73,8 +73,9 @@ final class LevelSelectScene: BaseScene {
         let gridBottom = insets.bottom + 30
         let availableW = size.width - insets.left - insets.right - 40
         let availableH = max(100, gridTop - gridBottom)
-        let tileW = min(170, (availableW - CGFloat(columns - 1) * 14) / CGFloat(columns))
-        let tileH = min(96, (availableH - CGFloat(max(rows - 1, 0)) * 14) / CGFloat(max(rows, 1)))
+        // Bigger tiles on big screens, so the grid does not float in an empty sky.
+        let tileW = min(wide ? 230 : 170, (availableW - CGFloat(columns - 1) * 14) / CGFloat(columns))
+        let tileH = min(wide ? 150 : 110, (availableH - CGFloat(max(rows - 1, 0)) * 14) / CGFloat(max(rows, 1)))
         let gridW = CGFloat(columns) * tileW + CGFloat(columns - 1) * 14
         let gridH = CGFloat(rows) * tileH + CGFloat(max(rows - 1, 0)) * 14
         let originX = centerX - gridW / 2 + tileW / 2
