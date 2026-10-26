@@ -1,0 +1,64 @@
+import CoreGraphics
+import UIKit
+
+/// Where everything goes on screen for the current size and shape. Recomputed whenever the view
+/// changes size, which is how a fold or unfold reaches the game.
+struct GameLayout {
+    static let hudHeight: CGFloat = 48
+    static let margin: CGFloat = 8
+
+    var sceneSize: CGSize = .zero
+    var insets: UIEdgeInsets = .zero
+    var mode: LayoutMode = .tall
+    /// Points per arena unit.
+    var unit: CGFloat = 1
+    /// Bottom-left corner of the arena in scene coordinates.
+    var arenaOrigin: CGPoint = .zero
+    var arenaSize: CGSize = .zero
+    var controlsRect: CGRect = .zero
+    var hudRect: CGRect = .zero
+
+    var arenaRect: CGRect { CGRect(origin: arenaOrigin, size: arenaSize) }
+
+    static func controlsHeight(mode: LayoutMode, playerCount: Int) -> CGFloat {
+        switch mode {
+        case .tall: return 150
+        case .wide: return playerCount > 1 ? 130 : 120
+        }
+    }
+
+    static func compute(size: CGSize, insets: UIEdgeInsets, spec: ArenaSpec, playerCount: Int) -> GameLayout {
+        var layout = GameLayout()
+        layout.sceneSize = size
+        layout.insets = insets
+        layout.mode = spec.mode
+
+        let controlsH = controlsHeight(mode: spec.mode, playerCount: playerCount)
+        let availW = max(1, size.width - insets.left - insets.right - 2 * margin)
+        let availH = max(1, size.height - insets.top - insets.bottom - hudHeight - controlsH - 2 * margin)
+        let unit = min(availW / CGFloat(spec.width), availH / CGFloat(spec.height))
+        layout.unit = unit
+        layout.arenaSize = CGSize(width: CGFloat(spec.width) * unit, height: CGFloat(spec.height) * unit)
+
+        let arenaBottom = insets.bottom + controlsH + margin + (availH - layout.arenaSize.height) / 2
+        layout.arenaOrigin = CGPoint(x: insets.left + margin + (availW - layout.arenaSize.width) / 2, y: arenaBottom)
+        layout.controlsRect = CGRect(x: insets.left, y: insets.bottom,
+                                     width: size.width - insets.left - insets.right, height: controlsH)
+        layout.hudRect = CGRect(x: insets.left + margin, y: size.height - insets.top - hudHeight,
+                                width: size.width - insets.left - insets.right - 2 * margin, height: hudHeight)
+        return layout
+    }
+
+    func point(_ v: Vec2) -> CGPoint {
+        CGPoint(x: CGFloat(v.x) * unit, y: CGFloat(v.y) * unit)
+    }
+
+    func scenePoint(_ v: Vec2) -> CGPoint {
+        CGPoint(x: arenaOrigin.x + CGFloat(v.x) * unit, y: arenaOrigin.y + CGFloat(v.y) * unit)
+    }
+
+    func rect(_ box: Box) -> CGRect {
+        CGRect(x: CGFloat(box.minX) * unit, y: CGFloat(box.minY) * unit,
+               width: CGFloat(box.width) * unit, height: CGFloat(box.height) * unit)
+    }
+}
