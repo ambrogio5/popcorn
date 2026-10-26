@@ -186,7 +186,7 @@ enum LevelValidator {
 
         for (i, b) in level.bubbles.enumerated() {
             if b.dir != -1 && b.dir != 1 { problems.append("bubble \(i) has an invalid direction") }
-            for mode in [LayoutMode.tall, .wide] {
+            for mode in LayoutMode.allCases {
                 let spec = ArenaSpec(mode: mode)
                 let c = spec.point(nx: b.x, ny: b.y)
                 let r = b.size.radius

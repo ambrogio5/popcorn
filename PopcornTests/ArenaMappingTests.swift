@@ -7,8 +7,8 @@ final class ArenaMappingTests: XCTestCase {
         XCTAssertEqual(LayoutMode.forSize(width: 430, height: 932), .tall)   // iPhone Pro Max
         XCTAssertEqual(LayoutMode.forSize(width: 466, height: 678), .tall)   // Duo closed, outer display (iOS 27.1 SDK)
         XCTAssertEqual(LayoutMode.forSize(width: 951, height: 669), .wide)   // Duo open, inner display (landscape-native)
-        XCTAssertEqual(LayoutMode.forSize(width: 669, height: 951), .wide)   // Duo open, turned upright
-        XCTAssertEqual(LayoutMode.forSize(width: 820, height: 1180), .wide)  // iPad
+        XCTAssertEqual(LayoutMode.forSize(width: 669, height: 951), .upright) // Duo open, turned upright
+        XCTAssertEqual(LayoutMode.forSize(width: 820, height: 1180), .upright) // iPad portrait
         XCTAssertEqual(LayoutMode.forSize(width: 852, height: 393), .wide)   // any landscape screen
         XCTAssertTrue(LayoutMode.allowsRotation(screenWidth: 951, screenHeight: 669))
         XCTAssertFalse(LayoutMode.allowsRotation(screenWidth: 466, screenHeight: 678))
@@ -22,6 +22,9 @@ final class ArenaMappingTests: XCTestCase {
         let wide = ArenaSpec(mode: .wide)
         XCTAssertEqual(wide.width, 16)
         XCTAssertEqual(wide.height, 12)
+        let upright = ArenaSpec(mode: .upright)
+        XCTAssertEqual(upright.width, 12)
+        XCTAssertEqual(upright.height, 16)
     }
 
     func testNormalizedRoundTrip() {

@@ -1,11 +1,16 @@
 import Foundation
 
-/// Which shape of screen we are drawing for. Decided purely from the view's aspect ratio, so a
-/// folded Duo and a regular iPhone both get `.tall`, and an open Duo (or an iPad) gets `.wide`.
-/// Nothing here depends on a fold API; if Apple ships one it can feed in as a hint later.
-enum LayoutMode: String, Codable {
+/// Which shape of screen we are drawing for. Decided from the view's size alone, so a folded Duo
+/// and a regular iPhone both get `.tall`, an open Duo held sideways (or an iPad) gets `.wide`, and
+/// an open Duo held upright gets `.upright`. Nothing here depends on a fold API; if Apple ships one
+/// it can feed in as a hint later.
+enum LayoutMode: String, Codable, CaseIterable {
+    /// Phones in portrait: 9 × 16 units.
     case tall
+    /// Landscape screens: 16 × 12 units, room for two players side by side.
     case wide
+    /// Big portrait screens (open Duo upright, iPad portrait): 12 × 16 units.
+    case upright
 
     /// Anything this squat (width / height) is landscape and therefore wide.
     static let landscapeAspect = 0.95
@@ -19,14 +24,14 @@ enum LayoutMode: String, Codable {
         guard width > 0, height > 0 else { return .tall }
         let aspect = width / height
         if aspect > landscapeAspect { return .wide }
-        if aspect > portraitWideAspect && min(width, height) >= wideMinimumPoints { return .wide }
+        if aspect > portraitWideAspect && min(width, height) >= wideMinimumPoints { return .upright }
         return .tall
     }
 
     /// Whether a screen of this size should be allowed to rotate. Portrait-only screens keep the
-    /// tall arena; anything that is wide in portrait is wide in every orientation.
+    /// tall arena; a screen that is big enough for the upright arena may turn sideways into wide.
     static func allowsRotation(screenWidth: Double, screenHeight: Double) -> Bool {
-        forSize(width: min(screenWidth, screenHeight), height: max(screenWidth, screenHeight)) == .wide
+        forSize(width: min(screenWidth, screenHeight), height: max(screenWidth, screenHeight)) != .tall
     }
 }
 
@@ -49,6 +54,9 @@ struct ArenaSpec: Equatable {
         case .wide:
             width = 16
             height = 12
+        case .upright:
+            width = 12
+            height = 16
         }
     }
 

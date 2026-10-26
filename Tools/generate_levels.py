@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "Popcorn" / "Content"
 
-ARENAS = {"tall": (9.0, 16.0), "wide": (16.0, 12.0)}
+ARENAS = {"tall": (9.0, 16.0), "wide": (16.0, 12.0), "upright": (12.0, 16.0)}
 RADIUS = {"large": 1.4, "medium": 0.95, "small": 0.6, "tiny": 0.35}
 PLATFORM_THICKNESS = 0.4
 MIN_PLATFORM_WIDTH = 0.15
@@ -193,7 +193,7 @@ def place_bubbles(rng, level, count, plan):
             size = weighted(rng, plan["sizes"])
             kind = weighted(rng, plan["kinds"])
             r = RADIUS[size]
-            # Keep inside both arenas: x margin from the narrow (tall) arena, y margin from the low (wide) one.
+            # Keep inside every arena: x margin from the narrowest (tall), y margin from the lowest (wide).
             x = rng.uniform(r / 9.0 + 0.02, 1 - r / 9.0 - 0.02)
             y = rng.uniform(0.3, 1 - r / 12.0 - 0.02)
             bubbles.append({"x": round(x, 3), "y": round(y, 3), "size": size, "kind": kind, "dir": rng.choice([-1, 1])})

@@ -107,7 +107,11 @@ final class GameScene: BaseScene {
         let newMode = LayoutMode.forSize(width: Double(size.width), height: Double(size.height))
         if newMode != model.spec.mode {
             model.relayout(to: newMode)
-            showToast(newMode == .wide ? "Unfolded — wide arena" : "Folded — tall arena")
+            switch newMode {
+            case .wide: showToast("Unfolded — wide arena")
+            case .upright: showToast("Unfolded — upright arena")
+            case .tall: showToast("Folded — tall arena")
+            }
         }
         layout = GameLayout.compute(size: size, insets: safeInsets, spec: model.spec, playerCount: playerCount)
 
