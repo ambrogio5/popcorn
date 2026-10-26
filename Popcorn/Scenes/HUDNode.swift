@@ -85,7 +85,7 @@ final class HUDNode: SKNode {
 
     func update(score: Int, combo: Int, time: Double, hearts heartCount: Int?, weapon: Weapon, weaponTime: Double, shield: Bool, frozen: Double) {
         scoreLabel.text = HUDNode.formatter.string(from: NSNumber(value: score)) ?? "\(score)"
-        comboLabel.text = combo > 1 ? "combo ×\(combo)" : ""
+        comboLabel.text = combo > 1 ? String(localized: "combo ×\(combo)") : ""
         if let heartCount = heartCount {
             subtitleLabel.text = ""
             for (i, heart) in hearts.enumerated() {
@@ -97,14 +97,18 @@ final class HUDNode: SKNode {
             hearts.forEach { $0.isHidden = true }
         }
         var status: [String] = []
+        let weaponSeconds = Int(ceil(weaponTime))
         switch weapon {
         case .normal: break
-        case .double: status.append("Double \(Int(ceil(weaponTime)))s")
-        case .sticky: status.append("Sticky \(Int(ceil(weaponTime)))s")
-        case .rapid: status.append("Rapid \(Int(ceil(weaponTime)))s")
+        case .double: status.append(String(localized: "Double \(weaponSeconds)s"))
+        case .sticky: status.append(String(localized: "Sticky \(weaponSeconds)s"))
+        case .rapid: status.append(String(localized: "Rapid \(weaponSeconds)s"))
         }
-        if shield { status.append("Shield") }
-        if frozen > 0 { status.append("Frozen \(Int(ceil(frozen)))s") }
+        if shield { status.append(String(localized: "Shield")) }
+        if frozen > 0 {
+            let frozenSeconds = Int(ceil(frozen))
+            status.append(String(localized: "Frozen \(frozenSeconds)s"))
+        }
         statusLabel.text = status.joined(separator: " · ")
     }
 

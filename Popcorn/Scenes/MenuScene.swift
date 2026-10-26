@@ -52,7 +52,7 @@ final class MenuScene: BaseScene {
         title.position = CGPoint(x: centerX, y: usableTop - (wide ? 110 : 150))
         content.addChild(title)
 
-        let subtitle = makeLabel("pop everything · buy nothing", size: wide ? 22 : 18, color: Palette.dimText)
+        let subtitle = makeLabel(String(localized: "pop everything · buy nothing"), size: wide ? 22 : 18, color: Palette.dimText)
         subtitle.position = CGPoint(x: centerX, y: title.position.y - (wide ? 58 : 48))
         content.addChild(subtitle)
 
@@ -60,11 +60,11 @@ final class MenuScene: BaseScene {
         let buttonWidth: CGFloat = min(300, size.width - 60)
         var y = title.position.y - (wide ? 160 : 150)
         let spacing: CGFloat = 62
-        var buttons = [("Play", "btn.play", true),
-                       ("Storm mode", "btn.storm", false),
-                       ("Players: \(players)", "btn.players", false),
-                       ("Settings", "btn.settings", false)]
-        if GameCenter.shared.isAuthenticated { buttons.insert(("Leaderboards", "btn.leaderboards", false), at: 3) }
+        var buttons = [(String(localized: "Play"), "btn.play", true),
+                       (String(localized: "Storm mode"), "btn.storm", false),
+                       (String(localized: "Players: \(players)"), "btn.players", false),
+                       (String(localized: "Settings"), "btn.settings", false)]
+        if GameCenter.shared.isAuthenticated { buttons.insert((String(localized: "Leaderboards"), "btn.leaderboards", false), at: 3) }
         for (text, name, primary) in buttons {
             let button = makeButton(text, name: name, width: buttonWidth, height: 52, primary: primary)
             button.position = CGPoint(x: centerX, y: y)
@@ -73,15 +73,17 @@ final class MenuScene: BaseScene {
         }
 
         let stars = Progress.shared.totalStars(levels: GameContent.shared.levels)
-        let starsLabel = makeLabel("★ \(stars) / \(GameContent.shared.levels.count * 3)   ·   Storm best \(formatScore(Progress.shared.stormBest))", size: 15, color: Palette.dimText)
+        let maxStars = GameContent.shared.levels.count * 3
+        let stormBest = formatScore(Progress.shared.stormBest)
+        let starsLabel = makeLabel(String(localized: "★ \(stars) / \(maxStars)   ·   Storm best \(stormBest)"), size: 15, color: Palette.dimText)
         starsLabel.position = CGPoint(x: centerX, y: y + 10)
         content.addChild(starsLabel)
 
         var hint = ""
         if players == 2 && !wide {
-            hint = "Two players: open your phone for the wide arena"
+            hint = String(localized: "Two players: open your phone for the wide arena")
         } else if players == 2 {
-            hint = "Player 1 takes the left corner, player 2 the right"
+            hint = String(localized: "Player 1 takes the left corner, player 2 the right")
         }
         if !hint.isEmpty {
             let hintLabel = makeLabel(hint, size: 14, color: Palette.dimText)
@@ -95,11 +97,15 @@ final class MenuScene: BaseScene {
     private func showSettings() {
         settingsOverlay?.removeFromParent()
         let p = Progress.shared
-        let panel = makePanel(title: "Settings", lines: ["Nothing to buy. Nothing to unlock. Just play."], buttons: [
-            ("Sound: \(p.soundEnabled ? "On" : "Off")", "btn.sound", false),
-            ("Haptics: \(p.hapticsEnabled ? "On" : "Off")", "btn.haptics", false),
-            ("Reset progress", "btn.reset", false),
-            ("Close", "btn.close", true),
+        let on = String(localized: "On")
+        let off = String(localized: "Off")
+        let sound = p.soundEnabled ? on : off
+        let haptics = p.hapticsEnabled ? on : off
+        let panel = makePanel(title: String(localized: "Settings"), lines: [String(localized: "Nothing to buy. Nothing to unlock. Just play.")], buttons: [
+            (String(localized: "Sound: \(sound)"), "btn.sound", false),
+            (String(localized: "Haptics: \(haptics)"), "btn.haptics", false),
+            (String(localized: "Reset progress"), "btn.reset", false),
+            (String(localized: "Close"), "btn.close", true),
         ])
         panel.position = CGPoint(x: size.width / 2, y: size.height / 2)
         addChild(panel)
@@ -139,7 +145,7 @@ final class MenuScene: BaseScene {
             } else {
                 resetArmed = true
                 if let label = settingsOverlay?.childNode(withName: "btn.reset")?.children.compactMap({ $0 as? SKLabelNode }).first {
-                    label.text = "Tap again to confirm"
+                    label.text = String(localized: "Tap again to confirm")
                 }
             }
         case "btn.close", "btn.dim":

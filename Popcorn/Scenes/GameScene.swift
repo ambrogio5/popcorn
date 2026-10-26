@@ -81,7 +81,7 @@ final class GameScene: BaseScene {
 
         switch gameMode {
         case .level(let level): hud.configure(title: "\(level.id) · \(level.name)")
-        case .storm: hud.configure(title: "Storm")
+        case .storm: hud.configure(title: String(localized: "Storm"))
         }
         addChild(hud)
         controls.node.zPosition = 10
@@ -108,9 +108,9 @@ final class GameScene: BaseScene {
         if newMode != model.spec.mode {
             model.relayout(to: newMode)
             switch newMode {
-            case .wide: showToast("Unfolded — wide arena")
-            case .upright: showToast("Unfolded — upright arena")
-            case .tall: showToast("Folded — tall arena")
+            case .wide: showToast(String(localized: "Unfolded — wide arena"))
+            case .upright: showToast(String(localized: "Unfolded — upright arena"))
+            case .tall: showToast(String(localized: "Folded — tall arena"))
             }
         }
         layout = GameLayout.compute(size: size, insets: safeInsets, spec: model.spec, playerCount: playerCount)
@@ -459,10 +459,10 @@ final class GameScene: BaseScene {
     private func showPause() {
         isGamePaused = true
         controls.reset()
-        let panel = makePanel(title: "Paused", lines: [], buttons: [
-            ("Resume", "btn.resume", true),
-            ("Restart", "btn.restart", false),
-            ("Menu", "btn.menu", false),
+        let panel = makePanel(title: String(localized: "Paused"), lines: [], buttons: [
+            (String(localized: "Resume"), "btn.resume", true),
+            (String(localized: "Restart"), "btn.restart", false),
+            (String(localized: "Menu"), "btn.menu", false),
         ])
         panel.position = CGPoint(x: size.width / 2, y: size.height / 2)
         addChild(panel)
@@ -485,15 +485,19 @@ final class GameScene: BaseScene {
         Haptics.success()
         controls.reset()
 
-        var lines = ["Score \(formatScore(result.score))",
-                     "Time \(formatTime(result.time))  ·  par \(formatTime(result.par))"]
-        if result.deaths > 0 { lines.append("Knocked down \(result.deaths)×") }
-        lines.append("Best \(formatScore(Progress.shared.bestScore(for: level.id)))")
+        let score = formatScore(result.score)
+        let time = formatTime(result.time)
+        let par = formatTime(result.par)
+        let best = formatScore(Progress.shared.bestScore(for: level.id))
+        var lines = [String(localized: "Score \(score)"),
+                     String(localized: "Time \(time)  ·  par \(par)")]
+        if result.deaths > 0 { lines.append(String(localized: "Knocked down \(result.deaths)×")) }
+        lines.append(String(localized: "Best \(best)"))
         var buttons: [(title: String, name: String, primary: Bool)] = []
-        if GameContent.shared.level(after: level) != nil { buttons.append(("Next level", "btn.next", true)) }
-        buttons.append(("Play again", "btn.retry", buttons.isEmpty))
-        buttons.append(("Menu", "btn.menu", false))
-        let panel = makePanel(title: "Level clear!", lines: lines, stars: result.stars, buttons: buttons)
+        if GameContent.shared.level(after: level) != nil { buttons.append((String(localized: "Next level"), "btn.next", true)) }
+        buttons.append((String(localized: "Play again"), "btn.retry", buttons.isEmpty))
+        buttons.append((String(localized: "Menu"), "btn.menu", false))
+        let panel = makePanel(title: String(localized: "Level clear!"), lines: lines, stars: result.stars, buttons: buttons)
         panel.position = CGPoint(x: size.width / 2, y: size.height / 2)
         panel.alpha = 0
         panel.run(.sequence([.wait(forDuration: 0.3), .fadeIn(withDuration: 0.25)]))
@@ -509,12 +513,15 @@ final class GameScene: BaseScene {
         SoundBank.shared.play("over", on: self)
         Haptics.failure()
         controls.reset()
-        let lines = ["Score \(formatScore(score))",
-                     record ? "New record!" : "Best \(formatScore(Progress.shared.stormBest))",
-                     "Survived \(formatTime(model.elapsed))"]
-        let panel = makePanel(title: "Storm over", lines: lines, buttons: [
-            ("Play again", "btn.retry", true),
-            ("Menu", "btn.menu", false),
+        let scoreText = formatScore(score)
+        let best = formatScore(Progress.shared.stormBest)
+        let survived = formatTime(model.elapsed)
+        let lines = [String(localized: "Score \(scoreText)"),
+                     record ? String(localized: "New record!") : String(localized: "Best \(best)"),
+                     String(localized: "Survived \(survived)")]
+        let panel = makePanel(title: String(localized: "Storm over"), lines: lines, buttons: [
+            (String(localized: "Play again"), "btn.retry", true),
+            (String(localized: "Menu"), "btn.menu", false),
         ])
         panel.position = CGPoint(x: size.width / 2, y: size.height / 2)
         panel.alpha = 0

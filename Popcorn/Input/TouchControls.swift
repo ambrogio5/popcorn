@@ -81,7 +81,7 @@ final class TouchControls {
             fireButtons.append(fire)
 
             let label = SKLabelNode(fontNamed: Fonts.bold)
-            label.text = "FIRE"
+            label.text = String(localized: "FIRE")
             label.fontSize = baseRadius * 0.42
             label.fontColor = Palette.text
             label.verticalAlignmentMode = .center
@@ -89,7 +89,7 @@ final class TouchControls {
 
             if playerCount > 1 {
                 let tag = SKLabelNode(fontNamed: Fonts.medium)
-                tag.text = "P\(p + 1)"
+                tag.text = String(localized: "P\(p + 1)")
                 tag.fontSize = 12
                 tag.fontColor = tint
                 tag.position = CGPoint(x: (stickZones[p].midX + fireZones[p].midX) / 2, y: strip.maxY - 16)

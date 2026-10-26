@@ -36,11 +36,11 @@ enum PowerUpKind: String, CaseIterable, Codable {
 
     var title: String {
         switch self {
-        case .doubleShot: return "Double shot"
-        case .sticky: return "Sticky line"
-        case .rapid: return "Rapid fire"
-        case .shield: return "Shield"
-        case .freeze: return "Freeze"
+        case .doubleShot: return String(localized: "Double shot")
+        case .sticky: return String(localized: "Sticky line")
+        case .rapid: return String(localized: "Rapid fire")
+        case .shield: return String(localized: "Shield")
+        case .freeze: return String(localized: "Freeze")
         }
     }
 }
