@@ -104,6 +104,22 @@ final class BubbleSplitTests: XCTestCase {
         XCTAssertEqual(maxY, expectedApex, accuracy: 0.3)
     }
 
+    func testStormStartsWithItsTwoBubblesApart() {
+        for seed in 0..<40 {
+            for layout in LayoutMode.allCases {
+                let model = GameModel(mode: .storm, layout: layout, playerCount: 1, seed: UInt64(seed))
+                XCTAssertEqual(model.bubbles.count, 2)
+                let a = model.bubbles[0]
+                let b = model.bubbles[1]
+                XCTAssertGreaterThanOrEqual(a.pos.distance(to: b.pos), a.radius + b.radius, "seed \(seed), \(layout)")
+                for bubble in model.bubbles {
+                    XCTAssertGreaterThanOrEqual(bubble.pos.x - bubble.radius, 0)
+                    XCTAssertLessThanOrEqual(bubble.pos.x + bubble.radius, model.spec.width)
+                }
+            }
+        }
+    }
+
     func testPlayerHitFreezesInsteadOfResetting() {
         // Bubble resting right where the player stands, with no grace period left.
         let bubble = LevelBubble(x: 0.5, y: 1.0 / 16.0 * 1.5, size: .tiny, kind: .plain, dir: 0)

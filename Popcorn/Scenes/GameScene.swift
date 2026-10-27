@@ -206,7 +206,8 @@ final class GameScene: BaseScene {
         if case .storm = gameMode { hearts = model.hearts }
         let p0 = model.players[0]
         hud.update(score: model.score, combo: model.combo, time: model.elapsed, hearts: hearts,
-                   weapon: p0.weapon, weaponTime: p0.weaponTimer, shield: p0.shield, frozen: model.freezeTimer)
+                   weapon: p0.weapon, weaponTime: p0.weaponTimer, shield: p0.shield,
+                   frozen: model.freezeIsFromPickup ? model.freezeTimer : 0, knockedDown: !p0.alive)
 
         if shake > 0.2 {
             worldNode.position = CGPoint(x: layout.arenaOrigin.x + CGFloat.random(in: -shake...shake),

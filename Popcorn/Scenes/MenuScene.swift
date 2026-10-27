@@ -41,6 +41,9 @@ final class MenuScene: BaseScene {
             let y = usableBottom + (usableTop - usableBottom) * (0.25 + 0.5 * CGFloat((i * 7) % 5) / 4)
             sprite.position = CGPoint(x: x, y: y)
             sprite.alpha = 0.5
+            // The view ignores sibling order, so without an explicit zPosition a bubble can be
+            // drawn over a button's label. Keep them behind everything else in `content`.
+            sprite.zPosition = -1
             let rise = SKAction.moveBy(x: 0, y: 18 + CGFloat(i * 5), duration: 1.4 + 0.2 * Double(i))
             rise.timingMode = .easeInEaseOut
             sprite.run(.repeatForever(.sequence([rise, rise.reversed()])))

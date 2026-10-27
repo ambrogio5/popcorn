@@ -45,6 +45,9 @@ final class GameModel {
     private(set) var deaths = 0
     private(set) var hearts = 3
     private(set) var freezeTimer = 0.0
+    /// Whether the current freeze came from the freeze power-up rather than a knock-down, so the
+    /// HUD can tell the two apart.
+    private(set) var freezeIsFromPickup = false
     /// Short pause after a fold/unfold so nobody dies while the arena reshapes.
     private(set) var transitionPause = 0.0
     private(set) var timeScale = 1.0
@@ -79,8 +82,9 @@ final class GameModel {
                         vx: Double(b.dir) * b.size.horizontalSpeed, vy: 0, grace: 1.0)
         }
         if case .storm = mode {
-            spawnStormBubble(size: .large, kind: .plain)
-            spawnStormBubble(size: .large, kind: .plain)
+            // One starter in each outer lane, so they never open the game stacked on each other.
+            spawnStormBubble(size: .large, kind: .plain, lane: 0.0...0.2)
+            spawnStormBubble(size: .large, kind: .plain, lane: 0.8...1.0)
         }
     }
 
@@ -539,6 +543,7 @@ final class GameModel {
             players[i].shield = true
         case .freeze:
             freezeTimer = GameModel.freezeDuration
+            freezeIsFromPickup = true
             events.append(.freezeStarted)
         }
     }
@@ -582,15 +587,22 @@ final class GameModel {
         switch mode {
         case .level:
             // The room holds its breath while you get back up: no reset, no lost progress.
-            freezeTimer = max(freezeTimer, GameModel.deathFreeze)
+            holdBreath()
         case .storm:
             hearts -= 1
             if hearts <= 0 {
                 isOver = true
                 events.append(.gameOver(score: score))
             } else {
-                freezeTimer = max(freezeTimer, GameModel.deathFreeze)
+                holdBreath()
             }
+        }
+    }
+
+    private func holdBreath() {
+        if GameModel.deathFreeze > freezeTimer {
+            freezeTimer = GameModel.deathFreeze
+            freezeIsFromPickup = false
         }
     }
 
@@ -627,10 +639,13 @@ final class GameModel {
         events.append(.stormSpawn(id: id))
     }
 
+    /// `lane` picks where along the usable width (0 = left, 1 = right) the bubble may appear. The
+    /// outer fifths are far enough apart that two large bubbles cannot touch, even in the tall arena.
     @discardableResult
-    private func spawnStormBubble(size: BubbleSize, kind: BubbleKind) -> Int {
+    private func spawnStormBubble(size: BubbleSize, kind: BubbleKind, lane: ClosedRange<Double> = 0.0...1.0) -> Int {
         let r = size.radius
-        let x = r + 0.5 + randomUnit() * (spec.width - 2 * r - 1.0)
+        let span = spec.width - 2 * r - 1.0
+        let x = r + 0.5 + (lane.lowerBound + randomUnit() * (lane.upperBound - lane.lowerBound)) * span
         let y = kind == .flipped ? spec.height * 0.55 : spec.height - r - 0.1
         let dir: Double = randomUnit() < 0.5 ? -1 : 1
         return spawnBubble(at: Vec2(x: x, y: y), size: size, kind: kind, vx: dir * size.horizontalSpeed, vy: 0, grace: 1.0)
