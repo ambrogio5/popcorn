@@ -471,7 +471,7 @@
   "id": 14,
   "name": "Fashion Week",
   "city": 1,
-  "par": 76.0,
+  "par": 60.0,
   "platforms": [
    {
     "x": 0.1,
@@ -498,25 +498,25 @@
   ],
   "bubbles": [
    {
-    "x": 0.462,
-    "y": 0.756,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.899,
-    "y": 0.785,
+    "x": 0.237,
+    "y": 0.705,
     "size": "small",
     "kind": "plain",
     "dir": -1
    },
    {
-    "x": 0.779,
-    "y": 0.359,
-    "size": "large",
-    "kind": "plain",
-    "dir": 1
+    "x": 0.791,
+    "y": 0.384,
+    "size": "medium",
+    "kind": "golden",
+    "dir": -1
+   },
+   {
+    "x": 0.426,
+    "y": 0.458,
+    "size": "medium",
+    "kind": "golden",
+    "dir": -1
    }
   ]
  },
@@ -551,25 +551,25 @@
   ],
   "bubbles": [
    {
-    "x": 0.237,
-    "y": 0.705,
-    "size": "small",
+    "x": 0.787,
+    "y": 0.713,
+    "size": "medium",
     "kind": "plain",
     "dir": -1
    },
    {
-    "x": 0.791,
-    "y": 0.384,
-    "size": "medium",
-    "kind": "golden",
-    "dir": -1
+    "x": 0.641,
+    "y": 0.415,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
    },
    {
-    "x": 0.426,
-    "y": 0.458,
+    "x": 0.225,
+    "y": 0.664,
     "size": "medium",
-    "kind": "golden",
-    "dir": -1
+    "kind": "plain",
+    "dir": 1
    }
   ]
  },
@@ -577,7 +577,7 @@
   "id": 16,
   "name": "Derby",
   "city": 1,
-  "par": 93.0,
+  "par": 69.0,
   "platforms": [
    {
     "x": 0.05,
@@ -614,30 +614,30 @@
   ],
   "bubbles": [
    {
-    "x": 0.396,
-    "y": 0.573,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.874,
-    "y": 0.602,
+    "x": 0.49,
+    "y": 0.487,
     "size": "small",
     "kind": "plain",
     "dir": 1
    },
    {
-    "x": 0.552,
-    "y": 0.793,
+    "x": 0.23,
+    "y": 0.725,
+    "size": "medium",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.777,
+    "y": 0.771,
     "size": "medium",
     "kind": "plain",
     "dir": -1
    },
    {
-    "x": 0.785,
-    "y": 0.327,
-    "size": "large",
+    "x": 0.228,
+    "y": 0.374,
+    "size": "small",
     "kind": "plain",
     "dir": 1
    }
@@ -647,7 +647,7 @@
   "id": 17,
   "name": "Caf\u00e9 Cr\u00e8me",
   "city": 2,
-  "par": 69.0,
+  "par": 73.0,
   "platforms": [
    {
     "x": 0.1,
@@ -669,24 +669,24 @@
   ],
   "bubbles": [
    {
-    "x": 0.45,
-    "y": 0.559,
-    "size": "medium",
-    "kind": "armored",
+    "x": 0.572,
+    "y": 0.565,
+    "size": "small",
+    "kind": "plain",
     "dir": 1
    },
    {
-    "x": 0.615,
-    "y": 0.755,
+    "x": 0.168,
+    "y": 0.31,
     "size": "medium",
     "kind": "plain",
-    "dir": -1
+    "dir": 1
    },
    {
-    "x": 0.856,
-    "y": 0.549,
-    "size": "medium",
-    "kind": "armored",
+    "x": 0.5,
+    "y": 0.72,
+    "size": "large",
+    "kind": "plain",
     "dir": -1
    }
   ]
@@ -695,7 +695,7 @@
   "id": 18,
   "name": "M\u00e9tro",
   "city": 2,
-  "par": 68.0,
+  "par": 70.0,
   "platforms": [
    {
     "x": 0.1,
@@ -722,23 +722,23 @@
   ],
   "bubbles": [
    {
-    "x": 0.24,
-    "y": 0.767,
-    "size": "small",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.531,
-    "y": 0.762,
-    "size": "large",
+    "x": 0.133,
+    "y": 0.327,
+    "size": "medium",
     "kind": "plain",
     "dir": -1
    },
    {
-    "x": 0.384,
-    "y": 0.917,
-    "size": "small",
+    "x": 0.698,
+    "y": 0.874,
+    "size": "medium",
+    "kind": "armored",
+    "dir": -1
+   },
+   {
+    "x": 0.432,
+    "y": 0.447,
+    "size": "medium",
     "kind": "plain",
     "dir": 1
    }
@@ -748,7 +748,7 @@
   "id": 19,
   "name": "Montmartre",
   "city": 2,
-  "par": 73.0,
+  "par": 81.0,
   "platforms": [
    {
     "x": 0.0,
@@ -785,24 +785,24 @@
   ],
   "bubbles": [
    {
-    "x": 0.602,
-    "y": 0.313,
+    "x": 0.256,
+    "y": 0.691,
     "size": "medium",
     "kind": "plain",
-    "dir": 1
+    "dir": -1
    },
    {
-    "x": 0.165,
-    "y": 0.745,
-    "size": "medium",
+    "x": 0.669,
+    "y": 0.92,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.551,
+    "y": 0.786,
+    "size": "large",
     "kind": "armored",
-    "dir": 1
-   },
-   {
-    "x": 0.284,
-    "y": 0.858,
-    "size": "medium",
-    "kind": "plain",
     "dir": -1
    }
   ]
@@ -811,7 +811,7 @@
   "id": 20,
   "name": "Louvre",
   "city": 2,
-  "par": 105.0,
+  "par": 81.0,
   "platforms": [
    {
     "x": 0.2,
@@ -848,22 +848,22 @@
   ],
   "bubbles": [
    {
-    "x": 0.516,
-    "y": 0.455,
+    "x": 0.693,
+    "y": 0.88,
+    "size": "small",
+    "kind": "armored",
+    "dir": -1
+   },
+   {
+    "x": 0.443,
+    "y": 0.811,
     "size": "large",
     "kind": "plain",
-    "dir": 1
+    "dir": -1
    },
    {
-    "x": 0.214,
-    "y": 0.683,
-    "size": "large",
-    "kind": "armored",
-    "dir": 1
-   },
-   {
-    "x": 0.739,
-    "y": 0.814,
+    "x": 0.218,
+    "y": 0.654,
     "size": "medium",
     "kind": "plain",
     "dir": -1
@@ -874,7 +874,7 @@
   "id": 21,
   "name": "Catacombs",
   "city": 2,
-  "par": 70.0,
+  "par": 80.0,
   "platforms": [
    {
     "x": 0.25,
@@ -901,25 +901,25 @@
   ],
   "bubbles": [
    {
-    "x": 0.541,
-    "y": 0.739,
-    "size": "medium",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.186,
-    "y": 0.513,
+    "x": 0.493,
+    "y": 0.821,
     "size": "medium",
     "kind": "armored",
     "dir": 1
    },
    {
-    "x": 0.379,
-    "y": 0.405,
-    "size": "medium",
-    "kind": "golden",
-    "dir": -1
+    "x": 0.803,
+    "y": 0.531,
+    "size": "large",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.751,
+    "y": 0.727,
+    "size": "small",
+    "kind": "armored",
+    "dir": 1
    }
   ]
  },
@@ -927,7 +927,7 @@
   "id": 22,
   "name": "Bateau",
   "city": 2,
-  "par": 62.0,
+  "par": 84.0,
   "platforms": [
    {
     "x": 0.0,
@@ -954,25 +954,25 @@
   ],
   "bubbles": [
    {
-    "x": 0.801,
-    "y": 0.842,
-    "size": "medium",
-    "kind": "armored",
-    "dir": -1
+    "x": 0.757,
+    "y": 0.397,
+    "size": "large",
+    "kind": "plain",
+    "dir": 1
    },
    {
-    "x": 0.771,
-    "y": 0.506,
+    "x": 0.763,
+    "y": 0.9,
     "size": "medium",
     "kind": "golden",
     "dir": -1
    },
    {
-    "x": 0.518,
-    "y": 0.491,
-    "size": "small",
+    "x": 0.428,
+    "y": 0.554,
+    "size": "medium",
     "kind": "plain",
-    "dir": -1
+    "dir": 1
    }
   ]
  },
@@ -980,7 +980,7 @@
   "id": 23,
   "name": "Rooftops",
   "city": 2,
-  "par": 65.0,
+  "par": 87.0,
   "platforms": [
    {
     "x": 0.05,
@@ -1017,25 +1017,25 @@
   ],
   "bubbles": [
    {
-    "x": 0.289,
-    "y": 0.56,
-    "size": "small",
+    "x": 0.59,
+    "y": 0.387,
+    "size": "medium",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.654,
+    "y": 0.803,
+    "size": "medium",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.189,
+    "y": 0.65,
+    "size": "large",
     "kind": "plain",
     "dir": -1
-   },
-   {
-    "x": 0.514,
-    "y": 0.369,
-    "size": "medium",
-    "kind": "armored",
-    "dir": 1
-   },
-   {
-    "x": 0.86,
-    "y": 0.724,
-    "size": "medium",
-    "kind": "plain",
-    "dir": 1
    }
   ]
  },
@@ -1043,7 +1043,7 @@
   "id": 24,
   "name": "Eiffel",
   "city": 2,
-  "par": 73.0,
+  "par": 63.0,
   "platforms": [
    {
     "x": 0.3,
@@ -1080,32 +1080,32 @@
   ],
   "bubbles": [
    {
-    "x": 0.805,
-    "y": 0.827,
-    "size": "medium",
-    "kind": "plain",
+    "x": 0.751,
+    "y": 0.832,
+    "size": "small",
+    "kind": "golden",
     "dir": -1
    },
    {
-    "x": 0.178,
-    "y": 0.326,
+    "x": 0.873,
+    "y": 0.748,
     "size": "medium",
-    "kind": "armored",
+    "kind": "golden",
     "dir": 1
    },
    {
-    "x": 0.183,
-    "y": 0.468,
+    "x": 0.479,
+    "y": 0.363,
     "size": "small",
     "kind": "armored",
-    "dir": 1
+    "dir": -1
    },
    {
-    "x": 0.42,
-    "y": 0.375,
+    "x": 0.605,
+    "y": 0.861,
     "size": "small",
     "kind": "plain",
-    "dir": -1
+    "dir": 1
    }
   ]
  },
@@ -1113,7 +1113,7 @@
   "id": 25,
   "name": "Bazaar",
   "city": 3,
-  "par": 54.0,
+  "par": 84.0,
   "platforms": [
    {
     "x": 0.0,
@@ -1140,24 +1140,24 @@
   ],
   "bubbles": [
    {
-    "x": 0.555,
-    "y": 0.739,
-    "size": "small",
+    "x": 0.176,
+    "y": 0.549,
+    "size": "large",
     "kind": "plain",
     "dir": -1
    },
    {
-    "x": 0.764,
-    "y": 0.758,
+    "x": 0.232,
+    "y": 0.901,
     "size": "medium",
     "kind": "plain",
     "dir": 1
    },
    {
-    "x": 0.474,
-    "y": 0.921,
-    "size": "small",
-    "kind": "armored",
+    "x": 0.511,
+    "y": 0.799,
+    "size": "medium",
+    "kind": "plain",
     "dir": -1
    }
   ]
@@ -1166,7 +1166,7 @@
   "id": 26,
   "name": "Felucca",
   "city": 3,
-  "par": 71.0,
+  "par": 99.0,
   "platforms": [
    {
     "x": 0.0,
@@ -1203,25 +1203,25 @@
   ],
   "bubbles": [
    {
-    "x": 0.468,
-    "y": 0.898,
-    "size": "small",
-    "kind": "golden",
+    "x": 0.474,
+    "y": 0.9,
+    "size": "medium",
+    "kind": "plain",
     "dir": -1
    },
    {
-    "x": 0.594,
-    "y": 0.616,
-    "size": "small",
+    "x": 0.791,
+    "y": 0.7,
+    "size": "medium",
     "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.253,
+    "y": 0.644,
+    "size": "medium",
+    "kind": "triple",
     "dir": 1
-   },
-   {
-    "x": 0.305,
-    "y": 0.795,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
    }
   ]
  },
@@ -1229,7 +1229,7 @@
   "id": 27,
   "name": "Papyrus",
   "city": 3,
-  "par": 103.0,
+  "par": 121.0,
   "platforms": [
    {
     "x": 0.2,
@@ -1266,25 +1266,25 @@
   ],
   "bubbles": [
    {
-    "x": 0.527,
-    "y": 0.379,
+    "x": 0.4,
+    "y": 0.425,
+    "size": "small",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.206,
+    "y": 0.767,
     "size": "large",
-    "kind": "golden",
+    "kind": "armored",
     "dir": -1
    },
    {
-    "x": 0.812,
-    "y": 0.816,
-    "size": "large",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.368,
-    "y": 0.668,
+    "x": 0.698,
+    "y": 0.659,
     "size": "medium",
-    "kind": "plain",
-    "dir": 1
+    "kind": "triple",
+    "dir": -1
    }
   ]
  },
@@ -1292,7 +1292,7 @@
   "id": 28,
   "name": "Oasis",
   "city": 3,
-  "par": 92.0,
+  "par": 94.0,
   "platforms": [
    {
     "x": 0.0,
@@ -1339,25 +1339,25 @@
   ],
   "bubbles": [
    {
-    "x": 0.41,
-    "y": 0.536,
+    "x": 0.735,
+    "y": 0.719,
+    "size": "large",
+    "kind": "armored",
+    "dir": 1
+   },
+   {
+    "x": 0.456,
+    "y": 0.416,
     "size": "medium",
     "kind": "plain",
     "dir": 1
    },
    {
-    "x": 0.379,
-    "y": 0.792,
-    "size": "large",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.762,
-    "y": 0.767,
+    "x": 0.364,
+    "y": 0.71,
     "size": "medium",
     "kind": "armored",
-    "dir": -1
+    "dir": 1
    }
   ]
  },
@@ -1365,7 +1365,7 @@
   "id": 29,
   "name": "Sandstorm",
   "city": 3,
-  "par": 95.0,
+  "par": 121.0,
   "platforms": [
    {
     "x": 0.0,
@@ -1402,32 +1402,32 @@
   ],
   "bubbles": [
    {
-    "x": 0.188,
-    "y": 0.9,
+    "x": 0.851,
+    "y": 0.834,
     "size": "medium",
+    "kind": "armored",
+    "dir": 1
+   },
+   {
+    "x": 0.363,
+    "y": 0.711,
+    "size": "large",
     "kind": "armored",
     "dir": -1
    },
    {
-    "x": 0.777,
-    "y": 0.392,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.743,
-    "y": 0.838,
-    "size": "small",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.152,
-    "y": 0.588,
+    "x": 0.158,
+    "y": 0.595,
     "size": "medium",
     "kind": "plain",
     "dir": 1
+   },
+   {
+    "x": 0.585,
+    "y": 0.839,
+    "size": "large",
+    "kind": "plain",
+    "dir": -1
    }
   ]
  },
@@ -1435,7 +1435,7 @@
   "id": 30,
   "name": "Sphinx",
   "city": 3,
-  "par": 85.0,
+  "par": 147.0,
   "platforms": [
    {
     "x": 0.35,
@@ -1472,32 +1472,32 @@
   ],
   "bubbles": [
    {
-    "x": 0.66,
-    "y": 0.769,
+    "x": 0.476,
+    "y": 0.862,
+    "size": "large",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.204,
+    "y": 0.78,
     "size": "medium",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.537,
+    "y": 0.547,
+    "size": "small",
     "kind": "plain",
     "dir": -1
    },
    {
-    "x": 0.129,
-    "y": 0.795,
-    "size": "medium",
-    "kind": "golden",
-    "dir": 1
-   },
-   {
-    "x": 0.819,
-    "y": 0.436,
-    "size": "medium",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.544,
-    "y": 0.51,
-    "size": "medium",
-    "kind": "golden",
-    "dir": 1
+    "x": 0.119,
+    "y": 0.319,
+    "size": "small",
+    "kind": "armored",
+    "dir": -1
    }
   ]
  },
@@ -1575,7 +1575,7 @@
   "id": 32,
   "name": "Pyramid",
   "city": 3,
-  "par": 135.0,
+  "par": 91.0,
   "platforms": [
    {
     "x": 0.05,
@@ -1612,39 +1612,39 @@
   ],
   "bubbles": [
    {
-    "x": 0.368,
-    "y": 0.372,
+    "x": 0.138,
+    "y": 0.69,
     "size": "medium",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.109,
+    "y": 0.306,
+    "size": "small",
     "kind": "plain",
     "dir": 1
    },
    {
-    "x": 0.827,
-    "y": 0.64,
-    "size": "medium",
-    "kind": "triple",
-    "dir": -1
-   },
-   {
-    "x": 0.74,
-    "y": 0.814,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.505,
-    "y": 0.468,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.613,
-    "y": 0.583,
+    "x": 0.439,
+    "y": 0.832,
     "size": "small",
     "kind": "plain",
-    "dir": -1
+    "dir": 1
+   },
+   {
+    "x": 0.82,
+    "y": 0.79,
+    "size": "large",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.315,
+    "y": 0.872,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
    }
   ]
  },
@@ -1652,7 +1652,7 @@
   "id": 33,
   "name": "Shibuya",
   "city": 4,
-  "par": 81.0,
+  "par": 91.0,
   "platforms": [
    {
     "x": 0.0,
@@ -1689,30 +1689,30 @@
   ],
   "bubbles": [
    {
-    "x": 0.281,
-    "y": 0.678,
+    "x": 0.153,
+    "y": 0.774,
     "size": "small",
-    "kind": "triple",
-    "dir": -1
-   },
-   {
-    "x": 0.628,
-    "y": 0.738,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.397,
-    "y": 0.784,
-    "size": "medium",
-    "kind": "flipped",
+    "kind": "armored",
     "dir": 1
    },
    {
-    "x": 0.54,
-    "y": 0.845,
+    "x": 0.257,
+    "y": 0.598,
     "size": "small",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.114,
+    "y": 0.432,
+    "size": "small",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.447,
+    "y": 0.848,
+    "size": "large",
     "kind": "plain",
     "dir": -1
    }
@@ -1722,6 +1722,1088 @@
   "id": 34,
   "name": "Ramen",
   "city": 4,
+  "par": 125.0,
+  "platforms": [
+   {
+    "x": 0.35,
+    "y": 0.35,
+    "w": 0.3
+   },
+   {
+    "x": 0.0,
+    "y": 0.6,
+    "w": 0.3
+   },
+   {
+    "x": 0.7,
+    "y": 0.6,
+    "w": 0.3
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.35
+   },
+   {
+    "x": 0.15,
+    "y0": 0.0,
+    "y1": 0.6
+   },
+   {
+    "x": 0.85,
+    "y0": 0.0,
+    "y1": 0.6
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.684,
+    "y": 0.796,
+    "size": "large",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.279,
+    "y": 0.82,
+    "size": "medium",
+    "kind": "triple",
+    "dir": -1
+   },
+   {
+    "x": 0.116,
+    "y": 0.307,
+    "size": "small",
+    "kind": "golden",
+    "dir": 1
+   },
+   {
+    "x": 0.856,
+    "y": 0.884,
+    "size": "small",
+    "kind": "triple",
+    "dir": 1
+   }
+  ]
+ },
+ {
+  "id": 35,
+  "name": "Capsule",
+  "city": 4,
+  "par": 73.0,
+  "platforms": [
+   {
+    "x": 0.3,
+    "y": 0.25,
+    "w": 0.4
+   },
+   {
+    "x": 0.3,
+    "y": 0.5,
+    "w": 0.4
+   },
+   {
+    "x": 0.3,
+    "y": 0.75,
+    "w": 0.4
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.4,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.6,
+    "y0": 0.25,
+    "y1": 0.5
+   },
+   {
+    "x": 0.4,
+    "y0": 0.5,
+    "y1": 0.75
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.818,
+    "y": 0.728,
+    "size": "medium",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.492,
+    "y": 0.908,
+    "size": "small",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.129,
+    "y": 0.529,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.623,
+    "y": 0.649,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 36,
+  "name": "Arcade",
+  "city": 4,
+  "par": 83.0,
+  "platforms": [
+   {
+    "x": 0.05,
+    "y": 0.5,
+    "w": 0.25
+   },
+   {
+    "x": 0.7,
+    "y": 0.5,
+    "w": 0.25
+   },
+   {
+    "x": 0.35,
+    "y": 0.7,
+    "w": 0.3
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.17,
+    "y0": 0.0,
+    "y1": 0.5
+   },
+   {
+    "x": 0.83,
+    "y0": 0.0,
+    "y1": 0.5
+   },
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.7
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.453,
+    "y": 0.92,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.507,
+    "y": 0.537,
+    "size": "medium",
+    "kind": "armored",
+    "dir": 1
+   },
+   {
+    "x": 0.587,
+    "y": 0.416,
+    "size": "medium",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.504,
+    "y": 0.791,
+    "size": "small",
+    "kind": "triple",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 37,
+  "name": "Shinkansen",
+  "city": 4,
+  "par": 92.0,
+  "platforms": [
+   {
+    "x": 0.0,
+    "y": 0.25,
+    "w": 0.25
+   },
+   {
+    "x": 0.75,
+    "y": 0.25,
+    "w": 0.25
+   },
+   {
+    "x": 0.0,
+    "y": 0.5,
+    "w": 0.25
+   },
+   {
+    "x": 0.75,
+    "y": 0.5,
+    "w": 0.25
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.12,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.88,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.12,
+    "y0": 0.25,
+    "y1": 0.5
+   },
+   {
+    "x": 0.88,
+    "y0": 0.25,
+    "y1": 0.5
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.301,
+    "y": 0.698,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.383,
+    "y": 0.465,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.85,
+    "y": 0.76,
+    "size": "medium",
+    "kind": "triple",
+    "dir": -1
+   },
+   {
+    "x": 0.822,
+    "y": 0.377,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 38,
+  "name": "Sakura",
+  "city": 4,
+  "par": 85.0,
+  "platforms": [
+   {
+    "x": 0.2,
+    "y": 0.25,
+    "w": 0.6
+   },
+   {
+    "x": 0.0,
+    "y": 0.55,
+    "w": 0.3
+   },
+   {
+    "x": 0.7,
+    "y": 0.55,
+    "w": 0.3
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.15,
+    "y0": 0.0,
+    "y1": 0.55
+   },
+   {
+    "x": 0.85,
+    "y0": 0.0,
+    "y1": 0.55
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.512,
+    "y": 0.392,
+    "size": "small",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.408,
+    "y": 0.49,
+    "size": "medium",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.105,
+    "y": 0.337,
+    "size": "small",
+    "kind": "triple",
+    "dir": -1
+   },
+   {
+    "x": 0.752,
+    "y": 0.358,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 39,
+  "name": "Neon",
+  "city": 4,
+  "par": 111.0,
+  "platforms": [
+   {
+    "x": 0.0,
+    "y": 0.3,
+    "w": 0.3
+   },
+   {
+    "x": 0.35,
+    "y": 0.5,
+    "w": 0.3
+   },
+   {
+    "x": 0.7,
+    "y": 0.7,
+    "w": 0.3
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.15,
+    "y0": 0.0,
+    "y1": 0.3
+   },
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.5
+   },
+   {
+    "x": 0.85,
+    "y0": 0.0,
+    "y1": 0.7
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.593,
+    "y": 0.86,
+    "size": "medium",
+    "kind": "armored",
+    "dir": -1
+   },
+   {
+    "x": 0.836,
+    "y": 0.321,
+    "size": "medium",
+    "kind": "triple",
+    "dir": -1
+   },
+   {
+    "x": 0.131,
+    "y": 0.657,
+    "size": "small",
+    "kind": "flipped",
+    "dir": 1
+   },
+   {
+    "x": 0.286,
+    "y": 0.708,
+    "size": "small",
+    "kind": "triple",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 40,
+  "name": "Fuji",
+  "city": 4,
+  "par": 64.0,
+  "platforms": [
+   {
+    "x": 0.0,
+    "y": 0.4,
+    "w": 0.45
+   },
+   {
+    "x": 0.55,
+    "y": 0.65,
+    "w": 0.45
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.2,
+    "y0": 0.0,
+    "y1": 0.4
+   },
+   {
+    "x": 0.75,
+    "y0": 0.0,
+    "y1": 0.65
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.488,
+    "y": 0.922,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.827,
+    "y": 0.709,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.128,
+    "y": 0.541,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.209,
+    "y": 0.902,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.37,
+    "y": 0.751,
+    "size": "medium",
+    "kind": "plain",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 41,
+  "name": "Star Ferry",
+  "city": 5,
+  "par": 53.0,
+  "platforms": [
+   {
+    "x": 0.05,
+    "y": 0.5,
+    "w": 0.25
+   },
+   {
+    "x": 0.7,
+    "y": 0.5,
+    "w": 0.25
+   },
+   {
+    "x": 0.35,
+    "y": 0.7,
+    "w": 0.3
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.17,
+    "y0": 0.0,
+    "y1": 0.5
+   },
+   {
+    "x": 0.83,
+    "y0": 0.0,
+    "y1": 0.5
+   },
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.7
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.307,
+    "y": 0.386,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.471,
+    "y": 0.789,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.159,
+    "y": 0.706,
+    "size": "small",
+    "kind": "flipped",
+    "dir": -1
+   },
+   {
+    "x": 0.853,
+    "y": 0.905,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
+   }
+  ]
+ },
+ {
+  "id": 42,
+  "name": "Dim Sum",
+  "city": 5,
+  "par": 82.0,
+  "platforms": [
+   {
+    "x": 0.0,
+    "y": 0.25,
+    "w": 0.25
+   },
+   {
+    "x": 0.75,
+    "y": 0.25,
+    "w": 0.25
+   },
+   {
+    "x": 0.0,
+    "y": 0.5,
+    "w": 0.25
+   },
+   {
+    "x": 0.75,
+    "y": 0.5,
+    "w": 0.25
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.12,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.88,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.12,
+    "y0": 0.25,
+    "y1": 0.5
+   },
+   {
+    "x": 0.88,
+    "y0": 0.25,
+    "y1": 0.5
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.711,
+    "y": 0.775,
+    "size": "large",
+    "kind": "flipped",
+    "dir": 1
+   },
+   {
+    "x": 0.174,
+    "y": 0.675,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.473,
+    "y": 0.775,
+    "size": "small",
+    "kind": "flipped",
+    "dir": 1
+   },
+   {
+    "x": 0.8,
+    "y": 0.611,
+    "size": "small",
+    "kind": "armored",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 43,
+  "name": "Tram",
+  "city": 5,
+  "par": 73.0,
+  "platforms": [
+   {
+    "x": 0.0,
+    "y": 0.3,
+    "w": 0.2
+   },
+   {
+    "x": 0.8,
+    "y": 0.3,
+    "w": 0.2
+   },
+   {
+    "x": 0.3,
+    "y": 0.55,
+    "w": 0.4
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.1,
+    "y0": 0.0,
+    "y1": 0.3
+   },
+   {
+    "x": 0.9,
+    "y0": 0.0,
+    "y1": 0.3
+   },
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.55
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.125,
+    "y": 0.572,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.236,
+    "y": 0.458,
+    "size": "medium",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.271,
+    "y": 0.613,
+    "size": "small",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.816,
+    "y": 0.901,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
+   }
+  ]
+ },
+ {
+  "id": 44,
+  "name": "Night Market",
+  "city": 5,
+  "par": 61.0,
+  "platforms": [
+   {
+    "x": 0.35,
+    "y": 0.35,
+    "w": 0.3
+   },
+   {
+    "x": 0.0,
+    "y": 0.6,
+    "w": 0.3
+   },
+   {
+    "x": 0.7,
+    "y": 0.6,
+    "w": 0.3
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.35
+   },
+   {
+    "x": 0.15,
+    "y0": 0.0,
+    "y1": 0.6
+   },
+   {
+    "x": 0.85,
+    "y0": 0.0,
+    "y1": 0.6
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.179,
+    "y": 0.485,
+    "size": "small",
+    "kind": "flipped",
+    "dir": -1
+   },
+   {
+    "x": 0.383,
+    "y": 0.738,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.852,
+    "y": 0.313,
+    "size": "small",
+    "kind": "lightning",
+    "dir": -1
+   },
+   {
+    "x": 0.65,
+    "y": 0.812,
+    "size": "medium",
+    "kind": "lightning",
+    "dir": 1
+   }
+  ]
+ },
+ {
+  "id": 45,
+  "name": "Typhoon",
+  "city": 5,
+  "par": 95.0,
+  "platforms": [
+   {
+    "x": 0.3,
+    "y": 0.25,
+    "w": 0.4
+   },
+   {
+    "x": 0.3,
+    "y": 0.5,
+    "w": 0.4
+   },
+   {
+    "x": 0.3,
+    "y": 0.75,
+    "w": 0.4
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.4,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.6,
+    "y0": 0.25,
+    "y1": 0.5
+   },
+   {
+    "x": 0.4,
+    "y0": 0.5,
+    "y1": 0.75
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.724,
+    "y": 0.377,
+    "size": "medium",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.643,
+    "y": 0.856,
+    "size": "small",
+    "kind": "lightning",
+    "dir": 1
+   },
+   {
+    "x": 0.273,
+    "y": 0.915,
+    "size": "small",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.171,
+    "y": 0.505,
+    "size": "medium",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.584,
+    "y": 0.588,
+    "size": "medium",
+    "kind": "plain",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 46,
+  "name": "Peak",
+  "city": 5,
+  "par": 190.0,
+  "platforms": [
+   {
+    "x": 0.25,
+    "y": 0.3,
+    "w": 0.5
+   },
+   {
+    "x": 0.35,
+    "y": 0.6,
+    "w": 0.3
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.3
+   },
+   {
+    "x": 0.5,
+    "y0": 0.3,
+    "y1": 0.6
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.405,
+    "y": 0.77,
+    "size": "large",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.708,
+    "y": 0.46,
+    "size": "large",
+    "kind": "flipped",
+    "dir": -1
+   },
+   {
+    "x": 0.121,
+    "y": 0.324,
+    "size": "small",
+    "kind": "lightning",
+    "dir": -1
+   },
+   {
+    "x": 0.359,
+    "y": 0.418,
+    "size": "small",
+    "kind": "flipped",
+    "dir": -1
+   },
+   {
+    "x": 0.746,
+    "y": 0.818,
+    "size": "large",
+    "kind": "armored",
+    "dir": 1
+   }
+  ]
+ },
+ {
+  "id": 47,
+  "name": "Harbour",
+  "city": 5,
+  "par": 118.0,
+  "platforms": [
+   {
+    "x": 0.0,
+    "y": 0.4,
+    "w": 0.45
+   },
+   {
+    "x": 0.55,
+    "y": 0.65,
+    "w": 0.45
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.2,
+    "y0": 0.0,
+    "y1": 0.4
+   },
+   {
+    "x": 0.75,
+    "y0": 0.0,
+    "y1": 0.65
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.128,
+    "y": 0.693,
+    "size": "medium",
+    "kind": "armored",
+    "dir": -1
+   },
+   {
+    "x": 0.78,
+    "y": 0.788,
+    "size": "small",
+    "kind": "flipped",
+    "dir": 1
+   },
+   {
+    "x": 0.415,
+    "y": 0.687,
+    "size": "medium",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.67,
+    "y": 0.875,
+    "size": "medium",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.522,
+    "y": 0.485,
+    "size": "medium",
+    "kind": "triple",
+    "dir": 1
+   }
+  ]
+ },
+ {
+  "id": 48,
+  "name": "Skyline",
+  "city": 5,
+  "par": 147.0,
+  "platforms": [
+   {
+    "x": 0.2,
+    "y": 0.25,
+    "w": 0.6
+   },
+   {
+    "x": 0.0,
+    "y": 0.55,
+    "w": 0.3
+   },
+   {
+    "x": 0.7,
+    "y": 0.55,
+    "w": 0.3
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.15,
+    "y0": 0.0,
+    "y1": 0.55
+   },
+   {
+    "x": 0.85,
+    "y0": 0.0,
+    "y1": 0.55
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.861,
+    "y": 0.729,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.126,
+    "y": 0.88,
+    "size": "medium",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.638,
+    "y": 0.43,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.885,
+    "y": 0.928,
+    "size": "small",
+    "kind": "armored",
+    "dir": -1
+   },
+   {
+    "x": 0.584,
+    "y": 0.707,
+    "size": "medium",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.846,
+    "y": 0.326,
+    "size": "medium",
+    "kind": "plain",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 49,
+  "name": "Ferry",
+  "city": 6,
   "par": 103.0,
   "platforms": [
    {
@@ -1759,40 +2841,47 @@
   ],
   "bubbles": [
    {
-    "x": 0.497,
-    "y": 0.491,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.803,
-    "y": 0.688,
-    "size": "small",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.437,
-    "y": 0.755,
-    "size": "large",
-    "kind": "flipped",
-    "dir": -1
-   },
-   {
-    "x": 0.903,
-    "y": 0.408,
+    "x": 0.205,
+    "y": 0.415,
     "size": "small",
     "kind": "armored",
+    "dir": 1
+   },
+   {
+    "x": 0.484,
+    "y": 0.52,
+    "size": "medium",
+    "kind": "armored",
+    "dir": 1
+   },
+   {
+    "x": 0.695,
+    "y": 0.812,
+    "size": "large",
+    "kind": "lightning",
     "dir": -1
+   },
+   {
+    "x": 0.801,
+    "y": 0.39,
+    "size": "medium",
+    "kind": "golden",
+    "dir": -1
+   },
+   {
+    "x": 0.253,
+    "y": 0.718,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
    }
   ]
  },
  {
-  "id": 35,
-  "name": "Capsule",
-  "city": 4,
-  "par": 83.0,
+  "id": 50,
+  "name": "Bondi",
+  "city": 6,
+  "par": 85.0,
   "platforms": [
    {
     "x": 0.3,
@@ -1829,40 +2918,127 @@
   ],
   "bubbles": [
    {
-    "x": 0.511,
-    "y": 0.881,
+    "x": 0.861,
+    "y": 0.499,
     "size": "medium",
-    "kind": "plain",
+    "kind": "golden",
+    "dir": -1
+   },
+   {
+    "x": 0.537,
+    "y": 0.594,
+    "size": "small",
+    "kind": "triple",
     "dir": 1
    },
    {
-    "x": 0.245,
-    "y": 0.377,
-    "size": "medium",
-    "kind": "armored",
+    "x": 0.215,
+    "y": 0.414,
+    "size": "small",
+    "kind": "flipped",
     "dir": -1
    },
    {
-    "x": 0.299,
-    "y": 0.876,
+    "x": 0.358,
+    "y": 0.836,
     "size": "small",
     "kind": "triple",
+    "dir": 1
+   }
+  ]
+ },
+ {
+  "id": 51,
+  "name": "Koala",
+  "city": 6,
+  "par": 110.0,
+  "platforms": [
+   {
+    "x": 0.0,
+    "y": 0.25,
+    "w": 0.25
+   },
+   {
+    "x": 0.75,
+    "y": 0.25,
+    "w": 0.25
+   },
+   {
+    "x": 0.0,
+    "y": 0.5,
+    "w": 0.25
+   },
+   {
+    "x": 0.75,
+    "y": 0.5,
+    "w": 0.25
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.12,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.88,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.12,
+    "y0": 0.25,
+    "y1": 0.5
+   },
+   {
+    "x": 0.88,
+    "y0": 0.25,
+    "y1": 0.5
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.756,
+    "y": 0.807,
+    "size": "small",
+    "kind": "lightning",
+    "dir": 1
+   },
+   {
+    "x": 0.492,
+    "y": 0.902,
+    "size": "small",
+    "kind": "plain",
     "dir": -1
    },
    {
-    "x": 0.873,
-    "y": 0.928,
+    "x": 0.545,
+    "y": 0.486,
+    "size": "large",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.163,
+    "y": 0.75,
     "size": "small",
+    "kind": "lightning",
+    "dir": -1
+   },
+   {
+    "x": 0.36,
+    "y": 0.655,
+    "size": "large",
     "kind": "plain",
     "dir": -1
    }
   ]
  },
  {
-  "id": 36,
-  "name": "Arcade",
-  "city": 4,
-  "par": 129.0,
+  "id": 52,
+  "name": "Didgeridoo",
+  "city": 6,
+  "par": 105.0,
   "platforms": [
    {
     "x": 0.05,
@@ -1899,477 +3075,47 @@
   ],
   "bubbles": [
    {
-    "x": 0.239,
-    "y": 0.645,
-    "size": "medium",
-    "kind": "flipped",
-    "dir": -1
-   },
-   {
-    "x": 0.493,
-    "y": 0.407,
+    "x": 0.186,
+    "y": 0.853,
     "size": "large",
-    "kind": "plain",
+    "kind": "armored",
     "dir": 1
    },
    {
-    "x": 0.783,
-    "y": 0.71,
-    "size": "medium",
-    "kind": "flipped",
-    "dir": -1
-   },
-   {
-    "x": 0.216,
-    "y": 0.375,
-    "size": "medium",
+    "x": 0.478,
+    "y": 0.917,
+    "size": "small",
     "kind": "triple",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 37,
-  "name": "Shinkansen",
-  "city": 4,
-  "par": 104.0,
-  "platforms": [
-   {
-    "x": 0.0,
-    "y": 0.25,
-    "w": 0.25
-   },
-   {
-    "x": 0.75,
-    "y": 0.25,
-    "w": 0.25
-   },
-   {
-    "x": 0.0,
-    "y": 0.5,
-    "w": 0.25
-   },
-   {
-    "x": 0.75,
-    "y": 0.5,
-    "w": 0.25
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.12,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.88,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.12,
-    "y0": 0.25,
-    "y1": 0.5
-   },
-   {
-    "x": 0.88,
-    "y0": 0.25,
-    "y1": 0.5
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.499,
-    "y": 0.869,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.232,
-    "y": 0.359,
-    "size": "medium",
-    "kind": "plain",
     "dir": 1
    },
    {
-    "x": 0.763,
-    "y": 0.771,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.412,
-    "y": 0.604,
-    "size": "large",
-    "kind": "plain",
-    "dir": 1
-   }
-  ]
- },
- {
-  "id": 38,
-  "name": "Sakura",
-  "city": 4,
-  "par": 109.0,
-  "platforms": [
-   {
-    "x": 0.2,
-    "y": 0.25,
-    "w": 0.6
-   },
-   {
-    "x": 0.0,
-    "y": 0.55,
-    "w": 0.3
-   },
-   {
-    "x": 0.7,
-    "y": 0.55,
-    "w": 0.3
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.15,
-    "y0": 0.0,
-    "y1": 0.55
-   },
-   {
-    "x": 0.85,
-    "y0": 0.0,
-    "y1": 0.55
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.638,
-    "y": 0.331,
+    "x": 0.715,
+    "y": 0.648,
     "size": "small",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.483,
-    "y": 0.499,
-    "size": "large",
-    "kind": "plain",
+    "kind": "lightning",
     "dir": -1
    },
    {
-    "x": 0.262,
-    "y": 0.801,
-    "size": "medium",
-    "kind": "golden",
-    "dir": 1
-   },
-   {
-    "x": 0.734,
-    "y": 0.701,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 39,
-  "name": "Neon",
-  "city": 4,
-  "par": 123.0,
-  "platforms": [
-   {
-    "x": 0.0,
-    "y": 0.3,
-    "w": 0.3
-   },
-   {
-    "x": 0.35,
-    "y": 0.5,
-    "w": 0.3
-   },
-   {
-    "x": 0.7,
-    "y": 0.7,
-    "w": 0.3
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.15,
-    "y0": 0.0,
-    "y1": 0.3
-   },
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.5
-   },
-   {
-    "x": 0.85,
-    "y0": 0.0,
-    "y1": 0.7
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.26,
-    "y": 0.782,
-    "size": "large",
-    "kind": "armored",
-    "dir": 1
-   },
-   {
-    "x": 0.2,
-    "y": 0.517,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.539,
-    "y": 0.709,
-    "size": "medium",
-    "kind": "armored",
-    "dir": -1
-   },
-   {
-    "x": 0.581,
-    "y": 0.33,
-    "size": "large",
-    "kind": "armored",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 40,
-  "name": "Fuji",
-  "city": 4,
-  "par": 102.0,
-  "platforms": [
-   {
-    "x": 0.0,
-    "y": 0.4,
-    "w": 0.45
-   },
-   {
-    "x": 0.55,
-    "y": 0.65,
-    "w": 0.45
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.2,
-    "y0": 0.0,
-    "y1": 0.4
-   },
-   {
-    "x": 0.75,
-    "y0": 0.0,
-    "y1": 0.65
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.453,
-    "y": 0.626,
+    "x": 0.651,
+    "y": 0.775,
     "size": "small",
-    "kind": "plain",
+    "kind": "lightning",
     "dir": 1
-   },
-   {
-    "x": 0.561,
-    "y": 0.826,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.555,
-    "y": 0.325,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
    },
    {
     "x": 0.367,
-    "y": 0.906,
-    "size": "small",
-    "kind": "armored",
-    "dir": 1
-   },
-   {
-    "x": 0.848,
-    "y": 0.747,
-    "size": "small",
-    "kind": "triple",
-    "dir": 1
-   }
-  ]
- },
- {
-  "id": 41,
-  "name": "Star Ferry",
-  "city": 5,
-  "par": 197.0,
-  "platforms": [
-   {
-    "x": 0.05,
-    "y": 0.5,
-    "w": 0.25
-   },
-   {
-    "x": 0.7,
-    "y": 0.5,
-    "w": 0.25
-   },
-   {
-    "x": 0.35,
-    "y": 0.7,
-    "w": 0.3
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.17,
-    "y0": 0.0,
-    "y1": 0.5
-   },
-   {
-    "x": 0.83,
-    "y0": 0.0,
-    "y1": 0.5
-   },
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.7
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.354,
-    "y": 0.431,
-    "size": "small",
-    "kind": "triple",
-    "dir": -1
-   },
-   {
-    "x": 0.747,
-    "y": 0.846,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.209,
-    "y": 0.785,
-    "size": "large",
-    "kind": "triple",
-    "dir": -1
-   },
-   {
-    "x": 0.595,
-    "y": 0.385,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 42,
-  "name": "Dim Sum",
-  "city": 5,
-  "par": 116.0,
-  "platforms": [
-   {
-    "x": 0.0,
-    "y": 0.25,
-    "w": 0.25
-   },
-   {
-    "x": 0.75,
-    "y": 0.25,
-    "w": 0.25
-   },
-   {
-    "x": 0.0,
-    "y": 0.5,
-    "w": 0.25
-   },
-   {
-    "x": 0.75,
-    "y": 0.5,
-    "w": 0.25
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.12,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.88,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.12,
-    "y0": 0.25,
-    "y1": 0.5
-   },
-   {
-    "x": 0.88,
-    "y0": 0.25,
-    "y1": 0.5
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.864,
-    "y": 0.63,
+    "y": 0.395,
     "size": "medium",
-    "kind": "triple",
-    "dir": -1
-   },
-   {
-    "x": 0.472,
-    "y": 0.767,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.53,
-    "y": 0.387,
-    "size": "small",
-    "kind": "plain",
+    "kind": "golden",
     "dir": 1
-   },
-   {
-    "x": 0.622,
-    "y": 0.322,
-    "size": "small",
-    "kind": "plain",
-    "dir": -1
    }
   ]
  },
  {
-  "id": 43,
-  "name": "Tram",
-  "city": 5,
-  "par": 79.0,
+  "id": 53,
+  "name": "Harbour Bridge",
+  "city": 6,
+  "par": 101.0,
   "platforms": [
    {
     "x": 0.0,
@@ -2406,40 +3152,362 @@
   ],
   "bubbles": [
    {
-    "x": 0.793,
-    "y": 0.392,
+    "x": 0.871,
+    "y": 0.613,
     "size": "medium",
-    "kind": "lightning",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.673,
+    "y": 0.775,
+    "size": "small",
+    "kind": "armored",
     "dir": -1
    },
    {
-    "x": 0.111,
-    "y": 0.706,
+    "x": 0.551,
+    "y": 0.701,
+    "size": "medium",
+    "kind": "golden",
+    "dir": -1
+   },
+   {
+    "x": 0.182,
+    "y": 0.852,
+    "size": "large",
+    "kind": "golden",
+    "dir": -1
+   },
+   {
+    "x": 0.302,
+    "y": 0.679,
     "size": "small",
     "kind": "plain",
+    "dir": 1
+   }
+  ]
+ },
+ {
+  "id": 54,
+  "name": "Surf",
+  "city": 6,
+  "par": 135.0,
+  "platforms": [
+   {
+    "x": 0.0,
+    "y": 0.3,
+    "w": 0.3
+   },
+   {
+    "x": 0.35,
+    "y": 0.5,
+    "w": 0.3
+   },
+   {
+    "x": 0.7,
+    "y": 0.7,
+    "w": 0.3
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.15,
+    "y0": 0.0,
+    "y1": 0.3
+   },
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.5
+   },
+   {
+    "x": 0.85,
+    "y0": 0.0,
+    "y1": 0.7
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.287,
+    "y": 0.616,
+    "size": "small",
+    "kind": "armored",
+    "dir": 1
+   },
+   {
+    "x": 0.834,
+    "y": 0.311,
+    "size": "medium",
+    "kind": "triple",
     "dir": -1
    },
    {
-    "x": 0.373,
-    "y": 0.777,
-    "size": "medium",
+    "x": 0.847,
+    "y": 0.785,
+    "size": "small",
     "kind": "plain",
-    "dir": -1
+    "dir": 1
    },
    {
-    "x": 0.768,
-    "y": 0.841,
+    "x": 0.528,
+    "y": 0.852,
     "size": "medium",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.118,
+    "y": 0.65,
+    "size": "small",
     "kind": "armored",
     "dir": -1
    }
   ]
  },
  {
-  "id": 44,
-  "name": "Night Market",
-  "city": 5,
-  "par": 173.0,
+  "id": 55,
+  "name": "Outback",
+  "city": 6,
+  "par": 147.0,
+  "platforms": [
+   {
+    "x": 0.2,
+    "y": 0.25,
+    "w": 0.6
+   },
+   {
+    "x": 0.0,
+    "y": 0.55,
+    "w": 0.3
+   },
+   {
+    "x": 0.7,
+    "y": 0.55,
+    "w": 0.3
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.15,
+    "y0": 0.0,
+    "y1": 0.55
+   },
+   {
+    "x": 0.85,
+    "y0": 0.0,
+    "y1": 0.55
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.293,
+    "y": 0.71,
+    "size": "large",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.56,
+    "y": 0.851,
+    "size": "large",
+    "kind": "armored",
+    "dir": 1
+   },
+   {
+    "x": 0.452,
+    "y": 0.382,
+    "size": "small",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.896,
+    "y": 0.909,
+    "size": "small",
+    "kind": "armored",
+    "dir": -1
+   },
+   {
+    "x": 0.809,
+    "y": 0.746,
+    "size": "large",
+    "kind": "flipped",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 56,
+  "name": "Opera House",
+  "city": 6,
+  "par": 206.0,
+  "platforms": [
+   {
+    "x": 0.0,
+    "y": 0.4,
+    "w": 0.45
+   },
+   {
+    "x": 0.55,
+    "y": 0.65,
+    "w": 0.45
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.2,
+    "y0": 0.0,
+    "y1": 0.4
+   },
+   {
+    "x": 0.75,
+    "y0": 0.0,
+    "y1": 0.65
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.88,
+    "y": 0.385,
+    "size": "small",
+    "kind": "armored",
+    "dir": -1
+   },
+   {
+    "x": 0.682,
+    "y": 0.457,
+    "size": "large",
+    "kind": "flipped",
+    "dir": -1
+   },
+   {
+    "x": 0.736,
+    "y": 0.875,
+    "size": "medium",
+    "kind": "armored",
+    "dir": 1
+   },
+   {
+    "x": 0.225,
+    "y": 0.82,
+    "size": "small",
+    "kind": "lightning",
+    "dir": -1
+   },
+   {
+    "x": 0.247,
+    "y": 0.534,
+    "size": "large",
+    "kind": "flipped",
+    "dir": 1
+   },
+   {
+    "x": 0.462,
+    "y": 0.857,
+    "size": "large",
+    "kind": "triple",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 57,
+  "name": "Subway",
+  "city": 7,
+  "par": 146.0,
+  "platforms": [
+   {
+    "x": 0.0,
+    "y": 0.25,
+    "w": 0.25
+   },
+   {
+    "x": 0.75,
+    "y": 0.25,
+    "w": 0.25
+   },
+   {
+    "x": 0.0,
+    "y": 0.5,
+    "w": 0.25
+   },
+   {
+    "x": 0.75,
+    "y": 0.5,
+    "w": 0.25
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.12,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.88,
+    "y0": 0.0,
+    "y1": 0.25
+   },
+   {
+    "x": 0.12,
+    "y0": 0.25,
+    "y1": 0.5
+   },
+   {
+    "x": 0.88,
+    "y0": 0.25,
+    "y1": 0.5
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.53,
+    "y": 0.392,
+    "size": "medium",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.227,
+    "y": 0.385,
+    "size": "small",
+    "kind": "triple",
+    "dir": 1
+   },
+   {
+    "x": 0.469,
+    "y": 0.563,
+    "size": "small",
+    "kind": "lightning",
+    "dir": -1
+   },
+   {
+    "x": 0.8,
+    "y": 0.606,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.54,
+    "y": 0.655,
+    "size": "medium",
+    "kind": "triple",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 58,
+  "name": "Bagel",
+  "city": 7,
+  "par": 105.0,
   "platforms": [
    {
     "x": 0.35,
@@ -2476,40 +3544,124 @@
   ],
   "bubbles": [
    {
-    "x": 0.751,
-    "y": 0.915,
+    "x": 0.888,
+    "y": 0.709,
     "size": "small",
     "kind": "triple",
     "dir": -1
    },
    {
-    "x": 0.699,
-    "y": 0.443,
+    "x": 0.223,
+    "y": 0.729,
     "size": "small",
     "kind": "plain",
     "dir": -1
    },
    {
-    "x": 0.713,
-    "y": 0.729,
+    "x": 0.795,
+    "y": 0.406,
     "size": "large",
-    "kind": "triple",
-    "dir": -1
+    "kind": "plain",
+    "dir": 1
    },
    {
-    "x": 0.399,
-    "y": 0.485,
-    "size": "large",
+    "x": 0.644,
+    "y": 0.804,
+    "size": "medium",
+    "kind": "armored",
+    "dir": 1
+   },
+   {
+    "x": 0.457,
+    "y": 0.857,
+    "size": "small",
     "kind": "lightning",
     "dir": -1
    }
   ]
  },
  {
-  "id": 45,
-  "name": "Typhoon",
-  "city": 5,
-  "par": 67.0,
+  "id": 59,
+  "name": "Yellow Cab",
+  "city": 7,
+  "par": 87.0,
+  "platforms": [
+   {
+    "x": 0.05,
+    "y": 0.5,
+    "w": 0.25
+   },
+   {
+    "x": 0.7,
+    "y": 0.5,
+    "w": 0.25
+   },
+   {
+    "x": 0.35,
+    "y": 0.7,
+    "w": 0.3
+   }
+  ],
+  "ladders": [
+   {
+    "x": 0.17,
+    "y0": 0.0,
+    "y1": 0.5
+   },
+   {
+    "x": 0.83,
+    "y0": 0.0,
+    "y1": 0.5
+   },
+   {
+    "x": 0.5,
+    "y0": 0.0,
+    "y1": 0.7
+   }
+  ],
+  "bubbles": [
+   {
+    "x": 0.561,
+    "y": 0.399,
+    "size": "medium",
+    "kind": "flipped",
+    "dir": 1
+   },
+   {
+    "x": 0.508,
+    "y": 0.764,
+    "size": "small",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.183,
+    "y": 0.703,
+    "size": "medium",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.129,
+    "y": 0.815,
+    "size": "small",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.75,
+    "y": 0.616,
+    "size": "small",
+    "kind": "triple",
+    "dir": -1
+   }
+  ]
+ },
+ {
+  "id": 60,
+  "name": "Brooklyn",
+  "city": 7,
+  "par": 99.0,
   "platforms": [
    {
     "x": 0.3,
@@ -2546,180 +3698,123 @@
   ],
   "bubbles": [
    {
-    "x": 0.095,
-    "y": 0.485,
+    "x": 0.431,
+    "y": 0.815,
     "size": "small",
     "kind": "plain",
     "dir": 1
    },
    {
-    "x": 0.748,
-    "y": 0.363,
+    "x": 0.836,
+    "y": 0.557,
     "size": "medium",
     "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.846,
-    "y": 0.727,
-    "size": "small",
-    "kind": "plain",
     "dir": 1
    },
    {
-    "x": 0.498,
-    "y": 0.656,
+    "x": 0.827,
+    "y": 0.707,
     "size": "small",
-    "kind": "plain",
+    "kind": "triple",
+    "dir": -1
+   },
+   {
+    "x": 0.255,
+    "y": 0.679,
+    "size": "small",
+    "kind": "triple",
     "dir": 1
    },
    {
-    "x": 0.56,
-    "y": 0.83,
-    "size": "small",
-    "kind": "lightning",
-    "dir": -1
+    "x": 0.183,
+    "y": 0.506,
+    "size": "medium",
+    "kind": "plain",
+    "dir": 1
    }
   ]
  },
  {
-  "id": 46,
-  "name": "Peak",
-  "city": 5,
-  "par": 100.0,
+  "id": 61,
+  "name": "Rooftop",
+  "city": 7,
+  "par": 87.0,
   "platforms": [
    {
-    "x": 0.25,
+    "x": 0.0,
     "y": 0.3,
-    "w": 0.5
+    "w": 0.2
    },
    {
-    "x": 0.35,
-    "y": 0.6,
-    "w": 0.3
+    "x": 0.8,
+    "y": 0.3,
+    "w": 0.2
+   },
+   {
+    "x": 0.3,
+    "y": 0.55,
+    "w": 0.4
    }
   ],
   "ladders": [
    {
-    "x": 0.5,
+    "x": 0.1,
+    "y0": 0.0,
+    "y1": 0.3
+   },
+   {
+    "x": 0.9,
     "y0": 0.0,
     "y1": 0.3
    },
    {
     "x": 0.5,
-    "y0": 0.3,
-    "y1": 0.6
+    "y0": 0.0,
+    "y1": 0.55
    }
   ],
   "bubbles": [
    {
-    "x": 0.154,
-    "y": 0.522,
+    "x": 0.494,
+    "y": 0.394,
     "size": "medium",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.436,
-    "y": 0.471,
-    "size": "small",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.587,
-    "y": 0.899,
-    "size": "small",
-    "kind": "lightning",
-    "dir": -1
-   },
-   {
-    "x": 0.268,
-    "y": 0.732,
-    "size": "large",
     "kind": "flipped",
-    "dir": -1
+    "dir": 1
    },
    {
-    "x": 0.878,
-    "y": 0.497,
-    "size": "small",
-    "kind": "triple",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 47,
-  "name": "Harbour",
-  "city": 5,
-  "par": 114.0,
-  "platforms": [
-   {
-    "x": 0.0,
-    "y": 0.4,
-    "w": 0.45
-   },
-   {
-    "x": 0.55,
-    "y": 0.65,
-    "w": 0.45
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.2,
-    "y0": 0.0,
-    "y1": 0.4
-   },
-   {
-    "x": 0.75,
-    "y0": 0.0,
-    "y1": 0.65
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.443,
-    "y": 0.697,
+    "x": 0.669,
+    "y": 0.754,
     "size": "medium",
-    "kind": "armored",
-    "dir": -1
-   },
-   {
-    "x": 0.489,
-    "y": 0.568,
-    "size": "small",
     "kind": "lightning",
     "dir": -1
    },
    {
-    "x": 0.852,
-    "y": 0.387,
-    "size": "small",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.222,
-    "y": 0.615,
+    "x": 0.129,
+    "y": 0.721,
     "size": "medium",
-    "kind": "triple",
+    "kind": "lightning",
     "dir": -1
    },
    {
-    "x": 0.575,
-    "y": 0.904,
+    "x": 0.879,
+    "y": 0.524,
     "size": "small",
-    "kind": "triple",
+    "kind": "armored",
+    "dir": 1
+   },
+   {
+    "x": 0.401,
+    "y": 0.855,
+    "size": "small",
+    "kind": "armored",
     "dir": 1
    }
   ]
  },
  {
-  "id": 48,
-  "name": "Skyline",
-  "city": 5,
+  "id": 62,
+  "name": "Broadway",
+  "city": 7,
   "par": 121.0,
   "platforms": [
    {
@@ -2757,1155 +3852,46 @@
   ],
   "bubbles": [
    {
-    "x": 0.654,
-    "y": 0.753,
-    "size": "large",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.21,
-    "y": 0.67,
-    "size": "medium",
-    "kind": "golden",
-    "dir": 1
-   },
-   {
-    "x": 0.612,
-    "y": 0.545,
-    "size": "small",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.862,
-    "y": 0.868,
-    "size": "medium",
-    "kind": "lightning",
-    "dir": 1
-   },
-   {
-    "x": 0.585,
-    "y": 0.386,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.247,
-    "y": 0.416,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 49,
-  "name": "Ferry",
-  "city": 6,
-  "par": 167.0,
-  "platforms": [
-   {
-    "x": 0.35,
-    "y": 0.35,
-    "w": 0.3
-   },
-   {
-    "x": 0.0,
-    "y": 0.6,
-    "w": 0.3
-   },
-   {
-    "x": 0.7,
-    "y": 0.6,
-    "w": 0.3
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.35
-   },
-   {
-    "x": 0.15,
-    "y0": 0.0,
-    "y1": 0.6
-   },
-   {
-    "x": 0.85,
-    "y0": 0.0,
-    "y1": 0.6
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.275,
-    "y": 0.75,
-    "size": "medium",
-    "kind": "lightning",
-    "dir": 1
-   },
-   {
-    "x": 0.803,
-    "y": 0.431,
-    "size": "medium",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.623,
-    "y": 0.622,
-    "size": "small",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.183,
-    "y": 0.441,
-    "size": "large",
-    "kind": "triple",
-    "dir": 1
-   },
-   {
-    "x": 0.479,
-    "y": 0.457,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 50,
-  "name": "Bondi",
-  "city": 6,
-  "par": 93.0,
-  "platforms": [
-   {
-    "x": 0.3,
-    "y": 0.25,
-    "w": 0.4
-   },
-   {
-    "x": 0.3,
-    "y": 0.5,
-    "w": 0.4
-   },
-   {
-    "x": 0.3,
-    "y": 0.75,
-    "w": 0.4
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.4,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.6,
-    "y0": 0.25,
-    "y1": 0.5
-   },
-   {
-    "x": 0.4,
-    "y0": 0.5,
-    "y1": 0.75
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.601,
-    "y": 0.381,
-    "size": "small",
-    "kind": "lightning",
-    "dir": 1
-   },
-   {
-    "x": 0.811,
-    "y": 0.628,
-    "size": "large",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.251,
-    "y": 0.608,
-    "size": "small",
-    "kind": "lightning",
-    "dir": -1
-   },
-   {
-    "x": 0.255,
-    "y": 0.332,
-    "size": "medium",
-    "kind": "armored",
-    "dir": 1
-   },
-   {
-    "x": 0.216,
-    "y": 0.881,
-    "size": "small",
-    "kind": "golden",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 51,
-  "name": "Koala",
-  "city": 6,
-  "par": 74.0,
-  "platforms": [
-   {
-    "x": 0.0,
-    "y": 0.25,
-    "w": 0.25
-   },
-   {
-    "x": 0.75,
-    "y": 0.25,
-    "w": 0.25
-   },
-   {
-    "x": 0.0,
-    "y": 0.5,
-    "w": 0.25
-   },
-   {
-    "x": 0.75,
-    "y": 0.5,
-    "w": 0.25
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.12,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.88,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.12,
-    "y0": 0.25,
-    "y1": 0.5
-   },
-   {
-    "x": 0.88,
-    "y0": 0.25,
-    "y1": 0.5
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.727,
-    "y": 0.391,
-    "size": "small",
-    "kind": "armored",
-    "dir": -1
-   },
-   {
-    "x": 0.557,
-    "y": 0.707,
-    "size": "small",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.209,
-    "y": 0.688,
-    "size": "small",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.858,
-    "y": 0.803,
-    "size": "small",
-    "kind": "armored",
-    "dir": -1
-   },
-   {
-    "x": 0.299,
-    "y": 0.566,
-    "size": "medium",
-    "kind": "flipped",
-    "dir": 1
-   }
-  ]
- },
- {
-  "id": 52,
-  "name": "Didgeridoo",
-  "city": 6,
-  "par": 85.0,
-  "platforms": [
-   {
-    "x": 0.05,
-    "y": 0.5,
-    "w": 0.25
-   },
-   {
-    "x": 0.7,
-    "y": 0.5,
-    "w": 0.25
-   },
-   {
-    "x": 0.35,
-    "y": 0.7,
-    "w": 0.3
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.17,
-    "y0": 0.0,
-    "y1": 0.5
-   },
-   {
-    "x": 0.83,
-    "y0": 0.0,
-    "y1": 0.5
-   },
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.7
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.682,
-    "y": 0.751,
-    "size": "small",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.691,
-    "y": 0.912,
-    "size": "small",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.455,
-    "y": 0.336,
-    "size": "small",
-    "kind": "golden",
-    "dir": -1
-   },
-   {
-    "x": 0.343,
-    "y": 0.851,
-    "size": "large",
-    "kind": "armored",
-    "dir": 1
-   },
-   {
-    "x": 0.529,
-    "y": 0.52,
-    "size": "small",
-    "kind": "plain",
-    "dir": 1
-   }
-  ]
- },
- {
-  "id": 53,
-  "name": "Harbour Bridge",
-  "city": 6,
-  "par": 97.0,
-  "platforms": [
-   {
-    "x": 0.0,
-    "y": 0.3,
-    "w": 0.2
-   },
-   {
-    "x": 0.8,
-    "y": 0.3,
-    "w": 0.2
-   },
-   {
-    "x": 0.3,
-    "y": 0.55,
-    "w": 0.4
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.1,
-    "y0": 0.0,
-    "y1": 0.3
-   },
-   {
-    "x": 0.9,
-    "y0": 0.0,
-    "y1": 0.3
-   },
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.55
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.581,
-    "y": 0.668,
-    "size": "medium",
-    "kind": "armored",
-    "dir": 1
-   },
-   {
-    "x": 0.724,
-    "y": 0.377,
-    "size": "medium",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.643,
-    "y": 0.856,
-    "size": "small",
-    "kind": "lightning",
-    "dir": 1
-   },
-   {
-    "x": 0.273,
-    "y": 0.915,
-    "size": "small",
-    "kind": "triple",
-    "dir": 1
-   },
-   {
-    "x": 0.171,
-    "y": 0.505,
-    "size": "medium",
-    "kind": "plain",
-    "dir": 1
-   }
-  ]
- },
- {
-  "id": 54,
-  "name": "Surf",
-  "city": 6,
-  "par": 213.0,
-  "platforms": [
-   {
-    "x": 0.0,
-    "y": 0.3,
-    "w": 0.3
-   },
-   {
-    "x": 0.35,
-    "y": 0.5,
-    "w": 0.3
-   },
-   {
-    "x": 0.7,
-    "y": 0.7,
-    "w": 0.3
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.15,
-    "y0": 0.0,
-    "y1": 0.3
-   },
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.5
-   },
-   {
-    "x": 0.85,
-    "y0": 0.0,
-    "y1": 0.7
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.145,
-    "y": 0.697,
-    "size": "medium",
-    "kind": "triple",
-    "dir": 1
-   },
-   {
-    "x": 0.634,
-    "y": 0.602,
-    "size": "medium",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.424,
-    "y": 0.828,
-    "size": "large",
-    "kind": "triple",
-    "dir": -1
-   },
-   {
-    "x": 0.802,
-    "y": 0.383,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.405,
-    "y": 0.582,
-    "size": "small",
-    "kind": "armored",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 55,
-  "name": "Outback",
-  "city": 6,
-  "par": 135.0,
-  "platforms": [
-   {
-    "x": 0.2,
-    "y": 0.25,
-    "w": 0.6
-   },
-   {
-    "x": 0.0,
-    "y": 0.55,
-    "w": 0.3
-   },
-   {
-    "x": 0.7,
-    "y": 0.55,
-    "w": 0.3
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.15,
-    "y0": 0.0,
-    "y1": 0.55
-   },
-   {
-    "x": 0.85,
-    "y0": 0.0,
-    "y1": 0.55
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.488,
-    "y": 0.415,
-    "size": "large",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.128,
-    "y": 0.693,
-    "size": "medium",
-    "kind": "triple",
-    "dir": -1
-   },
-   {
-    "x": 0.78,
-    "y": 0.788,
-    "size": "small",
-    "kind": "flipped",
-    "dir": 1
-   },
-   {
-    "x": 0.415,
-    "y": 0.687,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.67,
-    "y": 0.875,
-    "size": "medium",
-    "kind": "plain",
-    "dir": 1
-   }
-  ]
- },
- {
-  "id": 56,
-  "name": "Opera House",
-  "city": 6,
-  "par": 188.0,
-  "platforms": [
-   {
-    "x": 0.0,
-    "y": 0.4,
-    "w": 0.45
-   },
-   {
-    "x": 0.55,
-    "y": 0.65,
-    "w": 0.45
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.2,
-    "y0": 0.0,
-    "y1": 0.4
-   },
-   {
-    "x": 0.75,
-    "y0": 0.0,
-    "y1": 0.65
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.57,
-    "y": 0.522,
-    "size": "medium",
-    "kind": "armored",
-    "dir": 1
-   },
-   {
-    "x": 0.472,
-    "y": 0.787,
-    "size": "small",
-    "kind": "triple",
-    "dir": -1
-   },
-   {
-    "x": 0.655,
-    "y": 0.775,
-    "size": "medium",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.214,
-    "y": 0.648,
-    "size": "large",
-    "kind": "triple",
-    "dir": -1
-   },
-   {
-    "x": 0.791,
-    "y": 0.32,
-    "size": "small",
-    "kind": "armored",
-    "dir": 1
-   },
-   {
-    "x": 0.572,
-    "y": 0.336,
-    "size": "medium",
-    "kind": "armored",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 57,
-  "name": "Subway",
-  "city": 7,
-  "par": 86.0,
-  "platforms": [
-   {
-    "x": 0.0,
-    "y": 0.25,
-    "w": 0.25
-   },
-   {
-    "x": 0.75,
-    "y": 0.25,
-    "w": 0.25
-   },
-   {
-    "x": 0.0,
-    "y": 0.5,
-    "w": 0.25
-   },
-   {
-    "x": 0.75,
-    "y": 0.5,
-    "w": 0.25
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.12,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.88,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.12,
-    "y0": 0.25,
-    "y1": 0.5
-   },
-   {
-    "x": 0.88,
-    "y0": 0.25,
-    "y1": 0.5
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.658,
-    "y": 0.314,
+    "x": 0.766,
+    "y": 0.738,
     "size": "medium",
     "kind": "flipped",
     "dir": -1
    },
    {
-    "x": 0.44,
-    "y": 0.397,
-    "size": "small",
-    "kind": "flipped",
-    "dir": 1
-   },
-   {
-    "x": 0.158,
-    "y": 0.831,
-    "size": "medium",
-    "kind": "golden",
-    "dir": 1
-   },
-   {
-    "x": 0.337,
-    "y": 0.655,
-    "size": "small",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.87,
-    "y": 0.886,
-    "size": "medium",
-    "kind": "flipped",
-    "dir": 1
-   }
-  ]
- },
- {
-  "id": 58,
-  "name": "Bagel",
-  "city": 7,
-  "par": 139.0,
-  "platforms": [
-   {
-    "x": 0.35,
-    "y": 0.35,
-    "w": 0.3
-   },
-   {
-    "x": 0.0,
-    "y": 0.6,
-    "w": 0.3
-   },
-   {
-    "x": 0.7,
-    "y": 0.6,
-    "w": 0.3
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.35
-   },
-   {
-    "x": 0.15,
-    "y0": 0.0,
-    "y1": 0.6
-   },
-   {
-    "x": 0.85,
-    "y0": 0.0,
-    "y1": 0.6
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.309,
-    "y": 0.785,
-    "size": "large",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.824,
-    "y": 0.334,
-    "size": "medium",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.489,
-    "y": 0.641,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.709,
-    "y": 0.766,
-    "size": "large",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.136,
-    "y": 0.39,
-    "size": "small",
-    "kind": "plain",
-    "dir": 1
-   }
-  ]
- },
- {
-  "id": 59,
-  "name": "Yellow Cab",
-  "city": 7,
-  "par": 185.0,
-  "platforms": [
-   {
-    "x": 0.05,
-    "y": 0.5,
-    "w": 0.25
-   },
-   {
-    "x": 0.7,
-    "y": 0.5,
-    "w": 0.25
-   },
-   {
-    "x": 0.35,
-    "y": 0.7,
-    "w": 0.3
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.17,
-    "y0": 0.0,
-    "y1": 0.5
-   },
-   {
-    "x": 0.83,
-    "y0": 0.0,
-    "y1": 0.5
-   },
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.7
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.649,
-    "y": 0.812,
-    "size": "medium",
-    "kind": "lightning",
-    "dir": -1
-   },
-   {
-    "x": 0.466,
-    "y": 0.434,
-    "size": "medium",
-    "kind": "armored",
-    "dir": -1
-   },
-   {
-    "x": 0.194,
-    "y": 0.801,
-    "size": "large",
-    "kind": "triple",
-    "dir": 1
-   },
-   {
-    "x": 0.55,
-    "y": 0.342,
-    "size": "small",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.816,
-    "y": 0.335,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 60,
-  "name": "Brooklyn",
-  "city": 7,
-  "par": 105.0,
-  "platforms": [
-   {
-    "x": 0.3,
-    "y": 0.25,
-    "w": 0.4
-   },
-   {
-    "x": 0.3,
-    "y": 0.5,
-    "w": 0.4
-   },
-   {
-    "x": 0.3,
-    "y": 0.75,
-    "w": 0.4
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.4,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.6,
-    "y0": 0.25,
-    "y1": 0.5
-   },
-   {
-    "x": 0.4,
-    "y0": 0.5,
-    "y1": 0.75
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.574,
-    "y": 0.568,
-    "size": "small",
-    "kind": "lightning",
-    "dir": 1
-   },
-   {
-    "x": 0.222,
-    "y": 0.492,
-    "size": "small",
-    "kind": "flipped",
-    "dir": -1
-   },
-   {
-    "x": 0.186,
-    "y": 0.661,
-    "size": "medium",
-    "kind": "triple",
-    "dir": 1
-   },
-   {
-    "x": 0.23,
-    "y": 0.32,
+    "x": 0.258,
+    "y": 0.712,
     "size": "medium",
     "kind": "plain",
     "dir": -1
    },
    {
-    "x": 0.877,
-    "y": 0.658,
+    "x": 0.277,
+    "y": 0.356,
     "size": "small",
     "kind": "armored",
-    "dir": -1
-   }
-  ]
- },
- {
-  "id": 61,
-  "name": "Rooftop",
-  "city": 7,
-  "par": 141.0,
-  "platforms": [
-   {
-    "x": 0.0,
-    "y": 0.3,
-    "w": 0.2
-   },
-   {
-    "x": 0.8,
-    "y": 0.3,
-    "w": 0.2
-   },
-   {
-    "x": 0.3,
-    "y": 0.55,
-    "w": 0.4
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.1,
-    "y0": 0.0,
-    "y1": 0.3
-   },
-   {
-    "x": 0.9,
-    "y0": 0.0,
-    "y1": 0.3
-   },
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.55
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.496,
-    "y": 0.676,
-    "size": "large",
-    "kind": "lightning",
-    "dir": -1
-   },
-   {
-    "x": 0.6,
-    "y": 0.38,
-    "size": "medium",
-    "kind": "plain",
     "dir": 1
    },
    {
-    "x": 0.836,
-    "y": 0.637,
-    "size": "medium",
+    "x": 0.815,
+    "y": 0.445,
+    "size": "small",
     "kind": "triple",
     "dir": -1
    },
    {
-    "x": 0.748,
-    "y": 0.831,
-    "size": "small",
-    "kind": "flipped",
-    "dir": 1
-   },
-   {
-    "x": 0.336,
-    "y": 0.825,
-    "size": "small",
-    "kind": "flipped",
-    "dir": 1
-   },
-   {
-    "x": 0.52,
-    "y": 0.89,
-    "size": "medium",
-    "kind": "plain",
-    "dir": 1
-   }
-  ]
- },
- {
-  "id": 62,
-  "name": "Broadway",
-  "city": 7,
-  "par": 127.0,
-  "platforms": [
-   {
-    "x": 0.2,
-    "y": 0.25,
-    "w": 0.6
-   },
-   {
-    "x": 0.0,
-    "y": 0.55,
-    "w": 0.3
-   },
-   {
-    "x": 0.7,
-    "y": 0.55,
-    "w": 0.3
-   }
-  ],
-  "ladders": [
-   {
-    "x": 0.5,
-    "y0": 0.0,
-    "y1": 0.25
-   },
-   {
-    "x": 0.15,
-    "y0": 0.0,
-    "y1": 0.55
-   },
-   {
-    "x": 0.85,
-    "y0": 0.0,
-    "y1": 0.55
-   }
-  ],
-  "bubbles": [
-   {
-    "x": 0.874,
-    "y": 0.4,
-    "size": "small",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.584,
-    "y": 0.317,
-    "size": "small",
-    "kind": "flipped",
-    "dir": 1
-   },
-   {
-    "x": 0.257,
-    "y": 0.819,
+    "x": 0.646,
+    "y": 0.49,
     "size": "small",
     "kind": "armored",
-    "dir": -1
+    "dir": 1
    },
    {
-    "x": 0.355,
-    "y": 0.927,
-    "size": "small",
-    "kind": "flipped",
-    "dir": -1
-   },
-   {
-    "x": 0.744,
-    "y": 0.683,
-    "size": "medium",
-    "kind": "triple",
-    "dir": -1
-   },
-   {
-    "x": 0.517,
-    "y": 0.507,
+    "x": 0.486,
+    "y": 0.86,
     "size": "large",
     "kind": "flipped",
-    "dir": 1
+    "dir": -1
    }
   ]
  },
@@ -3913,7 +3899,7 @@
   "id": 63,
   "name": "Central Park",
   "city": 7,
-  "par": 69.0,
+  "par": 119.0,
   "platforms": [
    {
     "x": 0.0,
@@ -3950,36 +3936,36 @@
   ],
   "bubbles": [
    {
-    "x": 0.322,
-    "y": 0.746,
+    "x": 0.189,
+    "y": 0.651,
+    "size": "large",
+    "kind": "plain",
+    "dir": -1
+   },
+   {
+    "x": 0.45,
+    "y": 0.399,
     "size": "small",
+    "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.447,
+    "y": 0.863,
+    "size": "large",
     "kind": "golden",
-    "dir": -1
+    "dir": 1
    },
    {
-    "x": 0.721,
-    "y": 0.344,
+    "x": 0.849,
+    "y": 0.518,
     "size": "small",
-    "kind": "plain",
+    "kind": "triple",
     "dir": -1
    },
    {
-    "x": 0.7,
-    "y": 0.804,
-    "size": "medium",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.909,
-    "y": 0.761,
-    "size": "small",
-    "kind": "armored",
-    "dir": -1
-   },
-   {
-    "x": 0.119,
-    "y": 0.501,
+    "x": 0.728,
+    "y": 0.574,
     "size": "small",
     "kind": "plain",
     "dir": 1
@@ -3990,7 +3976,7 @@
   "id": 64,
   "name": "Skyscraper",
   "city": 7,
-  "par": 120.0,
+  "par": 108.0,
   "platforms": [
    {
     "x": 0.0,
@@ -4017,45 +4003,45 @@
   ],
   "bubbles": [
    {
-    "x": 0.282,
-    "y": 0.635,
-    "size": "small",
-    "kind": "plain",
-    "dir": 1
-   },
-   {
-    "x": 0.591,
-    "y": 0.317,
-    "size": "small",
-    "kind": "flipped",
-    "dir": -1
-   },
-   {
-    "x": 0.568,
-    "y": 0.694,
+    "x": 0.212,
+    "y": 0.696,
     "size": "small",
     "kind": "armored",
     "dir": 1
    },
    {
-    "x": 0.187,
-    "y": 0.8,
-    "size": "large",
-    "kind": "plain",
+    "x": 0.859,
+    "y": 0.484,
+    "size": "small",
+    "kind": "lightning",
     "dir": -1
    },
    {
-    "x": 0.492,
-    "y": 0.839,
-    "size": "large",
-    "kind": "plain",
-    "dir": -1
-   },
-   {
-    "x": 0.825,
-    "y": 0.509,
+    "x": 0.211,
+    "y": 0.875,
     "size": "medium",
     "kind": "plain",
+    "dir": 1
+   },
+   {
+    "x": 0.115,
+    "y": 0.775,
+    "size": "small",
+    "kind": "lightning",
+    "dir": 1
+   },
+   {
+    "x": 0.471,
+    "y": 0.868,
+    "size": "medium",
+    "kind": "triple",
+    "dir": -1
+   },
+   {
+    "x": 0.332,
+    "y": 0.624,
+    "size": "small",
+    "kind": "flipped",
     "dir": 1
    }
   ]

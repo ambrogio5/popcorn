@@ -19,6 +19,9 @@ final class GameModel {
     static let pickupDropChance = 0.06
     static let lightningRange = 3.5
     static let foldPause = 1.0
+    /// Seconds at the start of a level during which bubbles cannot hurt anyone.
+    static let startGrace = 2.0
+    static let startInvulnerability = 2.5
     static let celebration = 0.8
     static let celebrationTimeScale = 0.4
     static let fixedStep = 1.0 / 120.0
@@ -74,12 +77,12 @@ final class GameModel {
         buildStatic()
         players = (0..<self.playerCount).map { index in
             var p = Player(index: index, pos: spec.spawnPoint(player: index, of: self.playerCount))
-            p.invulnerable = 1.5
+            p.invulnerable = GameModel.startInvulnerability
             return p
         }
         for b in level.bubbles {
             spawnBubble(at: spec.point(nx: b.x, ny: b.y), size: b.size, kind: b.kind,
-                        vx: Double(b.dir) * b.size.horizontalSpeed, vy: 0, grace: 1.0)
+                        vx: Double(b.dir) * b.size.horizontalSpeed * spec.horizontalScale, vy: 0, grace: GameModel.startGrace)
         }
         if case .storm = mode {
             // One starter in each outer lane, so they never open the game stacked on each other.
@@ -132,6 +135,7 @@ final class GameModel {
             p.x = min(max(p.x, r), spec.width - r)
             p.y = min(max(p.y, r), spec.height - r)
             bubbles[i].pos = p
+            bubbles[i].vel.x *= spec.horizontalScale / old.horizontalScale
             bubbles[i].vel.y *= sy
             bubbles[i].spawnGrace = max(bubbles[i].spawnGrace, 0.5)
         }
@@ -242,7 +246,7 @@ final class GameModel {
         } else {
             p.onLadder = false
             let prevY = p.pos.y
-            p.pos.x += input.moveX * Player.speed * dt
+            p.pos.x += input.moveX * Player.speed * spec.horizontalScale * dt
             p.pos.x = min(max(p.pos.x, Player.width / 2), spec.width - Player.width / 2)
 
             if abs(input.moveY) > 0.5, p.grounded, let li = ladderIndex(near: p.pos, direction: input.moveY) {
@@ -485,7 +489,7 @@ final class GameModel {
     private func spawnChildren(of parent: Bubble, size: BubbleSize) {
         let kind: BubbleKind = parent.kind == .flipped ? .flipped : .plain
         let kick = 0.45 * bounceSpeed(for: size) * (parent.flipped ? -1 : 1)
-        let s = size.horizontalSpeed
+        let s = size.horizontalSpeed * spec.horizontalScale
         let directions: [(Double, Double)] = parent.kind == .triple ? [(-s, kick), (0, kick * 1.3), (s, kick)] : [(-s, kick), (s, kick)]
         for (vx, vy) in directions {
             let offset = vx == 0 ? 0 : (vx > 0 ? 0.15 : -0.15)
@@ -648,6 +652,6 @@ final class GameModel {
         let x = r + 0.5 + (lane.lowerBound + randomUnit() * (lane.upperBound - lane.lowerBound)) * span
         let y = kind == .flipped ? spec.height * 0.55 : spec.height - r - 0.1
         let dir: Double = randomUnit() < 0.5 ? -1 : 1
-        return spawnBubble(at: Vec2(x: x, y: y), size: size, kind: kind, vx: dir * size.horizontalSpeed, vy: 0, grace: 1.0)
+        return spawnBubble(at: Vec2(x: x, y: y), size: size, kind: kind, vx: dir * size.horizontalSpeed * spec.horizontalScale, vy: 0, grace: 1.0)
     }
 }

@@ -73,6 +73,14 @@ final class ArenaMappingTests: XCTestCase {
         XCTAssertEqual(model.transitionPause, 0)
     }
 
+    func testBestModePrefersTheShapeThatFillsASquatCoverScreen() {
+        let insets = UIEdgeInsets(top: 59, left: 0, bottom: 34, right: 0)
+        XCTAssertEqual(GameLayout.bestMode(size: CGSize(width: 393, height: 852), insets: insets, playerCount: 1), .tall)     // iPhone
+        XCTAssertEqual(GameLayout.bestMode(size: CGSize(width: 466, height: 678), insets: insets, playerCount: 1), .wide)     // Duo closed: tall would be a narrow strip
+        XCTAssertEqual(GameLayout.bestMode(size: CGSize(width: 951, height: 669), insets: insets, playerCount: 2), .wide)     // Duo open
+        XCTAssertEqual(GameLayout.bestMode(size: CGSize(width: 669, height: 951), insets: insets, playerCount: 1), .upright)  // Duo open, upright
+    }
+
     func testGameLayoutKeepsArenaInsideScreenAboveControls() {
         let spec = ArenaSpec(mode: .tall)
         let layout = GameLayout.compute(size: CGSize(width: 393, height: 852),

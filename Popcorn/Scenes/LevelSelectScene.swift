@@ -79,7 +79,8 @@ final class LevelSelectScene: BaseScene {
         let gridW = CGFloat(columns) * tileW + CGFloat(columns - 1) * 14
         let gridH = CGFloat(rows) * tileH + CGFloat(max(rows - 1, 0)) * 14
         let originX = centerX - gridW / 2 + tileW / 2
-        let originY = gridTop - (availableH - gridH) / 2 - tileH / 2
+        // Sit the grid a little above centre; the sky above the header already reads as empty.
+        let originY = gridTop - (availableH - gridH) / 3 - tileH / 2
 
         for (i, level) in levels.enumerated() {
             let col = i % columns
