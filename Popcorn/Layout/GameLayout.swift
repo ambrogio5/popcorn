@@ -27,6 +27,32 @@ struct GameLayout {
         }
     }
 
+    /// A different shape has to fill this much more of the screen than the aspect-based default
+    /// before it is chosen instead. Keeps phones on the tall arena while letting the squat Duo
+    /// cover screen, where the tall arena would be a narrow strip, use the wide one.
+    static let fillAdvantage: CGFloat = 1.4
+
+    /// The arena shape to play in: the aspect-based default unless another shape makes a much
+    /// bigger arena once the HUD, controls and safe areas have taken their share.
+    static func bestMode(size: CGSize, insets: UIEdgeInsets, playerCount: Int) -> LayoutMode {
+        let preferred = LayoutMode.forSize(width: Double(size.width), height: Double(size.height))
+        func area(_ mode: LayoutMode) -> CGFloat {
+            let layout = compute(size: size, insets: insets, spec: ArenaSpec(mode: mode), playerCount: playerCount)
+            return layout.arenaSize.width * layout.arenaSize.height
+        }
+        let preferredArea = area(preferred)
+        var best = preferred
+        var bestArea = preferredArea
+        for mode in LayoutMode.allCases where mode != preferred {
+            let candidate = area(mode)
+            if candidate > bestArea && candidate >= preferredArea * fillAdvantage {
+                best = mode
+                bestArea = candidate
+            }
+        }
+        return best
+    }
+
     static func compute(size: CGSize, insets: UIEdgeInsets, spec: ArenaSpec, playerCount: Int) -> GameLayout {
         var layout = GameLayout()
         layout.sceneSize = size

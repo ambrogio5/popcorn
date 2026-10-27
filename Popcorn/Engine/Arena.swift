@@ -60,6 +60,10 @@ struct ArenaSpec: Equatable {
         }
     }
 
+    /// Horizontal speeds are tuned for the 9-unit-wide phone arena; wider arenas scale them up so
+    /// a bubble (or the player) takes the same time to cross the screen whatever its shape.
+    var horizontalScale: Double { width / 9 }
+
     func point(nx: Double, ny: Double) -> Vec2 { Vec2(x: nx * width, y: ny * height) }
 
     func normalized(_ p: Vec2) -> Vec2 { Vec2(x: p.x / width, y: p.y / height) }

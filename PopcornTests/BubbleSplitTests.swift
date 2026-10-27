@@ -104,6 +104,16 @@ final class BubbleSplitTests: XCTestCase {
         XCTAssertEqual(maxY, expectedApex, accuracy: 0.3)
     }
 
+    func testWiderArenasScaleHorizontalSpeedSoCrossingTimeIsConstant() {
+        let lvl = Level(id: 97, name: "Speed", city: 0, par: 30, platforms: [], ladders: [],
+                        bubbles: [LevelBubble(x: 0.5, y: 0.8, size: .large, kind: .plain, dir: 1)])
+        let tall = GameModel(mode: .level(lvl), layout: .tall, playerCount: 1, seed: 1)
+        let wide = GameModel(mode: .level(lvl), layout: .wide, playerCount: 1, seed: 1)
+        XCTAssertEqual(tall.bubbles[0].vel.x, BubbleSize.large.horizontalSpeed, accuracy: 1e-9)
+        XCTAssertEqual(wide.bubbles[0].vel.x, BubbleSize.large.horizontalSpeed * 16 / 9, accuracy: 1e-9)
+        XCTAssertEqual(tall.bubbles[0].vel.x / tall.spec.width, wide.bubbles[0].vel.x / wide.spec.width, accuracy: 1e-9)
+    }
+
     func testStormStartsWithItsTwoBubblesApart() {
         for seed in 0..<40 {
             for layout in LayoutMode.allCases {
@@ -126,7 +136,7 @@ final class BubbleSplitTests: XCTestCase {
         let lvl = Level(id: 98, name: "Hit", city: 0, par: 30, platforms: [], ladders: [], bubbles: [bubble])
         let model = GameModel(mode: .level(lvl), layout: .tall, playerCount: 1, seed: 10)
         var events: [GameEvent] = []
-        for _ in 0..<(60 * 3) {
+        for _ in 0..<(60 * 5) {
             model.update(dt: 1.0 / 60)
             events += model.drainEvents()
         }

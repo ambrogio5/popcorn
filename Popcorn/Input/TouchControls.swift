@@ -90,7 +90,7 @@ final class TouchControls {
             if playerCount > 1 {
                 let tag = SKLabelNode(fontNamed: Fonts.medium)
                 tag.text = String(localized: "P\(p + 1)")
-                tag.fontSize = 12
+                tag.fontSize = 14
                 tag.fontColor = tint
                 tag.position = CGPoint(x: (stickZones[p].midX + fireZones[p].midX) / 2, y: strip.maxY - 16)
                 node.addChild(tag)

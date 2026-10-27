@@ -130,7 +130,7 @@ enum LevelValidator {
     static let minPlatformY = 0.2
     static let maxPlatformY = 0.78
     static let minVerticalGap = 0.2
-    static let spawnClearance = 2.0
+    static let spawnClearance = 3.0
 
     static func problems(in level: Level) -> [String] {
         var problems: [String] = []

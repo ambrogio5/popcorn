@@ -47,7 +47,7 @@ final class GameScene: BaseScene {
             cityIndex = Int.random(in: 0..<max(content.cities.count, 1))
         }
         city = content.cities[cityIndex]
-        model = GameModel(mode: mode, layout: LayoutMode.forSize(width: Double(size.width), height: Double(size.height)), playerCount: playerCount)
+        model = GameModel(mode: mode, layout: GameLayout.bestMode(size: size, insets: .zero, playerCount: playerCount), playerCount: playerCount)
         super.init(size: size)
         scaleMode = .resizeFill
     }
@@ -109,13 +109,17 @@ final class GameScene: BaseScene {
     }
 
     override func layoutDidChange() {
-        let newMode = LayoutMode.forSize(width: Double(size.width), height: Double(size.height))
+        let newMode = GameLayout.bestMode(size: size, insets: safeInsets, playerCount: playerCount)
         if newMode != model.spec.mode {
+            // Before the first frame this is just the safe area arriving, not a fold: no toast.
+            let announce = model.elapsed > 0
             model.relayout(to: newMode)
-            switch newMode {
-            case .wide: showToast(String(localized: "Unfolded — wide arena"))
-            case .upright: showToast(String(localized: "Unfolded — upright arena"))
-            case .tall: showToast(String(localized: "Folded — tall arena"))
+            if announce {
+                switch newMode {
+                case .wide: showToast(String(localized: "Unfolded — wide arena"))
+                case .upright: showToast(String(localized: "Unfolded — upright arena"))
+                case .tall: showToast(String(localized: "Folded — tall arena"))
+                }
             }
         }
         layout = GameLayout.compute(size: size, insets: safeInsets, spec: model.spec, playerCount: playerCount)

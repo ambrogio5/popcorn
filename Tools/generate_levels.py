@@ -20,7 +20,7 @@ PLATFORM_THICKNESS = 0.4
 MIN_PLATFORM_WIDTH = 0.15
 MIN_PLATFORM_Y, MAX_PLATFORM_Y = 0.2, 0.78
 MIN_VERTICAL_GAP = 0.2
-SPAWN_CLEARANCE = 2.0
+SPAWN_CLEARANCE = 3.0
 
 CITIES = [
     {"name": "Celerina", "skyTop": "#0F1B3D", "skyBottom": "#7FB2E5", "ground": "#F2F6FA", "accent": "#FFD166"},
