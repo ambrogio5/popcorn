@@ -158,8 +158,22 @@ Deliver each asset as a separate file named exactly as listed.
 
 ## 4. Where the files go
 
-Drop the PNGs into `Popcorn/Assets.xcassets` as image sets, then make each `TextureFactory`
-function return `SKTexture(imageNamed:)` for its asset instead of drawing. The call sites in the
-scenes do not change. Platform and ladder are drawn as paths in `GameScene.rebuildStatic`; swap
-those for tiled sprites. Skylines replace the block loop in `TextureFactory.background`, which
-should keep drawing the gradient from the two sky colours in `cities.json`.
+Drop the PNGs into `Popcorn/Assets.xcassets` as image sets named exactly as in section 1.
+`TextureFactory` already looks for those names first and only draws its Core Graphics placeholder
+when an image set is missing, so each asset switches over the moment its image set exists; no code
+changes and no call-site changes. Names it looks for today:
+
+- `bubble-plain-large` … `bubble-plain-tiny`, `bubble-flipped-large` … `bubble-flipped-tiny`,
+  `bubble-armored`, `bubble-lightning`, `bubble-triple`, `bubble-golden`
+- `player-1`, `player-2` (standing frame; the extra frames are not wired up yet)
+- `pickup-double`, `pickup-sticky`, `pickup-rapid`, `pickup-shield`, `pickup-freeze`
+- `star-on`, `star-off`, `heart`, `particle-soft`
+- `skyline-celerina`, `skyline-milano`, `skyline-paris`, `skyline-cairo`, `skyline-tokyo`,
+  `skyline-hongkong`, `skyline-sydney`, `skyline-newyork`: the tileable strip, drawn across the
+  bottom third of the screen over the gradient the game still draws from the two sky colours
+  in `cities.json`.
+
+Still to wire up when the art arrives: platform and ladder (drawn as paths in
+`GameScene.rebuildStatic`, to become tiled sprites), the harpoon tip and line, the pause, fire and
+stick icons, `particle-spark`, and the player animation frames. The app icon goes into
+`AppIcon.appiconset` in place of the generated one.
