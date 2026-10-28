@@ -79,6 +79,24 @@ final class ArenaMappingTests: XCTestCase {
         XCTAssertEqual(GameLayout.bestMode(size: CGSize(width: 466, height: 678), insets: insets, playerCount: 1), .wide)     // Duo closed: tall would be a narrow strip
         XCTAssertEqual(GameLayout.bestMode(size: CGSize(width: 951, height: 669), insets: insets, playerCount: 2), .wide)     // Duo open
         XCTAssertEqual(GameLayout.bestMode(size: CGSize(width: 669, height: 951), insets: insets, playerCount: 1), .upright)  // Duo open, upright
+
+        // What the simulator's cover screen reports: no top inset, the home indicator, and an
+        // 84 pt camera inset down the right edge. The camera only narrows the HUD, so wide wins.
+        let cover = UIEdgeInsets(top: 0, left: 0, bottom: 34, right: 84)
+        XCTAssertEqual(GameLayout.bestMode(size: CGSize(width: 466, height: 678), insets: cover, playerCount: 1), .wide)
+        XCTAssertEqual(GameLayout.bestMode(size: CGSize(width: 466, height: 678), insets: cover, playerCount: 2), .wide)
+    }
+
+    func testSideInsetsOnlyNarrowTheHUD() {
+        let cover = UIEdgeInsets(top: 0, left: 0, bottom: 34, right: 84)
+        let layout = GameLayout.compute(size: CGSize(width: 466, height: 678), insets: cover,
+                                        spec: ArenaSpec(mode: .wide), playerCount: 1)
+        XCTAssertEqual(layout.hudRect.maxX, 466 - 84 - GameLayout.margin, accuracy: 1e-6)
+        XCTAssertEqual(layout.controlsRect.minX, 0)
+        XCTAssertEqual(layout.controlsRect.width, 466)
+        XCTAssertEqual(layout.arenaRect.midX, 233, accuracy: 1e-6)
+        XCTAssertEqual(layout.arenaSize.width, 450, accuracy: 1e-6)   // 16 units of 28.125 pt
+        XCTAssertGreaterThanOrEqual(layout.arenaRect.minY, layout.controlsRect.maxY)
     }
 
     func testGameLayoutKeepsArenaInsideScreenAboveControls() {
