@@ -42,6 +42,8 @@ Fold mid-game (level 1, two players): [closed](fold-before-closed.png) →
    the cover screen should be fine on the device, but nobody has seen it yet, and the screenshot
    test cannot show it until it can inject insets. Suggested: give `BaseScene` an optional inset
    override used only by `ScreenshotTests`, and render the Duo shapes with realistic insets.
+   *Refuted by the simulator check below (Check A): the cover screen reports insets of
+   0 / 0 / 34 / 84, not 59 / 34, and with those the tall strip wins.*
 2. **Standing still at the spawn gets you hit the instant invulnerability ends.** With the engine's
    current numbers (2.0 s bubble grace, 2.5 s player invulnerability) a player who does nothing is
    hit at exactly 2.5 s in 22 of the 384 level/shape/player-count combinations, because a bubble is
@@ -72,7 +74,8 @@ Fold mid-game (level 1, two players): [closed](fold-before-closed.png) →
    builds the model with zero insets (tall), then the first `layoutDidChange` sees the real insets,
    switches to wide and calls `GameModel.relayout`, which sets the 1 s fold pause even though this
    is not a fold. Not visible in these frames (zero insets); needs a device or the override from
-   item 1 to confirm.
+   item 1 to confirm. *Not reproduced on the simulator (Check B below): with the real insets the
+   first layout keeps the mode, so `relayout` is never called.*
 
 ## Engine numbers (phone shape, 9 × 16 units)
 
