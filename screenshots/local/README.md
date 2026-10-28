@@ -234,7 +234,8 @@ bubble sizes all felt right in the captures; the start and the respawns are what
    `UIEdgeInsets(top: 0, left: 0, bottom: 34, right: 84)` to `ArenaMappingTests` and
    `ScreenshotTests` as the Duo-closed case; the 59 / 34 case is a phone, not the cover screen.
    Alternative that keeps a portrait feel: `fillAdvantage` 1.4 → 1.3 and the cover plays upright,
-   322 × 430 pt. The level-select title should be centred on the inset area (x = 191 on the cover)
+   322 × 430 pt. Done on branch `claude/cover-screen-layout`:
+   [level 25, two players, cover screen](sim/duo-closed-level25-2p-cover-layout.png) now plays wide. The level-select title should be centred on the inset area (x = 191 on the cover)
    or the `›` moved to `size.width − 44`.
 3. **Safe starts and respawns.** `startInvulnerability` 2.5 → 4.0 s and `startGrace` 2.0 → 3.0 s;
    on respawn, keep the player invulnerable while any bubble overlaps the spawn box (cap 4 s),
