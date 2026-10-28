@@ -53,7 +53,7 @@ Fold mid-game (level 1, two players): [closed](fold-before-closed.png) →
    matches a sweep run through the real engine case for case (299 rows, same times to 0.1 s).
 3. **A chase-and-shoot bot clears only 37 of 64 levels solo on the phone shape** (36 of them under
    par; it never climbs ladders, so bubbles trapped above platforms defeat it). That is expected for
-   a dumb bot, but it also gets hit in the first 5 s on 34 levels despite dodging, which points the
+   a dumb bot, but it also gets hit in the first 5 s on 38 levels despite dodging, which points the
    same way as item 2. Level 1 takes the bot 7.0 s with one hit (par 50 s).
 4. **Decorative menu bubbles still read through the button labels** (`menu-duo-closed.png`, the
    small bubble on "Players: 1"; `menu-duo-open.png`, under "Players: 1"). They are behind the
