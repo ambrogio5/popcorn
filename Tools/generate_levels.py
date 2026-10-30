@@ -11,6 +11,9 @@ import random
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from spawn_sweep import ARENAS as SWEEP_ARENAS, SAFE_START, first_hit  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "Popcorn" / "Content"
 
@@ -187,7 +190,7 @@ def weighted(rng, table):
 
 def place_bubbles(rng, level, count, plan):
     """Random valid starting positions; retries until the validator is happy."""
-    for _attempt in range(3000):
+    for _attempt in range(20000):
         bubbles = []
         for _ in range(count):
             size = weighted(rng, plan["sizes"])
@@ -198,9 +201,16 @@ def place_bubbles(rng, level, count, plan):
             y = rng.uniform(0.3, 1 - r / 12.0 - 0.02)
             bubbles.append({"x": round(x, 3), "y": round(y, 3), "size": size, "kind": kind, "dir": rng.choice([-1, 1])})
         level["bubbles"] = bubbles
-        if not validate(level):
+        if not validate(level) and safe_start(level):
             return True
     return False
+
+
+def safe_start(level):
+    """No bubble may reach a player who stands still at the spawn before SAFE_START seconds, in
+    any arena shape and player count. Mirrored by LevelLoaderTests against the real engine."""
+    return all(first_hit(level, mode, players, SAFE_START) is None
+               for mode in SWEEP_ARENAS for players in (1, 2))
 
 
 def build():

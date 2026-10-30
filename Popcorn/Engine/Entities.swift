@@ -62,6 +62,9 @@ struct Player: Equatable {
     var alive = true
     var respawnTimer = 0.0
     var invulnerable = 0.0
+    /// Extra shield time already spent waiting for a bubble to move off the spawn (see
+    /// `GameModel.overlapGraceCap`). Reset on every (re)spawn.
+    var overlapGrace = 0.0
     var shield = false
     var weapon = Weapon.normal
     var weaponTimer = 0.0

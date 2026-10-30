@@ -2,12 +2,12 @@
 """Diagnostic: which levels knock down a player who does nothing after the level starts?
 
 Ports the bubble physics of Engine/GameModel.swift (gravity, wall and platform bounces, fixed apex
-per size, width-scaled horizontal speed, the 2 s starting grace and the 2.5 s starting
+per size, width-scaled horizontal speed, the 3 s starting grace and the 4 s starting
 invulnerability) and plays every level in every arena shape with the players standing still at
 their spawn points. Prints the first hit per level/shape/player
 count within the horizon. Harpoons, pickups and input are not simulated.
 
-    python3 Tools/spawn_sweep.py            # 4 s horizon
+    python3 Tools/spawn_sweep.py            # 5 s horizon: the generator rejects any hit in it
     python3 Tools/spawn_sweep.py 8          # longer horizon
 
 Keep the constants below in step with GameModel, BubbleSize, Player and ArenaSpec.
@@ -28,8 +28,9 @@ GRAVITY = 14.0
 STEP = 1.0 / 120.0
 PLATFORM_THICKNESS = 0.4
 PLAYER_W, PLAYER_H = 0.9, 1.4
-START_INVULNERABLE = 2.5   # GameModel.startInvulnerability
-SPAWN_GRACE = 2.0          # GameModel.startGrace
+START_INVULNERABLE = 4.0   # GameModel.startInvulnerability
+SPAWN_GRACE = 3.0          # GameModel.startGrace
+SAFE_START = 5.0           # generate_levels.py rejects a level that hits a standing player before this
 
 
 def bounce_speed(size, height):
@@ -106,7 +107,7 @@ def first_hit(level, mode, players, horizon):
 
 
 def main():
-    horizon = float(sys.argv[1]) if len(sys.argv) > 1 else 4.0
+    horizon = float(sys.argv[1]) if len(sys.argv) > 1 else SAFE_START
     levels = json.loads(LEVELS.read_text())
     rows = []
     for level in levels:
