@@ -6,7 +6,11 @@ import UIKit
 class BaseScene: SKScene {
     private(set) var isSetUp = false
 
-    var safeInsets: UIEdgeInsets { view?.safeAreaInsets ?? .zero }
+    /// Set by `ScreenshotTests` to render a shape with the insets the device reports, since a bare
+    /// `UIWindow` has none. Nil in the app.
+    var insetOverride: UIEdgeInsets?
+
+    var safeInsets: UIEdgeInsets { insetOverride ?? view?.safeAreaInsets ?? .zero }
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
