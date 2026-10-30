@@ -57,11 +57,13 @@ final class LevelSelectScene: BaseScene {
         content.addChild(pageLabel)
 
         let prev = makeButton("‹", name: "btn.prev", width: 48, height: 48, primary: false, fontSize: 28)
-        prev.position = CGPoint(x: insets.left + 44, y: cityLabel.position.y)
+        // The page arrows sit well below the status bar and the Duo camera, so they ignore the side
+        // insets (84 pt on the cover screen) that would push the next arrow into the city name.
+        prev.position = CGPoint(x: 44, y: cityLabel.position.y)
         prev.alpha = page > 0 ? 1 : 0.3
         content.addChild(prev)
         let next = makeButton("›", name: "btn.next", width: 48, height: 48, primary: false, fontSize: 28)
-        next.position = CGPoint(x: size.width - insets.right - 44, y: cityLabel.position.y)
+        next.position = CGPoint(x: size.width - 44, y: cityLabel.position.y)
         next.alpha = page < cities.count - 1 ? 1 : 0.3
         content.addChild(next)
 

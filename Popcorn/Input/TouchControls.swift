@@ -9,6 +9,10 @@ final class TouchControls {
     private(set) var inputs: [PlayerInput] = [PlayerInput(), PlayerInput()]
     private var playerCount = 1
     private var stickZones: [CGRect] = []
+    /// Where the stick base rests and where the fire button sits: near the thumbs, not necessarily
+    /// in the middle of the touch zones.
+    private var stickHomes: [CGPoint] = []
+    private var fireHomes: [CGPoint] = []
     private var fireZones: [CGRect] = []
     private var stripRect: CGRect = .zero
     private var sceneSize: CGSize = .zero
@@ -41,12 +45,19 @@ final class TouchControls {
             let half = strip.width / 2
             stickZones = [CGRect(x: strip.minX, y: strip.minY, width: half, height: strip.height)]
             fireZones = [CGRect(x: strip.minX + half, y: strip.minY, width: half, height: strip.height)]
+            // The zones are the two halves, but the hints stay within thumb reach of the edges on
+            // a wide screen (110 pt in, like the two-player layout) instead of a quarter of the way.
+            let reach = min(110, half / 2)
+            stickHomes = [CGPoint(x: strip.minX + reach, y: strip.midY)]
+            fireHomes = [CGPoint(x: strip.maxX - reach, y: strip.midY)]
         } else {
             let quarter = strip.width / 4
             stickZones = [CGRect(x: strip.minX, y: strip.minY, width: quarter, height: strip.height),
                           CGRect(x: strip.minX + 3 * quarter, y: strip.minY, width: quarter, height: strip.height)]
             fireZones = [CGRect(x: strip.minX + quarter, y: strip.minY, width: quarter, height: strip.height),
                          CGRect(x: strip.minX + 2 * quarter, y: strip.minY, width: quarter, height: strip.height)]
+            stickHomes = stickZones.map { CGPoint(x: $0.midX, y: $0.midY) }
+            fireHomes = fireZones.map { CGPoint(x: $0.midX, y: $0.midY) }
         }
 
         let divider = SKShapeNode(rect: CGRect(x: strip.minX, y: strip.maxY - 1, width: strip.width, height: 1))
@@ -61,7 +72,7 @@ final class TouchControls {
             base.fillColor = UIColor(white: 1, alpha: 0.08)
             base.strokeColor = tint.withAlphaComponent(0.5)
             base.lineWidth = 2
-            base.position = CGPoint(x: stickZones[p].midX, y: stickZones[p].midY)
+            base.position = stickHomes[p]
             node.addChild(base)
             stickBases.append(base)
 
@@ -76,7 +87,7 @@ final class TouchControls {
             fire.fillColor = tint.withAlphaComponent(0.22)
             fire.strokeColor = tint.withAlphaComponent(0.8)
             fire.lineWidth = 2
-            fire.position = CGPoint(x: fireZones[p].midX, y: fireZones[p].midY)
+            fire.position = fireHomes[p]
             node.addChild(fire)
             fireButtons.append(fire)
 
@@ -149,8 +160,8 @@ final class TouchControls {
         if let stick = stickTouches.removeValue(forKey: key) {
             inputs[stick.player].moveX = 0
             inputs[stick.player].moveY = 0
-            if stickZones.indices.contains(stick.player) {
-                let home = CGPoint(x: stickZones[stick.player].midX, y: stickZones[stick.player].midY)
+            if stickHomes.indices.contains(stick.player) {
+                let home = stickHomes[stick.player]
                 stickBases[stick.player].run(.move(to: home, duration: 0.12))
                 stickKnobs[stick.player].run(.move(to: home, duration: 0.12))
             }
@@ -168,7 +179,7 @@ final class TouchControls {
         fireTouches.removeAll()
         inputs = [PlayerInput(), PlayerInput()]
         for p in stickBases.indices {
-            let home = CGPoint(x: stickZones[p].midX, y: stickZones[p].midY)
+            let home = stickHomes[p]
             stickBases[p].position = home
             stickKnobs[p].position = home
         }

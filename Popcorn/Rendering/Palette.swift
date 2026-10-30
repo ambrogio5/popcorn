@@ -33,7 +33,8 @@ enum Palette {
     static let panel = UIColor(white: 0.05, alpha: 0.78)
     static let button = UIColor(hex: "#FFD166")
     static let buttonText = UIColor(hex: "#1B1B2F")
-    static let secondaryButton = UIColor(white: 1, alpha: 0.16)
+    /// Dark enough that the menu bubbles drifting behind a button no longer read through its label.
+    static let secondaryButton = UIColor(white: 0.05, alpha: 0.55)
     static let harpoon = UIColor(hex: "#FFF3B0")
     static let platform = UIColor(hex: "#3E4A5E")
     static let platformEdge = UIColor(hex: "#9FB3C8")
