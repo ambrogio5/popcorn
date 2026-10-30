@@ -173,7 +173,11 @@ changes and no call-site changes. Names it looks for today:
   bottom third of the screen over the gradient the game still draws from the two sky colours
   in `cities.json`.
 
-Still to wire up when the art arrives: platform and ladder (drawn as paths in
-`GameScene.rebuildStatic`, to become tiled sprites), the harpoon tip and line, the pause, fire and
-stick icons, `particle-spark`, and the player animation frames. The app icon goes into
-`AppIcon.appiconset` in place of the generated one.
+The pack is in: `platform-tile` (nine-slice, 32 px side caps and 8 px top and bottom edges),
+`ladder-tile` (square tiles stacked and clipped to the ladder), `harpoon-line` and `harpoon-tip`,
+`icon-pause`, `icon-fire`, `stick-base` and `stick-knob` (tinted per player), `particle-spark` for
+pops, the player frames `-walk-a`/`-walk-b` (alternating every 0.16 s while running), `-climb`,
+`-hit` (0.8 s where the player was hit) and `-cheer` (level clear), and the app icon in
+`AppIcon.appiconset`. The skyline image sets are named `skyline-<city>`; `sky-colors.json` from
+the pack is copied into `cities.json` and `Tools/generate_levels.py`. Every lookup still falls back
+to the Core Graphics placeholder, so an image set can be removed or replaced one at a time.

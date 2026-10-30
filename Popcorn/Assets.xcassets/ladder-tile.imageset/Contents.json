@@ -1,0 +1,12 @@
+{
+  "images": [
+    {
+      "filename": "ladder-tile.png",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  }
+}

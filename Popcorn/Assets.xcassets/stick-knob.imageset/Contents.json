@@ -1,0 +1,12 @@
+{
+  "images": [
+    {
+      "filename": "stick-knob.png",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  }
+}

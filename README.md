@@ -144,7 +144,7 @@ Popcorn/
   Engine/       Pure Swift simulation: Arena, Level + validator, GameModel, LevelLoader, Progress
   Layout/       GameLayout — screen points for the arena, HUD and controls
   Scenes/       Menu, level select, game scene, HUD
-  Rendering/    Palette and TextureFactory (all art is drawn with Core Graphics at launch)
+  Rendering/    Palette and TextureFactory (art from Assets.xcassets, Core Graphics placeholders otherwise)
   Input/        Touch controls, game controller + keyboard
   Audio/        SoundBank, Haptics, generated .wav placeholders
   Content/      levels.json (64 levels), cities.json
