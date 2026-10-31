@@ -136,7 +136,9 @@ final class BubbleSplitTests: XCTestCase {
         let lvl = Level(id: 98, name: "Hit", city: 0, par: 30, platforms: [], ladders: [], bubbles: [bubble])
         let model = GameModel(mode: .level(lvl), layout: .tall, playerCount: 1, seed: 10)
         var events: [GameEvent] = []
-        for _ in 0..<(60 * 5) {
+        // The starting shield lasts 4 s and waits up to 2 s more while the bubble sits on the
+        // player, so the hit lands a little after 6 s.
+        for _ in 0..<(60 * 8) {
             model.update(dt: 1.0 / 60)
             events += model.drainEvents()
         }
