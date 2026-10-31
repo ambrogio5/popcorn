@@ -60,16 +60,20 @@ struct GameLayout {
         layout.mode = spec.mode
 
         let controlsH = controlsHeight(mode: spec.mode, playerCount: playerCount)
-        let availW = max(1, size.width - insets.left - insets.right - 2 * margin)
+        // Side insets are for the HUD only. The one screen that reports any is the Duo cover
+        // screen, whose camera cut-out is a 40 pt circle in the top-right corner but comes back as
+        // an 84 pt inset down the whole right edge; honouring it for the arena and the control
+        // strip would give up a fifth of the width (and the wide arena with it). Phones never
+        // rotate into a side inset, see `LayoutMode.allowsRotation`.
+        let availW = max(1, size.width - 2 * margin)
         let availH = max(1, size.height - insets.top - insets.bottom - hudHeight - controlsH - 2 * margin)
         let unit = min(availW / CGFloat(spec.width), availH / CGFloat(spec.height))
         layout.unit = unit
         layout.arenaSize = CGSize(width: CGFloat(spec.width) * unit, height: CGFloat(spec.height) * unit)
 
         let arenaBottom = insets.bottom + controlsH + margin + (availH - layout.arenaSize.height) / 2
-        layout.arenaOrigin = CGPoint(x: insets.left + margin + (availW - layout.arenaSize.width) / 2, y: arenaBottom)
-        layout.controlsRect = CGRect(x: insets.left, y: insets.bottom,
-                                     width: size.width - insets.left - insets.right, height: controlsH)
+        layout.arenaOrigin = CGPoint(x: margin + (availW - layout.arenaSize.width) / 2, y: arenaBottom)
+        layout.controlsRect = CGRect(x: 0, y: insets.bottom, width: size.width, height: controlsH)
         layout.hudRect = CGRect(x: insets.left + margin, y: size.height - insets.top - hudHeight,
                                 width: size.width - insets.left - insets.right - 2 * margin, height: hudHeight)
         return layout

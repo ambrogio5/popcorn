@@ -40,7 +40,7 @@ The game never asks the device whether it is folded. It reads the view's size an
 | Screen                                   | Window (points) | Aspect (w/h) | Mode   | Arena         |
 |------------------------------------------|-----------------|--------------|--------|---------------|
 | Regular iPhone (portrait)                | 393 × 852 etc.  | ≈ 0.46       | `tall` | 9 × 16 units  |
-| Duo closed, outer display                | 466 × 678       | ≈ 0.69       | `tall` | 9 × 16 units  |
+| Duo closed, outer display                | 466 × 678       | ≈ 0.69       | `wide` (see below) | 16 × 12 units |
 | Duo open, inner display (landscape)      | 951 × 669       | ≈ 1.42       | `wide` | 16 × 12 units |
 | Duo open, turned upright; iPad portrait  | 669 × 951       | ≈ 0.70       | `upright` | 12 × 16 units |
 | iPad landscape, any landscape screen     | —               | > 0.95       | `wide` | 16 × 12 units |
@@ -49,6 +49,12 @@ Point sizes are those reported by the iPhone Duo simulator in Xcode 27.1 (see `d
 The outer and inner displays have almost the same aspect ratio, so the rule for the big portrait
 shapes is "squarer than 0.6 *and* at least 600 points across" rather than aspect alone. The two constants at the top of
 `LayoutMode` are the only thing to tune if Apple changes the numbers.
+
+The cover screen is the exception to the aspect rule. Its aspect says tall, but a tall arena there
+is a 242 × 430 pt strip, so `GameLayout.bestMode` takes the wide arena whenever it fills at least
+1.4× more of the screen (`fillAdvantage`). For that to work the camera cut-out's safe-area inset,
+which the simulator reports as 84 pt down the whole right edge, is applied to the HUD only; the
+arena and the control strip use the full width.
 
 Levels are authored in normalised 0…1 coordinates and mapped into whichever arena is active, so
 every level works in both shapes. When the size changes mid-game (`GameScene.layoutDidChange`),
