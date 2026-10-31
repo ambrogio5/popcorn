@@ -39,7 +39,7 @@ two-pane layouts and two-player games, poor for 16:9 video.
 |---|---|
 | Use size classes, not interface orientation; the inner display does not honour supported orientations. | We derive `LayoutMode` from the window size, which amounts to the same thing. `supportedInterfaceOrientations` is only a hint for the outer display. |
 | Never read `UIScreen.main`; it reports the outer display even when you are on the inner one. Use the window scene's screen. | `GameViewController` reads `view.window?.screen`. ✔ |
-| `UIRequiresFullScreen` no longer opts an app out of resizing; scenes are resized in discrete steps when the device opens or closes. | We handle every size change in `GameScene.layoutDidChange`. The key is still set (harmless). |
+| `UIRequiresFullScreen` no longer opts an app out of resizing; scenes are resized in discrete steps when the device opens or closes. | We handle every size change in `GameScene.layoutDidChange`. The key is now off: on the Xcode 27.1 Duo simulator an app that still sets it keeps its 466 × 678 cover-screen window when the device opens and is letterboxed on the inner display instead of being resized. |
 | Safe-area insets are asymmetric (Dynamic Island on one side); don't assume leading == trailing. | `GameLayout` uses all four insets separately. ✔ |
 | Games: change the aspect ratio rather than letterbox; if you must pad, fill the padding with art; fill the screen in every pose. | The arena reshapes (9×16 ↔ 16×12) and the sky background always fills the screen. ✔ |
 | Reserved regions (fold, cameras) come back empty for the first several layout passes; query repeatedly. | Not used yet — see follow-ups. |
