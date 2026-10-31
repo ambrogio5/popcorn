@@ -44,16 +44,25 @@ final class HUDNode: SKNode {
         pauseButton.strokeColor = UIColor(white: 1, alpha: 0.35)
         pauseButton.lineWidth = 1.5
         pauseButton.name = "btn.pause"
-        let bars = SKShapeNode(path: {
-            let p = CGMutablePath()
-            p.addRect(CGRect(x: -6, y: -7, width: 4, height: 14))
-            p.addRect(CGRect(x: 2, y: -7, width: 4, height: 14))
-            return p
-        }())
-        bars.fillColor = Palette.text
-        bars.strokeColor = .clear
-        bars.name = "btn.pause"
-        pauseButton.addChild(bars)
+        if let icon = TextureFactory.pauseIcon {
+            let glyph = SKSpriteNode(texture: icon)
+            glyph.size = CGSize(width: 18, height: 18)
+            glyph.color = Palette.text
+            glyph.colorBlendFactor = 1
+            glyph.name = "btn.pause"
+            pauseButton.addChild(glyph)
+        } else {
+            let bars = SKShapeNode(path: {
+                let p = CGMutablePath()
+                p.addRect(CGRect(x: -6, y: -7, width: 4, height: 14))
+                p.addRect(CGRect(x: 2, y: -7, width: 4, height: 14))
+                return p
+            }())
+            bars.fillColor = Palette.text
+            bars.strokeColor = .clear
+            bars.name = "btn.pause"
+            pauseButton.addChild(bars)
+        }
         addChild(pauseButton)
 
         for _ in 0..<3 {

@@ -26,14 +26,14 @@ MIN_VERTICAL_GAP = 0.2
 SPAWN_CLEARANCE = 3.0
 
 CITIES = [
-    {"name": "Celerina", "skyTop": "#0F1B3D", "skyBottom": "#7FB2E5", "ground": "#F2F6FA", "accent": "#FFD166"},
-    {"name": "Milano", "skyTop": "#3A1F4B", "skyBottom": "#F4A261", "ground": "#4A3B2E", "accent": "#FFB4A2"},
-    {"name": "Paris", "skyTop": "#1D2B53", "skyBottom": "#C9B6E4", "ground": "#3B3A4F", "accent": "#FFE066"},
-    {"name": "Cairo", "skyTop": "#4A1E0B", "skyBottom": "#F7C59F", "ground": "#8C6239", "accent": "#FFF1B5"},
-    {"name": "Tokyo", "skyTop": "#0B0F2B", "skyBottom": "#FF5EA8", "ground": "#1E1B3A", "accent": "#5CE6FF"},
-    {"name": "Hong Kong", "skyTop": "#09132A", "skyBottom": "#2EC4B6", "ground": "#1B2A41", "accent": "#FFBF69"},
-    {"name": "Sydney", "skyTop": "#0B3C5D", "skyBottom": "#FFD6A5", "ground": "#2E4057", "accent": "#FF8E72"},
-    {"name": "New York", "skyTop": "#101820", "skyBottom": "#5C6B8A", "ground": "#0E1116", "accent": "#F2A541"},
+    {"name": "Celerina", "skyTop": "#182B4A", "skyBottom": "#E8BDA6", "ground": "#F2F6FA", "accent": "#FFD166"},
+    {"name": "Milano", "skyTop": "#222344", "skyBottom": "#E8AD98", "ground": "#4A3B2E", "accent": "#FFB4A2"},
+    {"name": "Paris", "skyTop": "#282447", "skyBottom": "#F0B7A4", "ground": "#3B3A4F", "accent": "#FFE066"},
+    {"name": "Cairo", "skyTop": "#302442", "skyBottom": "#ECAF72", "ground": "#8C6239", "accent": "#FFF1B5"},
+    {"name": "Tokyo", "skyTop": "#191F49", "skyBottom": "#E9A2B8", "ground": "#1E1B3A", "accent": "#5CE6FF"},
+    {"name": "Hong Kong", "skyTop": "#142A42", "skyBottom": "#DE9F9C", "ground": "#1B2A41", "accent": "#FFBF69"},
+    {"name": "Sydney", "skyTop": "#16334D", "skyBottom": "#F1BA94", "ground": "#2E4057", "accent": "#FF8E72"},
+    {"name": "New York", "skyTop": "#1D2544", "skyBottom": "#E7A784", "ground": "#0E1116", "accent": "#F2A541"},
 ]
 
 LEVEL_NAMES = {

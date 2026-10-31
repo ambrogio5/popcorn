@@ -1,0 +1,12 @@
+{
+  "images": [
+    {
+      "filename": "player-1-walk-a.png",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  }
+}

@@ -149,9 +149,21 @@ enum TextureFactory {
 
     // MARK: Players
 
+    /// The animation frames the art pack ships per player; the raw value is the image-set suffix.
+    enum PlayerFrame: String {
+        case stand = ""
+        case walkA = "-walk-a"
+        case walkB = "-walk-b"
+        case climb = "-climb"
+        case hit = "-hit"
+        case cheer = "-cheer"
+    }
+
     /// A round little bubble-buster. Anchor the sprite at (0.5, 0) so it stands on its position.
-    static func player(index: Int, height: CGFloat) -> SKTexture {
-        if let art = asset("player-\(index + 1)") { return art }
+    /// Frames other than `stand` fall back to the standing frame when the art is missing.
+    static func player(index: Int, frame: PlayerFrame = .stand, height: CGFloat) -> SKTexture {
+        if let art = asset("player-\(index + 1)\(frame.rawValue)") { return art }
+        if frame != .stand { return player(index: index, frame: .stand, height: height) }
         let h = max(12, height.rounded())
         let w = (h * CGFloat(Player.width / Player.height)).rounded()
         return cached("player.\(index).\(Int(h))", size: CGSize(width: w, height: h)) { cg, size in
@@ -185,6 +197,22 @@ enum TextureFactory {
             cg.fillEllipse(in: CGRect(x: headRect.midX + headRect.width * 0.25, y: headRect.midY + headRect.height * 0.02, width: size.width * 0.1, height: size.width * 0.12))
         }
     }
+
+    // MARK: Arena, controls and effects
+
+    // These have no Core Graphics placeholder: the scenes keep drawing their own paths when
+    // the image set is missing, so each is optional.
+    static var platformTile: SKTexture? { asset("platform-tile") }
+    static var ladderTile: SKTexture? { asset("ladder-tile") }
+    static var harpoonTip: SKTexture? { asset("harpoon-tip") }
+    static var harpoonLine: SKTexture? { asset("harpoon-line") }
+    static var pauseIcon: SKTexture? { asset("icon-pause") }
+    static var fireIcon: SKTexture? { asset("icon-fire") }
+    static var stickBase: SKTexture? { asset("stick-base") }
+    static var stickKnob: SKTexture? { asset("stick-knob") }
+
+    /// The sharper particle for pops; the soft one when the pack is not there.
+    static func spark() -> SKTexture { asset("particle-spark") ?? particle() }
 
     // MARK: Pickups and HUD
 

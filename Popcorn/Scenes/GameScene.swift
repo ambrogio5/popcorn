@@ -28,7 +28,8 @@ final class GameScene: BaseScene {
     private var bubbleNodes: [Int: SKSpriteNode] = [:]
     private var playerNodes: [SKSpriteNode] = []
     private var shieldNodes: [SKShapeNode] = []
-    private var harpoonNodes: [Int: SKShapeNode] = [:]
+    private var harpoonNodes: [Int: SKNode] = [:]
+    private var cheering = false
     private var pickupNodes: [Int: SKSpriteNode] = [:]
 
     private var lastTime: TimeInterval = 0
@@ -160,6 +161,15 @@ final class GameScene: BaseScene {
         staticNode.removeAllChildren()
         for box in model.platforms {
             let rect = layout.rect(box)
+            if let tile = TextureFactory.platformTile {
+                // Nine-slice: 32 px caps left and right, 8 px top and bottom of the 256 x 64 tile.
+                let node = SKSpriteNode(texture: tile)
+                node.centerRect = CGRect(x: 0.125, y: 0.125, width: 0.75, height: 0.75)
+                node.size = rect.size
+                node.position = CGPoint(x: rect.midX, y: rect.midY)
+                staticNode.addChild(node)
+                continue
+            }
             let node = SKShapeNode(rect: rect, cornerRadius: 3)
             node.fillColor = Palette.platform
             node.strokeColor = Palette.platformEdge
@@ -167,11 +177,32 @@ final class GameScene: BaseScene {
             staticNode.addChild(node)
         }
         for ladder in model.ladders {
-            let path = CGMutablePath()
             let x = CGFloat(ladder.x) * layout.unit
             let bottom = CGFloat(ladder.bottom) * layout.unit
             let top = CGFloat(ladder.top) * layout.unit
             let half = 0.35 * layout.unit
+            if let tile = TextureFactory.ladderTile {
+                // Square tiles stacked from the bottom, clipped at the platform.
+                let width = half * 2
+                let crop = SKCropNode()
+                let mask = SKSpriteNode(color: .white, size: CGSize(width: width, height: max(0, top - bottom)))
+                mask.anchorPoint = CGPoint(x: 0.5, y: 0)
+                mask.position = CGPoint(x: x, y: bottom)
+                crop.maskNode = mask
+                var y = bottom
+                while y < top {
+                    let piece = SKSpriteNode(texture: tile)
+                    piece.anchorPoint = CGPoint(x: 0.5, y: 0)
+                    piece.size = CGSize(width: width, height: width)
+                    piece.position = CGPoint(x: x, y: y)
+                    crop.addChild(piece)
+                    y += width
+                }
+                crop.zPosition = -0.5
+                staticNode.addChild(crop)
+                continue
+            }
+            let path = CGMutablePath()
             path.move(to: CGPoint(x: x - half, y: bottom))
             path.addLine(to: CGPoint(x: x - half, y: top))
             path.move(to: CGPoint(x: x + half, y: bottom))
@@ -262,7 +293,16 @@ final class GameScene: BaseScene {
             let node = playerNodes[i]
             node.position = layout.point(p.pos)
             node.xScale = p.facing >= 0 ? 1 : -1
-            node.isHidden = !p.alive
+            let frameHeight = CGFloat(Player.height) * layout.unit
+            if p.alive {
+                node.isHidden = false
+                node.texture = TextureFactory.player(index: i, frame: playerFrame(for: p), height: frameHeight)
+            } else {
+                // Knocked back for a moment where it happened, then gone until the respawn.
+                let justHit = p.respawnTimer > GameModel.respawnDelay - 0.8
+                node.isHidden = !justHit
+                if justHit { node.texture = TextureFactory.player(index: i, frame: .hit, height: frameHeight) }
+            }
             node.alpha = p.invulnerable > 0 && Int(p.invulnerable * 12) % 2 == 0 ? 0.35 : 1
             let ring = shieldNodes[i]
             ring.isHidden = !p.alive || !p.shield
@@ -272,29 +312,16 @@ final class GameScene: BaseScene {
         var seenHarpoons = Set<Int>()
         for h in model.harpoons {
             seenHarpoons.insert(h.id)
-            let node: SKShapeNode
+            let node: SKNode
             if let existing = harpoonNodes[h.id] {
                 node = existing
             } else {
-                node = SKShapeNode()
-                node.strokeColor = h.sticky ? Palette.pickup(.sticky) : Palette.harpoon
-                node.lineWidth = max(2, layout.unit * 0.09)
-                node.glowWidth = 2
-                node.lineCap = .round
+                node = makeHarpoonNode(sticky: h.sticky)
                 dynamicNode.addChild(node)
                 harpoonNodes[h.id] = node
             }
-            let path = CGMutablePath()
-            let x = CGFloat(h.x) * layout.unit
-            let bottom = CGFloat(h.bottom) * layout.unit
-            let top = CGFloat(h.top) * layout.unit
-            path.move(to: CGPoint(x: x, y: bottom))
-            path.addLine(to: CGPoint(x: x, y: top))
-            let tip = 0.22 * layout.unit
-            path.move(to: CGPoint(x: x - tip, y: top - tip))
-            path.addLine(to: CGPoint(x: x, y: top))
-            path.addLine(to: CGPoint(x: x + tip, y: top - tip))
-            node.path = path
+            layoutHarpoon(node, x: CGFloat(h.x) * layout.unit, bottom: CGFloat(h.bottom) * layout.unit,
+                          top: CGFloat(h.top) * layout.unit)
             node.alpha = h.stuck ? 0.5 + 0.5 * CGFloat(h.stuckTimer / GameModel.stickyDuration) : 1
         }
         for (id, node) in harpoonNodes where !seenHarpoons.contains(id) {
@@ -336,13 +363,13 @@ final class GameScene: BaseScene {
                 node.run(.sequence([squash, restore]), withKey: "squash")
             }
         case .bubbleSplit(let at, let size, let kind, let combo):
-            burst(at: layout.point(at), color: Palette.bubble(size, kind: kind), count: 10, speed: 60 + layout.unit * 2)
+            burst(at: layout.point(at), color: Palette.bubble(size, kind: kind), count: 10, speed: 60 + layout.unit * 2, spark: true)
             SoundBank.shared.pop(combo: combo, on: self)
             Haptics.pop(size)
             if combo >= 3 { floatText("×\(combo)", at: layout.point(at), color: Palette.star) }
             if size == .large { shake = max(shake, 4) }
         case .bubblePopped(let at, let size, let kind, let combo):
-            burst(at: layout.point(at), color: Palette.bubble(size, kind: kind), count: 14, speed: 90)
+            burst(at: layout.point(at), color: Palette.bubble(size, kind: kind), count: 14, speed: 90, spark: true)
             SoundBank.shared.pop(combo: combo, on: self)
             Haptics.pop(size)
             if combo >= 3 { floatText("×\(combo)", at: layout.point(at), color: Palette.star) }
@@ -402,9 +429,66 @@ final class GameScene: BaseScene {
         }
     }
 
-    private func burst(at point: CGPoint, color: UIColor, count: Int, speed: CGFloat) {
+    private func playerFrame(for p: Player) -> TextureFactory.PlayerFrame {
+        if cheering { return .cheer }
+        if p.onLadder { return .climb }
+        if p.grounded && p.input.moveX != 0 {
+            return Int(model.elapsed / 0.16) % 2 == 0 ? .walkA : .walkB
+        }
+        return .stand
+    }
+
+    /// A line sprite plus a tip sprite from the art pack, or the stroked path of the
+    /// placeholder. `layoutHarpoon` sizes whichever it gets.
+    private func makeHarpoonNode(sticky: Bool) -> SKNode {
+        let tint = sticky ? Palette.pickup(.sticky) : Palette.harpoon
+        if let lineArt = TextureFactory.harpoonLine, let tipArt = TextureFactory.harpoonTip {
+            let node = SKNode()
+            let line = SKSpriteNode(texture: lineArt)
+            line.name = "line"
+            line.anchorPoint = CGPoint(x: 0.5, y: 0)
+            let tip = SKSpriteNode(texture: tipArt)
+            tip.name = "tip"
+            tip.anchorPoint = CGPoint(x: 0.5, y: 1)
+            for sprite in [line, tip] {
+                sprite.color = tint
+                sprite.colorBlendFactor = sticky ? 0.6 : 0
+                node.addChild(sprite)
+            }
+            return node
+        }
+        let node = SKShapeNode()
+        node.strokeColor = tint
+        node.lineWidth = max(2, layout.unit * 0.09)
+        node.glowWidth = 2
+        node.lineCap = .round
+        return node
+    }
+
+    private func layoutHarpoon(_ node: SKNode, x: CGFloat, bottom: CGFloat, top: CGFloat) {
+        if let line = node.childNode(withName: "line") as? SKSpriteNode,
+           let tip = node.childNode(withName: "tip") as? SKSpriteNode {
+            line.size = CGSize(width: max(3, layout.unit * 0.25), height: max(0, top - bottom))
+            line.position = CGPoint(x: x, y: bottom)
+            let tipSize = layout.unit * 0.5
+            tip.size = CGSize(width: tipSize, height: tipSize)
+            tip.position = CGPoint(x: x, y: top + tipSize * 0.3)
+            return
+        }
+        guard let shape = node as? SKShapeNode else { return }
+        let path = CGMutablePath()
+        path.move(to: CGPoint(x: x, y: bottom))
+        path.addLine(to: CGPoint(x: x, y: top))
+        let tip = 0.22 * layout.unit
+        path.move(to: CGPoint(x: x - tip, y: top - tip))
+        path.addLine(to: CGPoint(x: x, y: top))
+        path.addLine(to: CGPoint(x: x + tip, y: top - tip))
+        shape.path = path
+    }
+
+    private func burst(at point: CGPoint, color: UIColor, count: Int, speed: CGFloat, spark: Bool = false) {
         let emitter = SKEmitterNode()
-        emitter.particleTexture = TextureFactory.particle()
+        emitter.particleTexture = spark ? TextureFactory.spark() : TextureFactory.particle()
         emitter.numParticlesToEmit = count
         emitter.particleBirthRate = 4000
         emitter.particleLifetime = 0.5
@@ -517,6 +601,7 @@ final class GameScene: BaseScene {
     }
 
     private func finishLevel(with result: LevelResult) {
+        cheering = true
         guard case .level(let level) = gameMode, !finished else { return }
         finished = true
         Progress.shared.record(result, for: level.id)
