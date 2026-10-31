@@ -73,6 +73,15 @@ final class TouchControls {
             base.strokeColor = tint.withAlphaComponent(0.5)
             base.lineWidth = 2
             base.position = stickHomes[p]
+            if let art = TextureFactory.stickBase {
+                let ring = SKSpriteNode(texture: art)
+                ring.size = CGSize(width: baseRadius * 2, height: baseRadius * 2)
+                ring.color = tint
+                ring.colorBlendFactor = 1
+                ring.alpha = 0.7
+                base.addChild(ring)
+                base.strokeColor = .clear
+            }
             node.addChild(base)
             stickBases.append(base)
 
@@ -80,6 +89,14 @@ final class TouchControls {
             knob.fillColor = tint.withAlphaComponent(0.8)
             knob.strokeColor = .clear
             knob.position = base.position
+            if let art = TextureFactory.stickKnob {
+                let dot = SKSpriteNode(texture: art)
+                dot.size = CGSize(width: baseRadius * 0.9, height: baseRadius * 0.9)
+                dot.color = tint
+                dot.colorBlendFactor = 1
+                knob.addChild(dot)
+                knob.fillColor = .clear
+            }
             node.addChild(knob)
             stickKnobs.append(knob)
 
@@ -91,12 +108,20 @@ final class TouchControls {
             node.addChild(fire)
             fireButtons.append(fire)
 
-            let label = SKLabelNode(fontNamed: Fonts.bold)
-            label.text = String(localized: "FIRE")
-            label.fontSize = baseRadius * 0.42
-            label.fontColor = Palette.text
-            label.verticalAlignmentMode = .center
-            fire.addChild(label)
+            if let art = TextureFactory.fireIcon {
+                let arrow = SKSpriteNode(texture: art)
+                arrow.size = CGSize(width: baseRadius * 1.1, height: baseRadius * 1.1)
+                arrow.color = Palette.text
+                arrow.colorBlendFactor = 1
+                fire.addChild(arrow)
+            } else {
+                let label = SKLabelNode(fontNamed: Fonts.bold)
+                label.text = String(localized: "FIRE")
+                label.fontSize = baseRadius * 0.42
+                label.fontColor = Palette.text
+                label.verticalAlignmentMode = .center
+                fire.addChild(label)
+            }
 
             if playerCount > 1 {
                 let tag = SKLabelNode(fontNamed: Fonts.medium)

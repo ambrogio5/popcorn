@@ -158,8 +158,26 @@ Deliver each asset as a separate file named exactly as listed.
 
 ## 4. Where the files go
 
-Drop the PNGs into `Popcorn/Assets.xcassets` as image sets, then make each `TextureFactory`
-function return `SKTexture(imageNamed:)` for its asset instead of drawing. The call sites in the
-scenes do not change. Platform and ladder are drawn as paths in `GameScene.rebuildStatic`; swap
-those for tiled sprites. Skylines replace the block loop in `TextureFactory.background`, which
-should keep drawing the gradient from the two sky colours in `cities.json`.
+Drop the PNGs into `Popcorn/Assets.xcassets` as image sets named exactly as in section 1.
+`TextureFactory` already looks for those names first and only draws its Core Graphics placeholder
+when an image set is missing, so each asset switches over the moment its image set exists; no code
+changes and no call-site changes. Names it looks for today:
+
+- `bubble-plain-large` … `bubble-plain-tiny`, `bubble-flipped-large` … `bubble-flipped-tiny`,
+  `bubble-armored`, `bubble-lightning`, `bubble-triple`, `bubble-golden`
+- `player-1`, `player-2` (standing frame; the extra frames are not wired up yet)
+- `pickup-double`, `pickup-sticky`, `pickup-rapid`, `pickup-shield`, `pickup-freeze`
+- `star-on`, `star-off`, `heart`, `particle-soft`
+- `skyline-celerina`, `skyline-milano`, `skyline-paris`, `skyline-cairo`, `skyline-tokyo`,
+  `skyline-hongkong`, `skyline-sydney`, `skyline-newyork`: the tileable strip, drawn across the
+  bottom third of the screen over the gradient the game still draws from the two sky colours
+  in `cities.json`.
+
+The pack is in: `platform-tile` (nine-slice, 32 px side caps and 8 px top and bottom edges),
+`ladder-tile` (square tiles stacked and clipped to the ladder), `harpoon-line` and `harpoon-tip`,
+`icon-pause`, `icon-fire`, `stick-base` and `stick-knob` (tinted per player), `particle-spark` for
+pops, the player frames `-walk-a`/`-walk-b` (alternating every 0.16 s while running), `-climb`,
+`-hit` (0.8 s where the player was hit) and `-cheer` (level clear), and the app icon in
+`AppIcon.appiconset`. The skyline image sets are named `skyline-<city>`; `sky-colors.json` from
+the pack is copied into `cities.json` and `Tools/generate_levels.py`. Every lookup still falls back
+to the Core Graphics placeholder, so an image set can be removed or replaced one at a time.

@@ -150,7 +150,7 @@ Popcorn/
   Engine/       Pure Swift simulation: Arena, Level + validator, GameModel, LevelLoader, Progress
   Layout/       GameLayout — screen points for the arena, HUD and controls
   Scenes/       Menu, level select, game scene, HUD
-  Rendering/    Palette and TextureFactory (all art is drawn with Core Graphics at launch)
+  Rendering/    Palette and TextureFactory (art from Assets.xcassets, Core Graphics placeholders otherwise)
   Input/        Touch controls, game controller + keyboard
   Audio/        SoundBank, Haptics, generated .wav placeholders
   Content/      levels.json (64 levels), cities.json
@@ -174,6 +174,10 @@ JSON against the Swift rules, so the two cannot drift silently.
 - Bubbles bounce to a fixed apex per size, as in Pang; smaller bubbles are faster.
 - Getting hit never resets the level. The bubbles freeze for a moment, you come back, the
   checkpoint is wherever you were. Deaths only cost a star.
+- Starts are safe: bubbles cannot hurt anyone for the first 3 s and the player is shielded for
+  4 s, after a respawn or a fold for 2.5 s, and the shield waits (up to 2 s) while a bubble is
+  sitting on the player. The level generator rejects any level where a player who stands still is
+  hit within 5 s in any shape; `SpawnSafetyTests` checks the shipped levels the same way.
 - Stars: one for finishing, one for no hits, one for beating par.
 - Combos: pops within 1.5 s chain up to ×8 and the pop sound rises through a scale.
 - Lightning bubbles hit everything within 3.5 units; flipped bubbles fall upward and their

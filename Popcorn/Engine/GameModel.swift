@@ -20,8 +20,14 @@ final class GameModel {
     static let lightningRange = 3.5
     static let foldPause = 1.0
     /// Seconds at the start of a level during which bubbles cannot hurt anyone.
-    static let startGrace = 2.0
-    static let startInvulnerability = 2.5
+    static let startGrace = 3.0
+    static let startInvulnerability = 4.0
+    /// Shield after coming back from a knock-down, and after a fold or unfold.
+    static let respawnInvulnerability = 2.5
+    static let foldInvulnerability = 2.5
+    /// The shield does not drop while a bubble is sitting on the player (a start or respawn under
+    /// a bubble); this caps how long that can stretch it, per (re)spawn.
+    static let overlapGraceCap = 2.0
     static let celebration = 0.8
     static let celebrationTimeScale = 0.4
     static let fixedStep = 1.0 / 120.0
@@ -145,7 +151,7 @@ final class GameModel {
             players[i].onLadder = false
             players[i].vy = 0
             players[i].pos.y = groundLevel(x: players[i].pos.x, below: players[i].pos.y + 0.5)
-            players[i].invulnerable = max(players[i].invulnerable, 1.5)
+            players[i].invulnerable = max(players[i].invulnerable, GameModel.foldInvulnerability)
         }
         for i in pickups.indices {
             let n = old.normalized(pickups[i].pos)
@@ -212,13 +218,20 @@ final class GameModel {
                 p.alive = true
                 p.grounded = true
                 p.onLadder = false
-                p.invulnerable = 2.0
+                p.invulnerable = GameModel.respawnInvulnerability
+                p.overlapGrace = 0
                 events.append(.playerRespawned(player: i))
             }
             return
         }
 
         p.invulnerable = max(0, p.invulnerable - dt)
+        if p.invulnerable <= 0, p.overlapGrace < GameModel.overlapGraceCap, bubbleTouches(p.box) {
+            // A bubble is sitting on the player as the shield would drop: keep it up until the
+            // bubble has moved off, within the cap, instead of a hit nobody could avoid.
+            p.invulnerable = dt
+            p.overlapGrace += dt
+        }
         p.fireCooldown = max(0, p.fireCooldown - dt)
         if p.weapon != .normal {
             p.weaponTimer -= dt
@@ -576,6 +589,10 @@ final class GameModel {
                 killPlayer(at: i)
             }
         }
+    }
+
+    private func bubbleTouches(_ box: Box) -> Bool {
+        bubbles.contains { box.overlapsCircle(center: $0.pos, radius: $0.radius) }
     }
 
     private func killPlayer(at i: Int) {

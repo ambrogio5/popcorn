@@ -1,10 +1,32 @@
 import SpriteKit
 import UIKit
 
-/// Draws every sprite the game needs with Core Graphics, so the project builds and plays without
-/// any external art. Replace any of these with real textures later; the call sites stay the same.
+/// Hands out every sprite the game needs. Real art wins: when `Assets.xcassets` has an image set
+/// with the name `docs/ART_BRIEF.md` gives for an asset, that image is used. Otherwise the asset
+/// is drawn with Core Graphics as a placeholder, so the project builds and plays without any
+/// external art. The call sites never know which one they got.
 enum TextureFactory {
     private static var cache: [String: SKTexture] = [:]
+    private static var missingAssets: Set<String> = []
+
+    /// The image set called `name`, or nil when the project does not have one (yet).
+    static func asset(_ name: String) -> SKTexture? {
+        let key = "asset.\(name)"
+        if let t = cache[key] { return t }
+        if missingAssets.contains(name) { return nil }
+        guard let image = UIImage(named: name) else {
+            missingAssets.insert(name)
+            return nil
+        }
+        let texture = SKTexture(image: image)
+        cache[key] = texture
+        return texture
+    }
+
+    /// `"Hong Kong"` → `"hongkong"`, the way the brief names the skyline files.
+    static func assetSlug(for city: City) -> String {
+        city.name.lowercased().filter { !$0.isWhitespace }
+    }
 
     private static func cached(_ key: String, size: CGSize, draw: (CGContext, CGSize) -> Void) -> SKTexture {
         if let t = cache[key] { return t }
@@ -17,11 +39,17 @@ enum TextureFactory {
         return texture
     }
 
-    static func clearCache() { cache.removeAll() }
+    static func clearCache() {
+        cache.removeAll()
+        missingAssets.removeAll()
+    }
 
     // MARK: Bubbles
 
     static func bubble(size: BubbleSize, kind: BubbleKind, diameter: CGFloat) -> SKTexture {
+        // Plain and flipped bubbles have one design per size; the special kinds have one design.
+        let name = kind == .plain || kind == .flipped ? "bubble-\(kind.rawValue)-\(size.rawValue)" : "bubble-\(kind.rawValue)"
+        if let art = asset(name) { return art }
         let d = max(8, diameter.rounded())
         return cached("bubble.\(size.rawValue).\(kind.rawValue).\(Int(d))", size: CGSize(width: d, height: d)) { cg, _ in
             let tint = Palette.bubble(size, kind: kind)
@@ -121,8 +149,21 @@ enum TextureFactory {
 
     // MARK: Players
 
+    /// The animation frames the art pack ships per player; the raw value is the image-set suffix.
+    enum PlayerFrame: String {
+        case stand = ""
+        case walkA = "-walk-a"
+        case walkB = "-walk-b"
+        case climb = "-climb"
+        case hit = "-hit"
+        case cheer = "-cheer"
+    }
+
     /// A round little bubble-buster. Anchor the sprite at (0.5, 0) so it stands on its position.
-    static func player(index: Int, height: CGFloat) -> SKTexture {
+    /// Frames other than `stand` fall back to the standing frame when the art is missing.
+    static func player(index: Int, frame: PlayerFrame = .stand, height: CGFloat) -> SKTexture {
+        if let art = asset("player-\(index + 1)\(frame.rawValue)") { return art }
+        if frame != .stand { return player(index: index, frame: .stand, height: height) }
         let h = max(12, height.rounded())
         let w = (h * CGFloat(Player.width / Player.height)).rounded()
         return cached("player.\(index).\(Int(h))", size: CGSize(width: w, height: h)) { cg, size in
@@ -157,9 +198,26 @@ enum TextureFactory {
         }
     }
 
+    // MARK: Arena, controls and effects
+
+    // These have no Core Graphics placeholder: the scenes keep drawing their own paths when
+    // the image set is missing, so each is optional.
+    static var platformTile: SKTexture? { asset("platform-tile") }
+    static var ladderTile: SKTexture? { asset("ladder-tile") }
+    static var harpoonTip: SKTexture? { asset("harpoon-tip") }
+    static var harpoonLine: SKTexture? { asset("harpoon-line") }
+    static var pauseIcon: SKTexture? { asset("icon-pause") }
+    static var fireIcon: SKTexture? { asset("icon-fire") }
+    static var stickBase: SKTexture? { asset("stick-base") }
+    static var stickKnob: SKTexture? { asset("stick-knob") }
+
+    /// The sharper particle for pops; the soft one when the pack is not there.
+    static func spark() -> SKTexture { asset("particle-spark") ?? particle() }
+
     // MARK: Pickups and HUD
 
     static func pickup(kind: PowerUpKind, diameter: CGFloat) -> SKTexture {
+        if let art = asset("pickup-\(kind == .doubleShot ? "double" : kind.rawValue)") { return art }
         let d = max(8, diameter.rounded())
         return cached("pickup.\(kind.rawValue).\(Int(d))", size: CGSize(width: d, height: d)) { cg, _ in
             let tint = Palette.pickup(kind)
@@ -216,7 +274,8 @@ enum TextureFactory {
     }
 
     static func particle(diameter: CGFloat = 16) -> SKTexture {
-        cached("particle.\(Int(diameter))", size: CGSize(width: diameter, height: diameter)) { cg, size in
+        if let art = asset("particle-soft") { return art }
+        return cached("particle.\(Int(diameter))", size: CGSize(width: diameter, height: diameter)) { cg, size in
             let colors = [UIColor.white.cgColor, UIColor.white.withAlphaComponent(0).cgColor] as CFArray
             if let g = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: [0, 1]) {
                 let c = CGPoint(x: size.width / 2, y: size.height / 2)
@@ -226,7 +285,8 @@ enum TextureFactory {
     }
 
     static func star(filled: Bool, size s: CGFloat) -> SKTexture {
-        cached("star.\(filled).\(Int(s))", size: CGSize(width: s, height: s)) { cg, size in
+        if let art = asset(filled ? "star-on" : "star-off") { return art }
+        return cached("star.\(filled).\(Int(s))", size: CGSize(width: s, height: s)) { cg, size in
             let path = starPath(center: CGPoint(x: size.width / 2, y: size.height / 2), outer: s * 0.48, inner: s * 0.22)
             cg.setFillColor((filled ? Palette.star : Palette.starOff).cgColor)
             cg.addPath(path.cgPath)
@@ -235,7 +295,8 @@ enum TextureFactory {
     }
 
     static func heart(size s: CGFloat) -> SKTexture {
-        cached("heart.\(Int(s))", size: CGSize(width: s, height: s)) { cg, size in
+        if let art = asset("heart") { return art }
+        return cached("heart.\(Int(s))", size: CGSize(width: s, height: s)) { cg, size in
             let w = size.width, h = size.height
             let path = UIBezierPath()
             path.move(to: CGPoint(x: w * 0.5, y: h * 0.9))
@@ -250,9 +311,12 @@ enum TextureFactory {
         }
     }
 
-    /// Vertical sky gradient with a procedural skyline for the city.
+    /// Vertical sky gradient from the city's two sky colours, with the city's skyline strip
+    /// (`skyline-<city>`, tiled along the bottom) when the project has one, or a procedural
+    /// skyline otherwise.
     static func background(city: City, cityIndex: Int, size: CGSize) -> SKTexture {
         let w = max(2, size.width.rounded()), h = max(2, size.height.rounded())
+        let strip = UIImage(named: "skyline-\(assetSlug(for: city))")
         return cached("bg.\(cityIndex).\(Int(w))x\(Int(h))", size: CGSize(width: w, height: h)) { cg, _ in
             let top = UIColor(hex: city.skyTop), bottom = UIColor(hex: city.skyBottom)
             if let g = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: [top.cgColor, bottom.cgColor] as CFArray, locations: [0, 1]) {
@@ -267,8 +331,22 @@ enum TextureFactory {
                 let r = CGFloat(Double.random(in: 0.6..<1.8, using: &rng))
                 cg.fillEllipse(in: CGRect(x: x, y: y, width: r, height: r))
             }
-            // Skyline silhouette along the bottom
             let ground = UIColor(hex: city.ground)
+            if let strip, strip.size.width > 0, strip.size.height > 0 {
+                // Real skyline: a tileable strip, transparent above the rooftops. Scale it to
+                // about a third of the screen height and repeat it across the bottom.
+                cg.setFillColor(ground.cgColor)
+                cg.fill(CGRect(x: 0, y: h - h * 0.06, width: w, height: h * 0.06))
+                let tileH = (h * 0.3).rounded()
+                let tileW = max(1, (tileH * strip.size.width / strip.size.height).rounded())
+                var tx: CGFloat = 0
+                while tx < w {
+                    strip.draw(in: CGRect(x: tx, y: h - tileH, width: tileW, height: tileH))
+                    tx += tileW
+                }
+                return
+            }
+            // Placeholder skyline: random blocks along the bottom
             cg.setFillColor(ground.withAlphaComponent(0.55).cgColor)
             var x: CGFloat = -10
             while x < w + 10 {
