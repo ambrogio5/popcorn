@@ -9,13 +9,22 @@ final class ScreenshotTests: XCTestCase {
     private struct Shape {
         let name: String
         let size: CGSize
+        /// What the device reports, so the HUD and the arena land where they do on the device.
+        let insets: UIEdgeInsets
     }
 
+    // Phone insets are the usual Dynamic Island / home indicator pair. The Duo cover screen was
+    // measured on the Xcode 27.1 simulator: no top inset, the home indicator, and an 84 pt camera
+    // inset down the right edge. The inner display had no top inset either; its bottom is assumed.
+    private static let phoneInsets = UIEdgeInsets(top: 59, left: 0, bottom: 34, right: 0)
+    private static let duoClosedInsets = UIEdgeInsets(top: 0, left: 0, bottom: 34, right: 84)
+    private static let duoOpenInsets = UIEdgeInsets(top: 0, left: 0, bottom: 34, right: 0)
+
     private let shapes = [
-        Shape(name: "iphone", size: CGSize(width: 393, height: 852)),
-        Shape(name: "duo-closed", size: CGSize(width: 466, height: 678)),
-        Shape(name: "duo-open", size: CGSize(width: 951, height: 669)),
-        Shape(name: "duo-open-upright", size: CGSize(width: 669, height: 951)),
+        Shape(name: "iphone", size: CGSize(width: 393, height: 852), insets: phoneInsets),
+        Shape(name: "duo-closed", size: CGSize(width: 466, height: 678), insets: duoClosedInsets),
+        Shape(name: "duo-open", size: CGSize(width: 951, height: 669), insets: duoOpenInsets),
+        Shape(name: "duo-open-upright", size: CGSize(width: 669, height: 951), insets: duoOpenInsets),
     ]
 
     private var window: UIWindow!
@@ -38,7 +47,8 @@ final class ScreenshotTests: XCTestCase {
         super.tearDown()
     }
 
-    private func present(_ scene: BaseScene, size: CGSize) {
+    private func present(_ scene: BaseScene, size: CGSize, insets: UIEdgeInsets) {
+        scene.insetOverride = insets
         window.frame = CGRect(origin: .zero, size: size)
         skView.frame = window.bounds
         scene.scaleMode = .resizeFill
@@ -72,11 +82,11 @@ final class ScreenshotTests: XCTestCase {
     func testMenuAndLevelSelectRenderInEveryShape() {
         for shape in shapes {
             let menu = MenuScene(size: shape.size)
-            present(menu, size: shape.size)
+            present(menu, size: shape.size, insets: shape.insets)
             attach(menu, name: "menu-\(shape.name)")
 
             let select = LevelSelectScene(size: shape.size)
-            present(select, size: shape.size)
+            present(select, size: shape.size, insets: shape.insets)
             attach(select, name: "levels-\(shape.name)")
         }
     }
@@ -88,12 +98,12 @@ final class ScreenshotTests: XCTestCase {
             for (i, level) in picks.enumerated() {
                 let players = shape.size.width > shape.size.height ? 2 : 1
                 let scene = GameScene(size: shape.size, mode: .level(level), playerCount: players)
-                present(scene, size: shape.size)
+                present(scene, size: shape.size, insets: shape.insets)
                 advance(scene, seconds: 1.3 + Double(i) * 0.4)
                 attach(scene, name: "level\(level.id)-\(players)p-\(shape.name)")
             }
             let storm = GameScene(size: shape.size, mode: .storm, playerCount: 1)
-            present(storm, size: shape.size)
+            present(storm, size: shape.size, insets: shape.insets)
             advance(storm, seconds: 2.0)
             attach(storm, name: "storm-\(shape.name)")
         }
@@ -102,12 +112,14 @@ final class ScreenshotTests: XCTestCase {
     func testFoldingMidGameKeepsPlaying() {
         let level = GameContent.shared.levels[0]
         let scene = GameScene(size: CGSize(width: 466, height: 678), mode: .level(level), playerCount: 2)
-        present(scene, size: CGSize(width: 466, height: 678))
+        present(scene, size: CGSize(width: 466, height: 678), insets: Self.duoClosedInsets)
         advance(scene, seconds: 1.0)
         attach(scene, name: "fold-before-closed")
 
-        // Unfold: the view grows to the inner display and the scene is told about it.
-        present(scene, size: CGSize(width: 951, height: 669))
+        // Unfold, held upright: the view grows to the inner display and the scene is told about it.
+        // (With the cover screen's real insets it already plays the wide arena, so unfolding into
+        // the landscape shape would change nothing; upright shows the relayout and the toast.)
+        present(scene, size: CGSize(width: 669, height: 951), insets: Self.duoOpenInsets)
         advance(scene, seconds: 0.2)
         attach(scene, name: "fold-after-open")
         advance(scene, seconds: 1.5)
