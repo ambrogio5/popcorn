@@ -178,6 +178,10 @@ The pack is in: `platform-tile` (nine-slice, 32 px side caps and 8 px top and bo
 `icon-pause`, `icon-fire`, `stick-base` and `stick-knob` (tinted per player), `particle-spark` for
 pops, the player frames `-walk-a`/`-walk-b` (alternating every 0.16 s while running), `-climb`,
 `-hit` (0.8 s where the player was hit) and `-cheer` (level clear), and the app icon in
-`AppIcon.appiconset`. The skyline image sets are named `skyline-<city>`; `sky-colors.json` from
-the pack is copied into `cities.json` and `Tools/generate_levels.py`. Every lookup still falls back
-to the Core Graphics placeholder, so an image set can be removed or replaced one at a time.
+`AppIcon.appiconset`. The player frames come on a square 256 × 256 canvas with the character
+about 170 px wide, so `GameScene` keeps the sprite `Player.height` units tall and takes the width
+from the texture's own aspect; the 0.9-unit collision box is unchanged and the placeholder, drawn
+at the box's aspect, still fills it exactly. The skyline image sets are named `skyline-<city>`;
+`sky-colors.json` from the pack is copied into `cities.json` and `Tools/generate_levels.py`. Every
+lookup still falls back to the Core Graphics placeholder, so an image set can be removed or
+replaced one at a time.

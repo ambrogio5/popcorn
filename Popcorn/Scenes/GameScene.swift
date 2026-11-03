@@ -142,8 +142,7 @@ final class GameScene: BaseScene {
         pickupNodes.removeAll()
         for (i, node) in playerNodes.enumerated() {
             let h = CGFloat(Player.height) * layout.unit
-            node.texture = TextureFactory.player(index: i, height: h)
-            node.size = CGSize(width: CGFloat(Player.width) * layout.unit, height: h)
+            setPlayerTexture(TextureFactory.player(index: i, height: h), on: node, height: h)
             let ring = shieldNodes[i]
             ring.path = CGPath(ellipseIn: CGRect(x: -h * 0.6, y: -h * 0.6, width: h * 1.2, height: h * 1.2), transform: nil)
         }
@@ -296,12 +295,12 @@ final class GameScene: BaseScene {
             let frameHeight = CGFloat(Player.height) * layout.unit
             if p.alive {
                 node.isHidden = false
-                node.texture = TextureFactory.player(index: i, frame: playerFrame(for: p), height: frameHeight)
+                setPlayerTexture(TextureFactory.player(index: i, frame: playerFrame(for: p), height: frameHeight), on: node, height: frameHeight)
             } else {
                 // Knocked back for a moment where it happened, then gone until the respawn.
                 let justHit = p.respawnTimer > GameModel.respawnDelay - 0.8
                 node.isHidden = !justHit
-                if justHit { node.texture = TextureFactory.player(index: i, frame: .hit, height: frameHeight) }
+                if justHit { setPlayerTexture(TextureFactory.player(index: i, frame: .hit, height: frameHeight), on: node, height: frameHeight) }
             }
             node.alpha = p.invulnerable > 0 && Int(p.invulnerable * 12) % 2 == 0 ? 0.35 : 1
             let ring = shieldNodes[i]
@@ -427,6 +426,18 @@ final class GameScene: BaseScene {
         case .stormSpawn:
             SoundBank.shared.play("click", on: self)
         }
+    }
+
+    /// The player is `Player.height` units tall; the width follows the texture's own aspect so
+    /// the art pack's square canvas (character about two thirds as wide as it is tall, feet on
+    /// the bottom edge) is not squeezed into the 0.9-unit collision box. The placeholder is
+    /// drawn at the box's aspect, so it still fills it exactly.
+    private func setPlayerTexture(_ texture: SKTexture, on node: SKSpriteNode, height: CGFloat) {
+        if node.texture !== texture { node.texture = texture }
+        let px = texture.size()
+        let width = px.height > 0 ? height * px.width / px.height : CGFloat(Player.width) * layout.unit
+        let size = CGSize(width: width, height: height)
+        if node.size != size { node.size = size }
     }
 
     private func playerFrame(for p: Player) -> TextureFactory.PlayerFrame {
